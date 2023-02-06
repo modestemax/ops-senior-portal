@@ -1,0 +1,154 @@
+{
+    "links": {
+        "link1": {
+            "text": {
+                "en": "COVID-19 information and support",
+                "fr": "COVID-19 information and support FR"
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "link2": {
+            "text": {
+                "en": "Active living",
+                "fr": "Active living FR"
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "link3": {
+            "text": {
+                "en": "Employment and education",
+                "fr": "Employment and education FR"
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "link4": {
+            "text": {
+                "en": "Caregiving",
+                "fr": "Caregiving FR"
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "link5": {
+            "text": {
+                "en": "Finances",
+                "fr": "Finances FR"
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "link6": {
+            "text": {
+                "en": "Health and well-being",
+                "fr": "Health and well-being FR"
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "link7": {
+            "text": {
+                "en": "Home and community support services",
+                "fr": "Home and community support services FR"
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "link8": {
+            "text": {
+                "en": "Housing",
+                "fr": "Housing FR"
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "link9": {
+            "text": {
+                "en": "Safety and security",
+                "fr": "Safety and security FR"
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "link10": {
+            "text": {
+                "en": "Legal matters",
+                "fr": "Legal matters FR"
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "link11": {
+            "text": {
+                "en": "End of life",
+                "fr": "End of life FR"
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "link12": {
+            "text": {
+                "en": "Transportation",
+                "fr": "Transportation FR"
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "link13": {
+            "text": {
+                "en": "For organizations that serve seniors",
+                "fr": "For organizations that serve seniors FR"
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "link14": {
+            "text": {
+                "en": "Key contacts",
+                "fr": "Key contacts FR"
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "link15": {
+            "text": {
+                "en": "Ontario government ID",
+                "fr": "Ontario government ID FR"
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        }
+    }
+}

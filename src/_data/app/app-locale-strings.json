@@ -1,0 +1,66 @@
+{
+  "homePage": {
+    "title": {
+      "en": "Home Page",
+      "fr": "Page d'accueil"
+    },
+    "welcome": {
+      "en": "Welcome to the Ontario.ca Jamstack Toolkit.",
+      "fr": "Bienvenue à la boîte à outils Jamstack Ontario.ca."
+    },
+    "environment": {
+      "firstHalf": {
+        "en": "This site was built for the ",
+        "fr": "Ce site a été construit pour l'environnement de "
+      },
+      "secondHalf": {
+        "en": " environment.",
+        "fr": "."
+      }
+    },
+    "examplePages": {
+      "en": "Example Pages",
+      "fr": "Pages d'exemple"
+    }
+  },
+  "buttons": {
+    "applyFilter": {
+      "en": "Apply filter",
+      "fr": "Apply filter FR"
+    },
+    "clearFilters": {
+      "en": "Clear filters",
+      "fr": "Clear filters FR"
+    }
+  },
+  "seniors": {
+    "programsAndServicesComponent": {
+      "title": {
+        "en": "Search for programs and services",
+        "fr": "Search for programs and services FR"
+      },
+      "content": {
+        "en": "<p>Search for information on tax credits, health care, caregiving, housing, transportation, safety and more.Use the filters to narrow down your search.</p><p>Select one or more topics and click “Apply filter” to find a list of resources from the Government of Ontario, Government of Canada and other organizations.</p>",
+        "fr": "<p>Search for information on tax credits, health care, caregiving, housing, transportation, safety and more.Use the filters to narrow down your search.</p><p>Select one or more topics and click “Apply filter” to find a list of resources from the Government of Ontario, Government of Canada and other organizations. FR</p>"
+      },
+      "filter": {
+        "en": "Pick one or more topics to see all of our relevant resources:",
+        "fr": "Pick one or more topics to see all of our relevant resources: FR"
+      },
+      "topResources": {
+        "en": "Top resources",
+        "fr": "Top resources FR"
+      }
+    },
+    "programsAndServicesGuideComponent": {
+      "title": {
+        "en": "Guide to programs and services for seniors",
+        "fr": "Guide to programs and services for seniors FR"
+      },
+      "content": {
+        "en": "<p>In this <a href=\"#\">comprehensive guide</a>, find information on:</p>",
+        "fr": "<p>In this <a href=\"#\">comprehensive guide</a>, find information on: FR</p>"
+      }
+    }
+  }
+}

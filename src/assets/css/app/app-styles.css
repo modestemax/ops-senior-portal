@@ -1,0 +1,29 @@
+/* application-specific CSS should go in this file ( medium: 73.063em ) */
+/** hero */
+.ontario-seniors-hero {
+    display:block;
+}
+.ontario-seniors-hero__container {
+    display:flex;
+    flex-direction:column;
+}
+.ontario-seniors-hero__container .ontario-seniors-hero-item-a { order:1; }
+.ontario-seniors-hero__container .ontario-seniors-hero-item-b {
+    margin-left:0;
+    margin-right:0;
+    padding-left:0;
+    padding-right:0;
+    order:0;
+}
+/** two tone colors ( only on medium and up ) */
+.has-purple .ontario-seniors-hero.has-image .ontario-seniors-hero__container .ontario-seniors-hero-item-b { background-color:#B975B7; }
+@media only screen and ( min-width: 73.063em ) {
+    .ontario-seniors-hero { background-color:#F8E5C3; }
+    .ontario-seniors-hero__container { display:block; }
+    .has-purple .ontario-seniors-hero.has-image { background: linear-gradient( 90deg, #F8E5C3 60%, #B975B7 60% ); }
+}
+/** images */
+.maincontent__container img { display:block; margin:0; padding:0; display:block; max-width:100%; }
+.maincontent__container img[ width ] { width: auto; /* Defer to max-width */ }
+.maincontent__container img[ width ][ height ] { height: auto; /* Preserve aspect ratio */ }
+/* Let SVG scale without boundaries .maincontent__container img[ src$=".svg" ] { width: 100%; height: auto; max-width: none; } */

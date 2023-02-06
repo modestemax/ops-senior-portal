@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ lang or 'en' }}">
+    <head>
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+
+    <link href="{{ globals.assetsRoot }}/css/style.css" rel="stylesheet" />
+    {% include "core/_favicons.njk" %}
+    {% include "app/_head_custom.njk" %}
+    </head>
+    <body>
+
+    {% include "core/_icon_definitions.njk" %}
+    {% include "core/_header.njk" %}
+
+    {% include "app/_hero.njk" %}
+    {% include "app/components/search-programs-and-services.njk" %}
+    {% include "app/components/guide-to-programs-and-services-for-seniors.njk" %}
+
+    <div class="maincontent__container">{{ content | safe }}</div>
+    
+    {% include "core/_footer.njk" %}
+    </body>
+</html>

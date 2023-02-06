@@ -1,0 +1,34 @@
+{
+    "resources": {
+        "resource1": {
+            "text": {
+                "en": "A guide to programs and services for seniors",
+                "fr": ""
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "resource2": {
+            "text": {
+                "en": "Find a Seniors Active Living Centre near you",
+                "fr": ""
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        },
+        "resource3": {
+            "text": {
+                "en": "Celebrating seniors in Ontario",
+                "fr": ""
+            },
+            "url": {
+                "en": "#",
+                "fr": "#"
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+<div class="wrapper{% if hero_color %} has-{{ hero_color | safe }}{% endif %}">
+    <div class="ontario-seniors-hero{% if hero_image %} has-image{% endif %}">
+        <div class="ontario-row maincontent__container ontario-seniors-hero__container">
+            {% if hero_image %}
+            <div class="ontario-column ontario-large-6 ontario-seniors-hero-item-a">
+                <h1>{{ title }}</h1>
+                {% if description %}
+                <p>{{ description | safe }}</p>
+                {% endif %}
+            </div>
+            <div class="ontario-column ontario-large-6 ontario-seniors-hero-item-b">
+                <img src="{{ globals.siteRoot }}{{ globals.assetsRoot }}/images/{{ hero_image[0] }}" alt="{{ hero_image[1] }}">
+            </div>
+            {% else %}
+            <div class="ontario-column ontario-small-12">
+                <h1>{{ title }}</h1>
+                {% if description %}
+                <p>{{ description | safe }}</p>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div><!-- .wrapper -->
