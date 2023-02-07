@@ -39,6 +39,10 @@
         "en": "Search for programs and services",
         "fr": "Search for programs and services FR"
       },
+      "results": {
+        "en": "Results: ",
+        "fr": "Results: FR"
+      },
       "content": {
         "en": "<p>Search for information on tax credits, health care, caregiving, housing, transportation, safety and more.Use the filters to narrow down your search.</p><p>Select one or more topics and click “Apply filter” to find a list of resources from the Government of Ontario, Government of Canada and other organizations.</p>",
         "fr": "<p>Search for information on tax credits, health care, caregiving, housing, transportation, safety and more.Use the filters to narrow down your search.</p><p>Select one or more topics and click “Apply filter” to find a list of resources from the Government of Ontario, Government of Canada and other organizations. FR</p>"

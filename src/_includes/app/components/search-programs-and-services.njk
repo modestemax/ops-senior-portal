@@ -2,48 +2,98 @@
 {% if lang %}
     {% set page_lang = lang %}
 {% endif %}
+
 <div class="ontario-row maincontent__container ontario-padding-top-48-!">
     <div class="ontario-column ontario-small-12">
         <h2>{{ 'seniors.programsAndServicesComponent.title' | localeString }}</h2>
     </div>
 </div>
+
 <div class="ontario-row maincontent__container ontario-padding-top-24-!">
     <div class="ontario-column ontario-medium-5 ontario-large-4">
-        <div class="ontario-form-group">
+        <div id="filter-progams-and-services" class="ontario-form-group">
             <fieldset class="ontario-fieldset">
                 <legend class="ontario-fieldset__legend">{{ 'seniors.programsAndServicesComponent.filter' | localeString }}</legend>
                 <div class="ontario-checkboxes">
                     <!-- filters -->
-                    {% for itemKey, filterItem in app["search-progams-and-services"].filters %}
+                    {% for tag in app.progamsServicesFromCSV.tags %}
+                    {% if tag != '' %}
                     <div class="ontario-checkboxes__item">
-                        <input class="ontario-checkboxes__input" id="{{ itemKey }}" name="options" type="checkbox" value="{{ filterItem.value[ page_lang ] }}">
-                        <label class="ontario-checkboxes__label" for="{{ itemKey }}">{{ filterItem.text[ page_lang ] }}</label>
+                        <input class="ontario-checkboxes__input" id="{{ tag | trim | lower | replace( " ", "-" )  }}" name="options" type="checkbox" value="{{ tag | trim | lower | replace( " ", "-" ) | replace( "+", "" ) | replace( "2", "" ) }}">
+                        <label class="ontario-checkboxes__label" for="{{ tag | trim | lower | replace( " ", "-" )  }}">{{ tag | title }}</label>
                     </div>
+                    {% endif %}
                     {% endfor %}
                     <!-- / filters -->
                 </div>
             </fieldset>
             <div class="ontario-row ontario-padding-top-32-!">
                 <div class="ontario-column ontario-small-6">
-                    <button class="ontario-button ontario-button--primary">{{ 'buttons.applyFilter' | localeString }}</button>
+                    <button id="applyFilter" class="ontario-button ontario-button--primary">{{ 'buttons.applyFilter' | localeString }}</button>
                 </div>
                 <div class="ontario-column ontario-small-6">
-                    <button class="ontario-button ontario-button--tertiary">{{ 'buttons.clearFilters' | localeString }}</button>
+                    <button id="clearFilters" class="ontario-button ontario-button--tertiary">{{ 'buttons.clearFilters' | localeString }}</button>
                 </div>
             </div>
         </div>
     </div>
     <div class="ontario-column ontario-medium-7 ontario-large-8">
-        <div id="search-progams-and-services" name="search-progams-and-services">
-            <!-- default content -->
-            {{ 'seniors.programsAndServicesComponent.content' | localeString | safe }}
-            <h3>{{ 'seniors.programsAndServicesComponent.topResources' | localeString }}</h3>
-            <ul>
-            {% for itemKey, resourceItem in app["top-resource-links"].resources %}
-                <li><a href="{{ resourceItem.url[ page_lang ] }}">{{ resourceItem.text[ page_lang ] }}</a></li>
-            {% endfor %}
-            </ul>
-            <!-- / default content -->
+        <div id="search-progams-and-services" name="search-progams-and-services" class="show-default-content hide-csv-content">
+            <div class="default-content">
+                <!-- default content -->
+                {{ 'seniors.programsAndServicesComponent.content' | localeString | safe }}
+                <h3>{{ 'seniors.programsAndServicesComponent.topResources' | localeString }}</h3>
+                <ul>
+                {% for itemKey, resourceItem in app["top-resource-links"].resources %}
+                    <li><a href="{{ resourceItem.url[ page_lang ] }}">{{ resourceItem.text[ page_lang ] }}</a></li>
+                {% endfor %}
+                </ul>
+                <!-- / default content -->
+            </div>
+            <!-- csv output -->
+            <div class="csv-content">
+                <h3>{{ 'seniors.programsAndServicesComponent.results' | localeString }}</h3>
+
+                {% for governmentSupports, seniorsContent in app.progamsServicesFromCSV.seniorsContent | sort( attribute='Government supports/external' ).reverse() | groupby( "Government supports/external" ) %}
+                {% if governmentSupports.length > 0 and governmentSupports != 'undefined' %}
+                <hr>
+                <h2>{{ governmentSupports | safe }}</h2>
+                {% for obj in seniorsContent -%}
+
+                {% set tags = [] %}
+                {% set tags = ( tags.push( obj["Tag 1"] ), tags ) %}
+
+                {% if obj["Tag 2"].length > 0 %}
+                {% set tags = ( tags.push( obj["Tag 2"] ), tags ) %}
+                {% endif %}
+
+                {% if obj["Tag 3"].length > 0 %}
+                {% set tags = ( tags.push( obj["Tag 3"] ), tags ) %}
+                {% endif %}
+
+                {% if obj["Tag 4"].length > 0 %}
+                {% set tags = ( tags.push( obj["Tag 4"] ), tags ) %}
+                {% endif %}
+                        
+                <div class="filter-item{% for tag in tags %} {{ tag | trim | lower | replace( " ", "-" ) | replace( "+", "" ) | replace( "2", "" ) }}{% endfor %}">
+                    <p>
+                        <a href="#">
+                            {%- for key, value in obj -%}
+                                {% if loop.index < 2 and value.length > 0 %}
+                                    {{ value }}
+                                {% endif %}
+                            {%- endfor -%}
+                        </a>
+                        <br>
+                        {{ tags | join( ", " ) | title }}
+                    </p>
+                </div>
+
+                {%- endfor -%}
+                {% endif %}
+                {%- endfor -%}
+            </div>
+            <!-- / csv output -->
         </div>
     </div>
 </div>

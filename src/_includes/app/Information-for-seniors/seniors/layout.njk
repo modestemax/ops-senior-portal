@@ -5,6 +5,15 @@
     <title>{{ title }}</title>
 
     <link href="{{ globals.assetsRoot }}/css/style.css" rel="stylesheet" />
+    <style>
+
+        {%- for tag in app.progamsServicesFromCSV.tags -%}
+        {% if tag != '' %}
+            .{{ tag | trim | lower | replace( " ", "-" ) | replace( "+", "" ) | replace( "2", "" ) }} .filter-item.{{ tag | trim | lower | replace( " ", "-" ) | replace( "+", "" ) | replace( "2", "" ) }} { display:block; }
+        {% endif %}
+        {%- endfor -%}
+
+    </style>
     {% include "core/_favicons.njk" %}
     {% include "app/_head_custom.njk" %}
     </head>
@@ -20,5 +29,7 @@
     <div class="maincontent__container">{{ content | safe }}</div>
     
     {% include "core/_footer.njk" %}
+
+    <script src="/assets/vendor/programsServicesFilters.js"></script>
     </body>
 </html>
