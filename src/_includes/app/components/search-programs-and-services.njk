@@ -52,12 +52,12 @@
             </div>
             <!-- csv output -->
             <div class="csv-content">
-                <h3>{{ 'seniors.programsAndServicesComponent.results' | localeString }}</h3>
+                <h2>{{ 'seniors.programsAndServicesComponent.results' | localeString }}</h2>
 
                 {% for governmentSupports, seniorsContent in app.progamsServicesFromCSV.seniorsContent | sort( attribute='Government supports/external' ).reverse() | groupby( "Government supports/external" ) %}
                 {% if governmentSupports.length > 0 and governmentSupports != 'undefined' %}
                 <hr>
-                <h2>{{ governmentSupports | safe }}</h2>
+                <h3>{{ governmentSupports | safe }}</h3>
                 {% for obj in seniorsContent -%}
 
                 {% set tags = [] %}
