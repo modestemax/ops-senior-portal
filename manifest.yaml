@@ -10,7 +10,7 @@ integration_manifest:
   # Required: Machine readable application name.
   # Validation: [A-Za-z0-9-]+
   # Reference used by DevOps to associate resources
-  app_name: rxchecker-frontend
+  app_name: msaa-portal
 
   # Required: Human readable ministry name.
   # Used by DevOps to associate resources with a partner ministry.
