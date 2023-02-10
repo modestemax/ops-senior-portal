@@ -2,20 +2,24 @@
     <div class="ontario-seniors-hero{% if hero_image %} has-image{% endif %}">
         <div class="ontario-row maincontent__container ontario-seniors-hero__container">
             {% if hero_image %}
-            <div class="ontario-column ontario-large-6 ontario-seniors-hero-item-a">
-                <h1>{{ title }}</h1>
-                {% if description %}
-                <p>{{ description | safe }}</p>
-                {% endif %}
+            <div class="ontario-column ontario-large-6 ontario-seniors-hero-item ontario-seniors-hero-item-a">
+                <div class="content-container">
+                    <div class="content">
+                        <h1>{{ title | safe}}</h1>
+                        {% if description %}
+                        <p class="ontario-lead-statement">{{ description | safe }}</p>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-            <div class="ontario-column ontario-large-6 ontario-seniors-hero-item-b">
+            <div class="ontario-column ontario-large-6 ontario-seniors-hero-item ontario-seniors-hero-item-b">
                 <img src="{{ globals.siteRoot }}{{ globals.assetsRoot }}/images/{{ hero_image[0] }}" alt="{{ hero_image[1] }}">
             </div>
             {% else %}
             <div class="ontario-column ontario-small-12">
-                <h1>{{ title }}</h1>
+                <h1>{{ title | safe}}</h1>
                 {% if description %}
-                <p>{{ description | safe }}</p>
+                <p class="ontario-lead-statement">{{ description | safe }}</p>
                 {% endif %}
             </div>
             {% endif %}

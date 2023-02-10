@@ -7,6 +7,13 @@
     display:flex;
     flex-direction:column;
 }
+
+/** centered content ( temp ) */
+@media only screen and ( min-width: 73.063em ) {
+    .ontario-seniors-hero__container .ontario-seniors-hero-item .content-container {
+        padding-top:40px;
+    }
+}
 .ontario-seniors-hero__container .ontario-seniors-hero-item-a { order:1; }
 .ontario-seniors-hero__container .ontario-seniors-hero-item-b {
     margin-left:0;
@@ -32,6 +39,9 @@
 .hide-default-content > .default-content,
 .hide-csv-content > .csv-content,
 .filter-item { display: none; }
+
+.csv-content .csv-content-container .no-results { display:none; }
+.csv-content .csv-content-container.no-results .no-results { display:block; }
 
 .show-default-content > .default-content,
 .show-csv-content > .csv-content { display: block; }

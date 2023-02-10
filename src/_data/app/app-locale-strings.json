@@ -39,13 +39,9 @@
         "en": "Search for programs and services",
         "fr": "Search for programs and services FR"
       },
-      "results": {
-        "en": "Results: ",
-        "fr": "Results: FR"
-      },
       "content": {
-        "en": "<p>Search for information on tax credits, health care, caregiving, housing, transportation, safety and more.Use the filters to narrow down your search.</p><p>Select one or more topics and click “Apply filter” to find a list of resources from the Government of Ontario, Government of Canada and other organizations.</p>",
-        "fr": "<p>Search for information on tax credits, health care, caregiving, housing, transportation, safety and more.Use the filters to narrow down your search.</p><p>Select one or more topics and click “Apply filter” to find a list of resources from the Government of Ontario, Government of Canada and other organizations. FR</p>"
+        "en": "<p>Search for information on tax credits, health care, caregiving, housing, transportation, safety and more. Use the filters to narrow down your search.</p><p>Select one or more topics and click “Apply filter” to find a list of resources from the Government of Ontario, Government of Canada and other organizations.</p>",
+        "fr": "<p>Search for information on tax credits, health care, caregiving, housing, transportation, safety and more. Use the filters to narrow down your search.</p><p>Select one or more topics and click “Apply filter” to find a list of resources from the Government of Ontario, Government of Canada and other organizations. FR</p>"
       },
       "filter": {
         "en": "Pick one or more topics to see all of our relevant resources:",
@@ -54,16 +50,42 @@
       "topResources": {
         "en": "Top resources",
         "fr": "Top resources FR"
-      }
-    },
-    "programsAndServicesGuideComponent": {
-      "title": {
-        "en": "Guide to programs and services for seniors",
-        "fr": "Guide to programs and services for seniors FR"
       },
-      "content": {
-        "en": "<p>In this <a href=\"#\">comprehensive guide</a>, find information on:</p>",
-        "fr": "<p>In this <a href=\"#\">comprehensive guide</a>, find information on: FR</p>"
+      "noResults": {
+        "en": "Sorry, no results",
+        "fr": "Sorry, no results FR"
+      },
+      "resources": {
+        "resource1": {
+          "text": {
+            "en": "A guide to programs and services for seniors",
+            "fr": "A guide to programs and services for seniors FR"
+          },
+          "url": {
+            "en": "https://www.ontario.ca/document/guide-programs-and-services-seniors",
+            "fr": "#"
+          }
+        },
+        "resource2": {
+          "text": {
+            "en": "Find a Seniors Active Living Centre near you",
+            "fr": "Find a Seniors Active Living Centre near you FR"
+          },
+          "url": {
+            "en": "https://www.ontario.ca/page/find-seniors-active-living-centre-near-you",
+            "fr": "#"
+          }
+        },
+        "resource3": {
+          "text": {
+            "en": "Celebrating seniors in Ontario",
+            "fr": "Celebrating seniors in Ontario FR"
+          },
+          "url": {
+            "en": "https://www.ontario.ca/page/celebrating-seniors-ontario",
+            "fr": "#"
+          }
+        }
       }
     }
   }

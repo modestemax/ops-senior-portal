@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- DEVELOP -->
 <html lang="{{ lang or 'en' }}">
     <head>
     <meta charset="utf-8" />
@@ -6,13 +7,12 @@
 
     <link href="{{ globals.assetsRoot }}/css/style.css" rel="stylesheet" />
     <style>
-
+        .all
         {%- for tag in app.progamsServicesFromCSV.tags -%}
-        {% if tag != '' %}
-            .{{ tag | trim | lower | replace( " ", "-" ) | replace( "+", "" ) | replace( "2", "" ) }} .filter-item.{{ tag | trim | lower | replace( " ", "-" ) | replace( "+", "" ) | replace( "2", "" ) }} { display:block; }
-        {% endif %}
-        {%- endfor -%}
-
+        {%- if tag != '' -%}
+            , .{{ app.progamsServicesFromCSV.cssTags[tag] }} .filter-item.{{ app.progamsServicesFromCSV.cssTags[tag] }}
+        {%- endif -%}
+        {%- endfor %} { display: block; }
     </style>
     {% include "core/_favicons.njk" %}
     {% include "app/_head_custom.njk" %}
@@ -24,7 +24,6 @@
 
     {% include "app/_hero.njk" %}
     {% include "app/components/search-programs-and-services.njk" %}
-    {% include "app/components/guide-to-programs-and-services-for-seniors.njk" %}
 
     <div class="maincontent__container">{{ content | safe }}</div>
     
