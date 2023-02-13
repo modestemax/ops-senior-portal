@@ -29,8 +29,12 @@
     /// functions
 	var bindHandlers = function(){
 
-        applyFilter.addEventListener( 'click', handleApplyFilters, true );
-        clearFilters.addEventListener( 'click', handleClearFilters, true );
+        /// applyFilter.addEventListener( 'click', handleApplyFilters, true );
+        /// clearFilters.addEventListener( 'click', handleClearFilters, true );
+
+        Array.prototype.forEach.call( filterInputs, function( filterInput, i ){
+            filterInput.addEventListener( 'click', handleApplyFilters, true );
+		});
 
     }
 
