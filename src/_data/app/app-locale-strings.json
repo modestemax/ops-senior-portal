@@ -1,38 +1,4 @@
 {
-  "homePage": {
-    "title": {
-      "en": "Home Page",
-      "fr": "Page d'accueil"
-    },
-    "welcome": {
-      "en": "Welcome to the Ontario.ca Jamstack Toolkit.",
-      "fr": "Bienvenue à la boîte à outils Jamstack Ontario.ca."
-    },
-    "environment": {
-      "firstHalf": {
-        "en": "This site was built for the ",
-        "fr": "Ce site a été construit pour l'environnement de "
-      },
-      "secondHalf": {
-        "en": " environment.",
-        "fr": "."
-      }
-    },
-    "examplePages": {
-      "en": "Example Pages",
-      "fr": "Pages d'exemple"
-    }
-  },
-  "buttons": {
-    "applyFilter": {
-      "en": "Apply filter",
-      "fr": "Apply filter FR"
-    },
-    "clearFilters": {
-      "en": "Clear filters",
-      "fr": "Clear filters FR"
-    }
-  },
   "seniors": {
     "programsAndServicesComponent": {
       "title": {
@@ -44,8 +10,8 @@
         "fr": "<p>Search for information on tax credits, health care, caregiving, housing, transportation, safety and more. Use the filters to narrow down your search.</p><p>Select one or more topics to find a list of resources from the Government of Ontario, Government of Canada and other organizations. FR</p>"
       },
       "filter": {
-        "en": "Pick one or more topics to see all of our relevant resources:",
-        "fr": "Pick one or more topics to see all of our relevant resources: FR"
+        "en": "Looking for something specific? Pick&nbsp;a&nbsp;topic to see all of our relevant resources.",
+        "fr": "Looking for something specific? Pick a topic to see all of our relevant resources FR"
       },
       "topResources": {
         "en": "Top resources",
@@ -54,38 +20,6 @@
       "noResults": {
         "en": "Sorry, no results",
         "fr": "Sorry, no results FR"
-      },
-      "resources": {
-        "resource1": {
-          "text": {
-            "en": "A guide to programs and services for seniors",
-            "fr": "A guide to programs and services for seniors FR"
-          },
-          "url": {
-            "en": "https://www.ontario.ca/document/guide-programs-and-services-seniors",
-            "fr": "#"
-          }
-        },
-        "resource2": {
-          "text": {
-            "en": "Find a Seniors Active Living Centre near you",
-            "fr": "Find a Seniors Active Living Centre near you FR"
-          },
-          "url": {
-            "en": "https://www.ontario.ca/page/find-seniors-active-living-centre-near-you",
-            "fr": "#"
-          }
-        },
-        "resource3": {
-          "text": {
-            "en": "Celebrating seniors in Ontario",
-            "fr": "Celebrating seniors in Ontario FR"
-          },
-          "url": {
-            "en": "https://www.ontario.ca/page/celebrating-seniors-ontario",
-            "fr": "#"
-          }
-        }
       }
     }
   }

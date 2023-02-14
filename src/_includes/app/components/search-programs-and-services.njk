@@ -13,7 +13,7 @@
     <div class="ontario-column ontario-medium-5 ontario-large-4">
         <div id="filter-progams-and-services" class="ontario-form-group">
             <fieldset class="ontario-fieldset">
-                <legend class="ontario-fieldset__legend" style="display:none;">{{ 'seniors.programsAndServicesComponent.filter' | localeString }}</legend>
+                <legend class="ontario-fieldset__legend">{{ 'seniors.programsAndServicesComponent.filter' | localeString | safe }}</legend>
                 <div class="ontario-checkboxes">
                     <!-- filters -->
                     {% for tag in app.progamsServicesFromCSV.tags %}
@@ -36,8 +36,8 @@
                 {{ 'seniors.programsAndServicesComponent.content' | localeString | safe }}
                 <h2>{{ 'seniors.programsAndServicesComponent.topResources' | localeString }}</h2>
                 <ul>
-                {% for itemKey, resourceItem in app["app-locale-strings"].seniors.programsAndServicesComponent.resources %}
-                    <li><a href="{{ resourceItem.url[ page_lang ] }}">{{ resourceItem.text[ page_lang ] }}</a></li>
+                {% for resource in topResources %}
+                    <li>{{ resource | safe }}</li>
                 {% endfor %}
                 </ul>
                 <!-- / default content -->
