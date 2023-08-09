@@ -8,6 +8,7 @@
 	console.log( "Program Services Filters loaded" );
 
     const filterProgamsAndServices = document.getElementById( 'filter-progams-and-services' );
+    const searchProgramsAndServices = document.getElementById('search-programs-and-services');
     const filterInputs             = filterProgamsAndServices.getElementsByTagName( 'input' );
     const searchProgamsAndServices = document.getElementById( 'search-progams-and-services' );
     const applyFilter              = document.getElementById( 'applyFilter' );

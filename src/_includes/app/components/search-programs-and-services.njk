@@ -6,6 +6,9 @@
 <div class="ontario-row maincontent__container ontario-padding-top-48-!">
     <div class="ontario-column ontario-small-12">
         <h2>{{ 'seniors.programsAndServicesComponent.title' | localeString }}</h2>
+         <div class="ontario-column ontario-small-12 ontario-medium-5 ontario-large-4">
+        {% include "app/searchbox.njk" %}
+        </div>
     </div>
 </div>
 
@@ -42,6 +45,25 @@
                 </ul>
                 <!-- / default content -->
             </div>
+
+            <!-- csv output for search input-->
+<div class="csv-content" id="csv-content" x-data="search" x-init="doSearch()">
+    <div x-show="results.length > 0" class="csv-content-container">
+        <div x-for="item in results">
+            <h3 x-text="item['Government supports/external']"></h3>
+            <p>
+                <a :href="item['Resource URL']" x-text="item['Resource title']"></a>
+                <br>
+                <span x-text="item['Tag 1'] + ', ' + item['Tag 2'] + ', ' + item['Tag 3'] + ', ' + item['Tag 4']"></span>
+            </p>
+        </div>
+    </div>
+    <div x-show="results.length === 0">
+        <p>{{ 'seniors.programsAndServicesComponent.noResults' | localeString | safe }}</p>
+    </div>
+</div>
+<!-- / csv output for search input-->
+
             <!-- csv output -->
             <div class="csv-content" id="csv-content">
                 {% set firstItem = 'false' %}

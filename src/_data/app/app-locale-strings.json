@@ -22,5 +22,23 @@
         "fr": "Sorry, no results FR"
       }
     }
+  },
+  "searchbox": {
+    "title": {
+      "en": "Search",
+      "fr": "Recherche"
+    },
+    "search": {
+      "en": "Search",
+      "fr": "Recherche"
+    },
+    "clearAll": {
+      "en": "Clear All",
+      "fr": "Tout Effacer"
+    },
+    "placeholder": {
+      "en": "Enter your search term",
+      "fr": "Entrez votre terme de recherche"
+    }
   }
 }
