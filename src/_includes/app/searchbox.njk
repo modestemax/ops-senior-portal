@@ -1,0 +1,61 @@
+<div class="ontario-row maincontent__container" x-data="search">
+    <div class="ontario-column ontario-small-12">
+        <div class="panel">
+            <label for="search-text"><h2 id="search-keyword-filter-header" class="medium"><strong>{{ "searchbox.title" | localeString }}</strong></h2></label>
+            <input class="ontario-input" id="search-text" type="text" x-model:value="searchTerm" x-bind:placeholder="placeholder" />
+            
+            <button class="ontario-button ontario-button--primary" x-on:click="doSearch()">{{ "searchbox.search" | localeString }}</button>
+
+            <!-- Clear all button -->
+            <button class="ontario-button ontario-button--secondary" x-on:click="clearSearchFilters()">{{ "searchbox.clearAll" | localeString }}</button>
+        </div>
+    </div>
+    <div class="ontario-column ontario-small-12">
+        <div x-show="results.length" class="results-panel">
+            <h3>Search Results:</h3>
+            <ul>
+                <template x-for="result in results">
+                    <li>
+                        <strong x-text="result['Resource title']"></strong><br>
+                        <a x-bind:href="result['Resource URL']" x-text="result['Resource URL']"></a><br>
+                        <span x-text="result['Government supports/external']"></span>
+                        <span x-text="result['Tag 1']"></span>
+                        <span x-text="result['Tag 2']"></span>
+                        <span x-text="result['Tag 3']"></span>
+                        <span x-text="result['Tag 4']"></span>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('search', () => ({
+            searchTerm: '',
+            results: [],
+            placeholder: '{{ "searchbox.placeholder" | localeString }}',
+            doSearch() {
+                let data = {{ app.progamsServicesFromCSV.seniorsContent | dump | safe }}; // Load data from your CSV
+                let options = {
+                    keys: ['Resource title', 'Resource URL', 'Government supports/external', 'Tag 1', 'Tag 2', 'Tag 3', 'Tag 4'],
+                    includeScore: true
+                };
+                let fuse = new Fuse(data, options);
+            let results = fuse.search(this.searchTerm);
+            console.log("Raw Results:", results); // log the raw results
+            
+            // If 'item' is the correct property to access, then the following line will work:
+            this.results = results.map(res => res.item);
+            
+            // Otherwise, you may need to modify the code to access the desired properties correctly
+            },
+            clearSearchFilters() {
+                this.searchTerm = '';
+                this.results = [];
+            },
+        }));
+    });
+</script>

@@ -24,11 +24,12 @@
 
     {% include "app/_hero.njk" %}
     {% include "app/components/search-programs-and-services.njk" %}
+    
 
     <div class="maincontent__container">{{ content | safe }}</div>
     
     {% include "core/_footer.njk" %}
 
-    <script src="{{ globals.assetsRoot }}/vendor/programsServicesFilters.js"></script>
+    <script src="{{ globals.assetsRoot }}/js/app/programsServicesFilters.js"></script>
     </body>
 </html>
