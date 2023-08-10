@@ -1,44 +1,182 @@
 {
+
   "seniors": {
+
     "programsAndServicesComponent": {
+
       "title": {
+
         "en": "Search for programs and services",
+
         "fr": "Search for programs and services FR"
+
       },
+
       "content": {
+
         "en": "<p>Search for information on tax credits, health care, caregiving, housing, transportation, safety and more. Use the filters to narrow down your search.</p><p>Select one or more topics to find a list of resources from the Government of Ontario, Government of Canada and other organizations.</p>",
+
         "fr": "<p>Search for information on tax credits, health care, caregiving, housing, transportation, safety and more. Use the filters to narrow down your search.</p><p>Select one or more topics to find a list of resources from the Government of Ontario, Government of Canada and other organizations. FR</p>"
+
       },
+
       "filter": {
+
         "en": "Looking for something specific? Pick&nbsp;a&nbsp;topic to see all of our relevant resources.",
+
         "fr": "Looking for something specific? Pick a topic to see all of our relevant resources FR"
+
       },
+
       "topResources": {
+
         "en": "Top resources",
+
         "fr": "Top resources FR"
+
       },
+
       "noResults": {
+
         "en": "Sorry, no results",
+
         "fr": "Sorry, no results FR"
+
+      }
+
+    }
+
+  },
+
+  "searchbox": {
+
+    "title": {
+
+      "en": "Search",
+
+      "fr": "Recherche"
+
+    },
+
+    "search": {
+
+      "en": "Search",
+
+      "fr": "Recherche"
+
+    },
+
+    "clearAll": {
+
+      "en": "Clear All",
+
+      "fr": "Tout Effacer"
+
+    },
+
+    "placeholder": {
+
+      "en": "Enter your search term",
+
+      "fr": "Entrez votre terme de recherche"
+
+    }
+
+  },
+
+
+  "footer": {
+    "standard": {
+      "links": {
+        "aboutontario": {
+          "url": {
+            "en": "https://www.ontario.ca/page/accessibility",
+            "fr": "https://www.ontario.ca/fr/page/accessibilite"
+          },
+          "text": {
+            "en": "About Ontario",
+            "fr": "À propos de l'Ontario"
+          }
+        },
+        "accessibility": {
+          "url": {
+            "en": "https://www.ontario.ca/page/accessibility",
+            "fr": "https://www.ontario.ca/fr/page/accessibilite"
+          },
+          "text": {
+            "en": "Accessibility",
+            "fr": "Accessibilité"
+          }
+        },
+        
+        "news": {
+          "url": {
+            "en": "https://www.ontario.ca/page/privacy-statement",
+            "fr": "https://www.ontario.ca/fr/page/declaration-concernant-la-protection-de-la-vie-privee"
+          },
+          "text": {
+            "en": "News",
+            "fr": "Nouvelles"
+          }
+        },
+        "privacy": {
+          "url": {
+            "en": "https://www.ontario.ca/page/privacy-statement",
+            "fr": "https://www.ontario.ca/fr/page/declaration-concernant-la-protection-de-la-vie-privee"
+          },
+          "text": {
+            "en": "Privacy",
+            "fr": "Confidentialité"
+          }
+        },
+        "termsofuse": {
+          "url": {
+            "en": "https://www.ontario.ca/page/copyright-information",
+            "fr": "https://www.ontario.ca/fr/page/droits-dauteur"
+          },
+          "text": {
+            "en": "Terms of use",
+            "fr": "conditions d'utilisation"
+          }
+        },
+        
+        "copyright": {
+          "url": {
+            "en": "https://www.ontario.ca/page/copyright-information",
+            "fr": "https://www.ontario.ca/fr/page/droits-dauteur"
+          },
+          "text": {
+            "en": "King's Printer for Ontario",
+            "fr": "Imprimeur du Roi pour l’Ontario"
+          }
+        }
       }
     }
-  },
-  "searchbox": {
-    "title": {
-      "en": "Search",
-      "fr": "Recherche"
+  },    "expandedFooter": {
+    "ministryForSeniorsAndAccessibility": {
+      "en": "<a href=\"https://www.ontario.ca/page/accessibility\"> Ministry for Seniors and Accessibility</a>",
+      "fr": "<a href=\"https://www.ontario.ca/fr/page/accessibilite\"> Ministère des Aînés et de l'Accessibilité</a>"
     },
-    "search": {
-      "en": "Search",
-      "fr": "Recherche"
+    "ministryForSeniorsAndAccessibilityDescription": {
+      "en": "Helping seniors and people with disabilities stay Independent, active, and socially connected. We are also helping seniors stay safe and making Ontario more accessible for everyone and promoting the benefits of age-diverse, accessible workplaces and communities where everyone is able to participate.",
+      "fr": "Aider les personnes âgées et les personnes handicapées à rester indépendantes, actives et socialement connectées. Nous aidons également les personnes âgées à rester en sécurité et rendons l'Ontario plus accessible à tous et nous faisons la promotion des avantages de lieux de travail et de communautés accessibles et diversifiés en fonction de l'âge, où tout le monde peut participer."
     },
-    "clearAll": {
-      "en": "Clear All",
-      "fr": "Tout Effacer"
+    "questionsOrComments": {
+      "en": "Questions or comments",
+      "fr": "Questions ou commentaires"
     },
-    "placeholder": {
-      "en": "Enter your search term",
-      "fr": "Entrez votre terme de recherche"
+    "contactUs": {
+      "en": "Contact us",
+      "fr": "Contactez-nous"
+    },
+    "contactUsDescription": {
+      "en": "There are many ways to the Contact the Government of Ontario",
+      "fr": "Il existe plusieurs façons de communiquer avec le gouvernement de l'Ontario"
+    },
+    "contactUsButton": {
+      "en": "Contact Us",
+      "fr": "Contactez-nous"
     }
   }
+
 }
