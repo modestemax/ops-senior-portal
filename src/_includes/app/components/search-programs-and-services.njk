@@ -22,8 +22,8 @@
                     {% for tag in app.progamsServicesFromCSV.tags %}
                     {% if tag != '' %}
                     <div class="ontario-checkboxes__item">
-                        <input class="ontario-checkboxes__input" id="{{ app.progamsServicesFromCSV.cssTags[tag] }}" name="options" type="checkbox" value="{{ app.progamsServicesFromCSV.cssTags[tag] }}">
-                        <label class="ontario-checkboxes__label" for="{{ app.progamsServicesFromCSV.cssTags[tag] }}">{{ tag | safe }}</label>
+                        <input class="ontario-checkboxes__input" id="{{ tag }}" name="options" type="checkbox" value="{{ tag }}">
+                        <label class="ontario-checkboxes__label" for="{{ tag }}">{{ tag | safe }}</label>
                     </div>
                     {% endif %}
                     {% endfor %}
@@ -47,115 +47,22 @@
             </div>
 
             <!-- csv output for search input-->
-<div class="csv-content" id="csv-content" x-data="search" x-init="doSearch()">
-    <div x-show="results.length > 0" class="csv-content-container">
-        <div x-for="item in results">
-            <h3 x-text="item['Government supports/external']"></h3>
-            <p>
-                <a :href="item['Resource URL']" x-text="item['Resource title']"></a>
-                <br>
-                <span x-text="item['Tag 1'] + ', ' + item['Tag 2'] + ', ' + item['Tag 3'] + ', ' + item['Tag 4']"></span>
-            </p>
-        </div>
-    </div>
-    <div x-show="results.length === 0">
-        <p>{{ 'seniors.programsAndServicesComponent.noResults' | localeString | safe }}</p>
-    </div>
-</div>
-<!-- / csv output for search input-->
-
-            <!-- csv output -->
-            <div class="csv-content" id="csv-content">
-                {% set firstItem = 'false' %}
-                {% for governmentSupports, seniorsContent in app.progamsServicesFromCSV.seniorsContent | sort( attribute='Government supports/external' ).reverse() | groupby( "Government supports/external" ) %}
-
-                {% if governmentSupports.length > 0 and governmentSupports != 'undefined' %}
-                <div name="{{ governmentSupports | safe }}" id="{{ governmentSupports | safe }}" class="csv-content-container">
-                {% if firstItem == 'false' %}
-                    {% set firstItem = 'true' %}
-                {% else %}
-                <hr>
-                {% endif %}
-
-                <h3>{{ governmentSupports | safe }}</h3>
-                <div class="no-results">
+            <div class="csv-content" id="csv-content" x-data="search" x-init="doSearch()">
+                <div x-show="results.length > 0" class="csv-content-container">
+                    <div x-for="item in results">
+                        <h3 x-text="item['Internal/External']"></h3>
+                        <p>
+                            <a :href="item['Resource URL']" x-text="item['Resource title']"></a>
+                            <br>
+                            <span x-text="item['Category'] + ', ' + item['Sub Category']"></span>
+                        </p>
+                    </div>
+                </div>
+                <div x-show="results.length === 0">
                     <p>{{ 'seniors.programsAndServicesComponent.noResults' | localeString | safe }}</p>
                 </div>
-
-                {% for obj in seniorsContent -%}
-                {% if ( obj["Priority"] | lower ) == 'yes' %}
-
-                {% set tags = [] %}
-                {% set tags = ( tags.push( obj["Tag 1"] ), tags ) %}
-
-                {% if obj["Tag 2"].length > 0 %}
-                {% set tags = ( tags.push( obj["Tag 2"] ), tags ) %}
-                {% endif %}
-
-                {% if obj["Tag 3"].length > 0 %}
-                {% set tags = ( tags.push( obj["Tag 3"] ), tags ) %}
-                {% endif %}
-
-                {% if obj["Tag 4"].length > 0 %}
-                {% set tags = ( tags.push( obj["Tag 4"] ), tags ) %}
-                {% endif %}
-                        
-                <div class="filter-item{% for tag in tags %} {{ app.progamsServicesFromCSV.cssTags[ tag | trim ] }}{% endfor %}">
-                    <p>
-                        <a href="{{ obj["Resource URL"] }}">
-                            {%- for key, value in obj -%}
-                                {% if loop.index < 2 and value.length > 0 %}
-                                    {{ value }}
-                                {% endif %}
-                            {%- endfor -%}
-                        </a>
-                        <br>
-                        {{ tags | join( ", " ) }}
-                    </p>
-                </div>
-
-                {% endif %}
-                {%- endfor -%}
-
-                {% for obj in seniorsContent -%}
-                {% if ( obj["Priority"] | lower ) != 'yes' %}
-
-                {% set tags = [] %}
-                {% set tags = ( tags.push( obj["Tag 1"] ), tags ) %}
-
-                {% if obj["Tag 2"].length > 0 %}
-                {% set tags = ( tags.push( obj["Tag 2"] ), tags ) %}
-                {% endif %}
-
-                {% if obj["Tag 3"].length > 0 %}
-                {% set tags = ( tags.push( obj["Tag 3"] ), tags ) %}
-                {% endif %}
-
-                {% if obj["Tag 4"].length > 0 %}
-                {% set tags = ( tags.push( obj["Tag 4"] ), tags ) %}
-                {% endif %}
-                        
-                <div class="filter-item{% for tag in tags %} {{ app.progamsServicesFromCSV.cssTags[ tag | trim ] }}{% endfor %}">
-                    <p>
-                        <a href="{{ obj["Resource URL"] }}">
-                            {%- for key, value in obj -%}
-                                {% if loop.index < 2 and value.length > 0 %}
-                                    {{ value }}
-                                {% endif %}
-                            {%- endfor -%}
-                        </a>
-                        <br>
-                        {{ tags | join( ", " ) }}
-                    </p>
-                </div>
-
-                {% endif %}
-                {%- endfor -%}
-                </div>
-                {% endif %}
-                {%- endfor -%}
             </div>
-            <!-- / csv output -->
+            <!-- / csv output for search input-->
         </div>
     </div>
 </div>
