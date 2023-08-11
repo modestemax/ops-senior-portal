@@ -2,7 +2,7 @@
     <div class="ontario-column ontario-small-12">
         <div class="panel">
             <label for="search-text"><h2 id="search-keyword-filter-header" class="medium"><strong>{{ "searchbox.title" | localeString }}</strong></h2></label>
-            <input class="ontario-input" id="search-text" type="text" x-model:value="searchTerm" x-bind:placeholder="placeholder" />
+            <input class="ontario-input" id="search-text" type="text" x-model:value="searchTerm" x-bind:placeholder="placeholder" x-on:keyup.enter="doSearch()" />
             
             <button class="ontario-button ontario-button--primary" x-on:click="doSearch()">{{ "searchbox.search" | localeString }}</button>
 
@@ -10,7 +10,7 @@
             <button class="ontario-button ontario-button--secondary" x-on:click="clearSearchFilters()">{{ "searchbox.clearAll" | localeString }}</button>
         </div>
     </div>
-    <div class="ontario-column ontario-small-12">
+   <!-- <div class="ontario-column ontario-small-12">
         <div x-show="results.length" class="results-panel">
             <h3>Search Results:</h3>
             <ul>
@@ -26,7 +26,7 @@
                 </template>
             </ul>
         </div>
-    </div>
+    </div>-->
 </div>
 
 

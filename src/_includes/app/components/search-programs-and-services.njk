@@ -3,7 +3,7 @@
     {% set page_lang = lang %}
 {% endif %}
 
-<div class="ontario-row maincontent__container ontario-padding-top-48-!">
+<div class="ontario-row maincontent__container ontario-padding-top-48-!" x-data="search">
     <div class="ontario-column ontario-small-12">
         <h2>{{ 'seniors.programsAndServicesComponent.title' | localeString }}</h2>
          <div class="ontario-column ontario-small-12 ontario-medium-5 ontario-large-4">
@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<div class="ontario-row maincontent__container ontario-padding-top-24-!">
+<div class="ontario-row maincontent__container ontario-padding-top-24-!" x-data="search">
     <div class="ontario-column ontario-medium-5 ontario-large-4">
         <div id="filter-progams-and-services" class="ontario-form-group">
             <fieldset class="ontario-fieldset">
@@ -47,22 +47,14 @@
             </div>
 
             <!-- csv output for search input-->
-            <div class="csv-content" id="csv-content" x-data="search" x-init="doSearch()">
-                <div x-show="results.length > 0" class="csv-content-container">
-                    <div x-for="item in results">
-                        <h3 x-text="item['Internal/External']"></h3>
-                        <p>
-                            <a :href="item['Resource URL']" x-text="item['Resource title']"></a>
-                            <br>
-                            <span x-text="item['Category'] + ', ' + item['Sub Category']"></span>
-                        </p>
-                    </div>
-                </div>
-                <div x-show="results.length === 0">
-                    <p>{{ 'seniors.programsAndServicesComponent.noResults' | localeString | safe }}</p>
-                </div>
+        <div class="csv-content" id="csv-content" x-data="search" x-init="doSearch()">
+            {% include "app/search-results.njk" %} <!-- Include the search results here -->
+
+            <div x-show="results.length === 0">
+                <p>{{ 'seniors.programsAndServicesComponent.noResults' | localeString | safe }}</p>
             </div>
-            <!-- / csv output for search input-->
+        </div>
+        <!-- / csv output for search input-->
         </div>
     </div>
 </div>
