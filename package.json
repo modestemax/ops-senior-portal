@@ -16,7 +16,7 @@
   "author": "",
   "license": "",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.2",
+    "@11ty/eleventy": "^1.0.1",
     "@11ty/eleventy-fetch": "^3.0.0",
     "commander": "^9.3.0",
     "dotenv": "^16.0.0",
@@ -29,5 +29,8 @@
     "simple-git": "^3.10.0",
     "uuid": "^8.3.2",
     "validate-npm-package-name": "^4.0.0"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
   }
 }

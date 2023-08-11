@@ -1,0 +1,48 @@
+
+<div class="ontario-column ontario-medium-4">
+    <h4>Filter</h4>
+    <div class='ontario-accordions__container'>
+        <div class='ontario-accordion__controls'>
+            <button class='ontario-accordion__button--expand-all' aria-expanded='false'>
+                <span class='ontario-accordion--expand-open-all'>Expand all</span>
+                <span class='ontario-accordion--expand-close-all'>Collapse all</span>
+            </button>
+        </div>
+        <div class='ontario-accordion' id='accordion-1'>
+            <h3 class='ontario-accordion-heading'>
+                <button class='ontario-accordion__button' id='accordion-button-id-1'
+                        aria-controls='accordion-content-1' aria-expanded='false' data-toggle='ontario-collapse'>
+                    <span class='ontario-accordion__button-icon--close'>
+                        <!-- Use an appropriate icon for "close" state -->
+                        <svg class="ontario-icon" alt="" aria-hidden="true" focusable="false" sol:category="primary">
+                            <use href="#ontario-icon-chevron-up"></use>
+                        </svg>
+                    </span>
+                    <span class='ontario-accordion__button-icon--open'>
+                        <!-- Use an appropriate icon for "open" state -->
+                        <svg class="ontario-icon" alt="" aria-hidden="true" focusable="false" sol:category="primary">
+                            <use href="#ontario-icon-chevron-down"></use>
+                        </svg>
+                    </span>
+                    Categories
+                </button>
+            </h3>
+            <section class='ontario-accordion__content' id='accordion-content-1'
+                    aria-labelledby='accordion-button-id-1' aria-hidden='true' data-toggle='ontario-expander-content'>
+                <div id="filter-programs-and-services" class="ontario-form-group">
+                    <fieldset class="ontario-fieldset">
+                        <div class="ontario-checkboxes">
+                            {% for item in filterItems %}
+                                <div class="ontario-checkboxes__item">
+                                    <input class="ontario-checkboxes__input filter-item" id="{{ item.id }}"
+                                            name="options" type="checkbox" value="{{ item.value }}">
+                                    <label class="ontario-checkboxes__label" for="{{ item.id }}">{{ item.label }}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </fieldset>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
