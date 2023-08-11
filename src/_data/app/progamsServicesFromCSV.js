@@ -17,12 +17,12 @@ module.exports = async function(language = 'en') {
 
   // Extract categories and subcategories
   let categories = seniorsContent.map(seniorsContent => seniorsContent["Category"]);
-  let subCategories = seniorsContent.map(seniorsContent => seniorsContent["Sub Category"]);
-  let tags = categories.concat(subCategories);
+  //let subCategories = seniorsContent.map(seniorsContent => seniorsContent["Sub Category"]);
+  let tags = categories;
 
   tags = tags.map(function(__string) {
     if (__string != undefined) {
-      return __string.toLowerCase();
+      return __string;
     }
     return '';
   });

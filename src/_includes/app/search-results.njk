@@ -1,0 +1,16 @@
+<div class="ontario-column ontario-small-12">
+        <div x-show="results.length" class="results-panel">
+            <h3>Search Results:</h3>
+            <ul>
+                <template x-for="result in results">
+                    <li>
+                        <strong x-text="result['Resource title']"></strong><br>
+                        <span x-text="result['Resource Description']"></span><br>
+                        <a x-bind:href="result['Resource URL']" x-text="result['Resource URL']"></a><br>
+                        <span x-text="result['Internal/External']"></span>
+                        <span x-text="result['Category']"></span>
+                        <span x-text="result['Sub Category']"></span>
+                    </li>
+                </template>
+            </ul>
+        </div>
