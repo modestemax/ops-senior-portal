@@ -9,7 +9,7 @@ module.exports = async function() {
   //// This returns a promise
   let csv = await EleventyFetch( url, {
     duration: "1d",
-    type: "csv"   
+    type: "text"   
   } );
 
   let seniorsContent = Papa.parse( csv, { header: true, transform: function( _v ){ return _v.trim(); }, encoding: "utf-8" } ).data;
