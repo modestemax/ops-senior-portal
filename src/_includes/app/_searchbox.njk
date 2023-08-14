@@ -1,0 +1,38 @@
+<div class="ontario-row maincontent__container">
+    <div class="ontario-column ontario-small-12">
+        <div class="panel">
+            <label for="search-text"><h2 id="search-keyword-filter-header" class="medium"><strong>{{ "searchbox.title" | localeString }}</strong></h2></label>
+            <input class="ontario-input" id="search-text" type="text" x-model:value="searchTerm" x-bind:placeholder="placeholder" x-on:keyup.enter="doSearch()" />
+
+            <button class="ontario-button ontario-button--primary" x-on:click="doSearch()">{{ "searchbox.search" | localeString }}</button>
+
+            <!-- Clear all button -->
+            <button class="ontario-button ontario-button--secondary" x-on:click="clearSearchFilters()">{{ "searchbox.clearAll" | localeString }}</button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('search', () => ({
+            searchTerm: '',
+            results: [],
+            placeholder: '{{ "searchbox.placeholder" | localeString }}',
+            doSearch() {
+                let data = {{ app.progamsServicesFromCSV.seniorsContent | dump | safe }};
+                let options = {
+                    keys: ['Resource title', 'Resource Description', 'Resource URL', 'Internal/External', 'Category', 'Sub Category'],
+                    includeScore: true
+                };
+                let fuse = new Fuse(data, options);
+                let results = fuse.search(this.searchTerm);
+                this.results = results.map(res => res.item);
+            },
+            clearSearchFilters() {
+                this.searchTerm = '';
+                this.results = [];
+            },
+        }));
+    });
+</script>
