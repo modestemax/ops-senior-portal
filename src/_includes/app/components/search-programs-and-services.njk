@@ -55,14 +55,10 @@ components with their own independent data -->
                 </div>
 
                 <!-- csv output for search input-->
-            <div class="csv-content" id="csv-content" x-init="doSearch()">
-                {% include "app/search-results.njk" %} <!-- Include the search results here -->
-
-                <div x-show="results.length === 0">
-                    <p>{{ 'seniors.programsAndServicesComponent.noResults' | localeString | safe }}</p>
+                <div id="csv-content" x-init="doSearch()">
+                    {% include "app/search-results.njk" %} <!-- Include the search results here -->
                 </div>
-            </div>
-            <!-- / csv output for search input-->
+                <!-- / csv output for search input-->
             </div>
         </div>
     </div>
