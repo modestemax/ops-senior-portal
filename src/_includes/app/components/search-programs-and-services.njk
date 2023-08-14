@@ -15,7 +15,7 @@ components with their own independent data -->
         <div class="ontario-column ontario-small-12">
             <h2>{{ 'seniors.programsAndServicesComponent.title' | localeString }}</h2>
             <div class="ontario-column ontario-small-12 ontario-medium-5 ontario-large-4">
-            {% include "app/searchbox.njk" %}
+            {% include "app/_searchbox.njk" %}
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@ components with their own independent data -->
 
                 <!-- csv output for search input-->
                 <div id="csv-content" x-init="doSearch()">
-                    {% include "app/search-results.njk" %} <!-- Include the search results here -->
+                    {% include "app/_searchresults.njk" %} <!-- Include the search results here -->
                 </div>
                 <!-- / csv output for search input-->
             </div>
