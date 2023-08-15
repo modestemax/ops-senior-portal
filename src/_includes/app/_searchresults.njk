@@ -5,17 +5,18 @@
 
     <div x-show="results.length > 0" class="results-panel">
         <h3>Search Results:</h3>
-        <ul>
+        <div>
             <template x-for="result in results">
-                <li>
-                    <strong x-text="result['Resource title']"></strong><br>
-                    <span x-text="result['Resource Description']"></span><br>
-                    <a x-bind:href="result['Resource URL']" x-text="result['Resource URL']"></a><br>
-                    <span x-text="result['Internal/External']"></span>
-                    <span x-text="result['Category']"></span>
-                    <span x-text="result['Sub Category']"></span>
-                </li>
+                <div>
+                    <div>
+                        <a x-bind:href="result['Resource URL']">
+                            <strong x-text="result['Resource title']"></strong>
+                       </a>
+                        
+                    </div>
+                    <div x-html="result['Resource Description']"></div>
+                </div>
             </template>
-        </ul>
+        </div>
     </div> 
 </div>

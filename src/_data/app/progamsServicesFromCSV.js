@@ -1,5 +1,8 @@
 const fs = require('fs');
 const Papa = require("papaparse");
+const md = require('markdown-it')();
+
+stripBom = (x) => (x.charCodeAt(0) === 0xfeff) ?  x.slice(1) : x;
 
 module.exports = async function(language = 'en') {
   // Determine the file path based on the language
@@ -9,9 +12,14 @@ module.exports = async function(language = 'en') {
 
   // Read and parse the CSV file
   const file = fs.readFileSync(filePath, 'utf-8');
-  let seniorsContent = Papa.parse(file, {
+  let seniorsContent = Papa.parse(stripBom(file), {
       header: true,
-      transform: function(_v) { return _v.trim(); },
+      transform: (value, header) => {
+          if (header == 'Resource Description') {
+              return md.render(value);
+          }
+          return value.trim();
+      },
       encoding: "utf-8",
   }).data;
 
