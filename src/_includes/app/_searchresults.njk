@@ -1,3 +1,12 @@
+<style>
+    /* Add this custom CSS to reset list styling */
+    .ontario-column ul {
+        list-style: none;
+        padding-left: 0; /* Remove default list padding */
+    }
+    
+</style>
+
 <div class="ontario-column ontario-small-12">
     <div x-show="results.length === 0">
         <p>{{ 'seniors.programsAndServicesComponent.noResults' | localeString | safe }}</p>
@@ -8,7 +17,7 @@
         <ul>
             <template x-for="result in results">
                 <li>
-                    <strong x-text="result['Resource title']"></strong><br>
+                    <span x-text="result['Resource title']"></span><br>
                     <span x-text="result['Resource Description']"></span><br>
                     <a x-bind:href="result['Resource URL']" x-text="result['Resource URL']"></a><br>
                     <span x-text="result['Internal/External']"></span>
@@ -17,5 +26,5 @@
                 </li>
             </template>
         </ul>
-    </div>
+    </div> 
 </div>

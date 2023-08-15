@@ -99,3 +99,129 @@
         opacity:1;
     }
 }
+
+.ontario-search__container {
+    /* max-width: 34rem; */
+    width:738px;
+  }
+  
+  .ontario-search-input__container {
+    height: 48px;
+    position: relative;
+  }
+  
+  .ontario-search__label {
+    margin-bottom: 0.5rem;
+  }
+  
+  .ontario-search__input.ontario-input {
+    border: 2px solid #1a1a1a;
+    margin-bottom: 0;
+    height: 48px;
+    padding-left: 0.75rem;
+    padding-right: 8.5rem;
+  }
+  .ontario-search__input.ontario-input:invalid + input[type=reset] {
+    display: none;
+  }
+  .ontario-search__input.ontario-input:focus ~ .ontario-header__search-submit {
+    background-color: #0066CC;
+    color: #FFFFFF;
+  }
+  .ontario-search__input.ontario-input:focus ~ .ontario-header__search-submit:hover {
+    background-color: #00478F;
+    color: #FFFFFF;
+  }
+  .ontario-search__input.ontario-input::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  .ontario-search__input.ontario-input:invalid:focus {
+    box-shadow: 0 0 0 4px #009ADB;
+    -moz-box-shadow: none;
+  }
+  .ontario-search__input.ontario-input:invalid:not(:focus) {
+    box-shadow: none;
+    -moz-box-shadow: none;
+  }
+  @media screen and (min-width: 40em) and (max-width: 73em) {
+    .ontario-search__input.ontario-input {
+      padding-left: 1rem;
+      padding-right: 6.4rem;
+    }
+  }
+  
+  .ontario-search__submit {
+    border: 0;
+    border-radius: 0 3px 3px 0;
+    background-color: #0066CC;
+    color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.125rem;
+    width: 5rem;
+    line-height: 1.56;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    cursor: pointer;
+  }
+  .ontario-search__submit:hover {
+    background-color: #00478F;
+    color: #FFFFFF;
+  }
+  .ontario-search__submit:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #009ADB;
+    background-color: #00478F;
+    color: #FFFFFF;
+  }
+  .ontario-search__submit:active {
+    background-color: #002142;
+    color: #FFFFFF;
+  }
+  .ontario-search__submit svg {
+    color: #FFFFFF;
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 32px;
+    height: 32px;
+  }
+  @media screen and (max-width: 40em) {
+    .ontario-search__submit {
+      width: 4rem;
+    }
+  }
+  
+  input[type=reset].ontario-search__reset {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 0.5rem;
+    right: 6rem;
+    height: 24px;
+    width: 24px;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 0.25rem;
+    background-image: url("../icons/ontario-icons-close.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+  input[type=reset].ontario-search__reset:focus {
+    box-shadow: inset 0 0 0 4px #009ADB;
+  }
+  @media screen and (max-width: 40em) {
+    input[type=reset].ontario-search__reset {
+      right: 5rem;
+    }
+  }
