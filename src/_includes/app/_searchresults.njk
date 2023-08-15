@@ -6,15 +6,16 @@
     <div x-show="results.length > 0" class="results-panel">
         <h3>Search Results:</h3>
         <div>
+            <br>
             <template x-for="result in results">
                 <div>
                     <div>
-                        <a x-bind:href="result['Resource URL']">
+                        <a style="text-decoration:none; font-size: 24px" x-bind:href="result['Resource URL']">
                             <strong x-text="result['Resource title']"></strong>
                        </a>
                         
                     </div>
-                    <div x-html="result['Resource Description']"></div>
+                    <div style="font-size:16px" x-html="result['Resource Description']"></div>
                 </div>
             </template>
         </div>
