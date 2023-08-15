@@ -111,6 +111,8 @@
   }
   
   .ontario-search__label {
+    font-size:28px;
+    /* To match design on mock-up */
     margin-bottom: 0.5rem;
   }
   
