@@ -1,19 +1,19 @@
-<div class="ontario-row maincontent__container">
+<div class="ontario-row maincontent__container" x-data="{ searchTerm: '' }">
     <div class="ontario-small-12">
         <form name="searchForm" id="search-example-2-form" onsubmit="return false" class="ontario-search__container" novalidate>
-        <label class="ontario-label ontario-search__label" for="search-example-2">
-        Find Programs and Services</label>
-        <p id="search-example-2-hint" class="ontario-hint">Search for programs and serices from the overnment and government-funded partners.</p>
-        <div class="ontario-search-input__container">
-            <input class="ontario-input" id="search-text" type="text" x-model:value="searchTerm" x-bind:placeholder="placeholder" x-on:keyup.enter="doSearch()" />
-            <button class="ontario-search__submit" id="ontario-search-submit" type="submit" x-on:click="doSearch()">
-                <span class="ontario-show-for-sr">Submit</span>
-                <svg class="ontario-icon" focusable="false" sol:category="primary" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
-                    <use xlink:href="#ontario-icon-search"></use>
-                </svg>
-            </button>
-        </div>
-    </form>
+            <label class="ontario-label ontario-search__label" for="search-example-2">Find Programs and Services</label>
+            <p id="search-example-2-hint" class="ontario-hint">Search for programs and services from the government and government-funded partners.</p>
+            <div class="ontario-search-input__container">
+                <input class="ontario-input" id="search-text" type="text" x-model:value="searchTerm" x-bind:placeholder="placeholder" x-on:keyup.enter="doSearch()" />
+                <input class="ontario-search__reset" id="ontario-search-reset" type="reset" value="" aria-label="Clear field" x-on:click="clearSearchFilters()" x-show="searchTerm.length > 0"/>
+                <button class="ontario-search__submit" id="ontario-search-submit" type="submit" x-on:click="doSearch()">
+                    <span class="ontario-show-for-sr">Submit</span>
+                    <svg class="ontario-icon" focusable="false" sol:category="primary" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+                        <use xlink:href="#ontario-icon-search"></use>
+                    </svg>
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -41,3 +41,4 @@
         }));
     });
 </script>
+
