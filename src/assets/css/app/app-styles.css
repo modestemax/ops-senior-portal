@@ -204,12 +204,12 @@
     align-items: center;
     top: 0.5rem;
     right: 6rem;
-    height: 24px;
+    height: 36px;
     width: 24px;
     color: #1a1a1a;
     margin: 0;
     padding: 0.25rem;
-    background-image: url("../icons/ontario-icons-close.svg");
+    background-image: url("../../../assets/vendor/ontario-design-system/icons/ontario-icons-close.svg");
     background-position: center center;
     background-repeat: no-repeat;
     background-color: transparent;
