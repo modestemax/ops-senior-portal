@@ -1,4 +1,4 @@
-<div class="ontario-row maincontent__container" x-data="{ searchTerm: '' }">
+<div class="ontario-row maincontent__container">
     <div class="ontario-column ontario-small-12">
         <form name="searchForm" id="search-example-2-form" onsubmit="return false" class="ontario-search__container" novalidate>
             <label class="ontario-label ontario-search__label" for="search-example-2">Find Programs and Services</label>
@@ -24,6 +24,7 @@
             searchTerm: '',
             results: [],
             placeholder: '{{ "searchbox.placeholder" | localeString }}',
+            categoryCheckboxes: {},
             doSearch() {
                 let data = {{ app.progamsServicesFromCSV.seniorsContent | dump | safe }};
                 let options = {
@@ -31,8 +32,24 @@
                     includeScore: true
                 };
                 let fuse = new Fuse(data, options);
-                let results = fuse.search(this.searchTerm);
-                this.results = results.map(res => res.item);
+
+                let categories = Object.entries(this.categoryCheckboxes)
+                        .map(([k,v]) => v ? k : undefined)
+                        .filter(v => v);
+
+                let results = fuse
+                        .search(this.searchTerm)
+                        .map(res => res.item);
+
+                if (categories.length) {
+                    if (!this.searchTerm ) {
+                        // User has selected a category, but not entered a search term. 
+                        results = data;
+                    }
+                    results = results.filter(result => categories.includes(result['Category']));
+                }
+
+                this.results = results;
             },
             clearSearchFilters() {
                 this.searchTerm = '';

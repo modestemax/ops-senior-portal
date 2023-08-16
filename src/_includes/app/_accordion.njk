@@ -33,11 +33,12 @@
             <section class='ontario-accordion__content' id='accordion-content-1'
                     aria-labelledby='accordion-button-id-1' aria-hidden='true' data-toggle='ontario-expander-content'>
                 <div id="filter-progams-and-services" class="ontario-form-group">
-                    <fieldset class="ontario-fieldset">
+                    <fieldset class="ontario-fieldset" x-effect="doSearch()">
                         <div class="ontario-checkboxes">
                             {% for item in filterItems %}
                                 <div class="ontario-checkboxes__item">
                                     <input class="ontario-checkboxes__input filter-item" id="{{ item.id }}"
+                                            x-model="categoryCheckboxes['{{item.label}}']"
                                             name="options" type="checkbox" value="{{ item.value }}">
                                     <label class="ontario-checkboxes__label" for="{{ item.id }}">{{ item.label }}</label>
                                 </div>
