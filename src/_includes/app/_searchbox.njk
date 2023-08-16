@@ -55,6 +55,12 @@
                 this.searchTerm = '';
                 this.results = [];
             },
+            filteredResultsForCategory(category) {
+                const count = this.results.reduce((acc, result) => {
+                    return result['Category'] === category ? acc + 1 : acc;
+                }, 0);
+                return `${count} results for ${category}`;
+            }
         }));
     });
 </script>

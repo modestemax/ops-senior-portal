@@ -8,6 +8,9 @@
             <template x-if="results.length > 0">
                 <h2 x-text="results.length + ' ' + (results.length === 1 ? 'Result' : 'Total Results') + ' for &quot;' + searchTerm  + '&quot;' "></h2>
             </template>
+            <template x-for="category in Object.keys(categoryCheckboxes)">
+                <p x-text="filteredResultsForCategory(category)"></p>
+            </template>
         </div>
         <div>
             <br>
