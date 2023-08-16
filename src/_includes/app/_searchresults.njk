@@ -12,8 +12,10 @@
                     <div>
                         <a style="text-decoration:none; font-size: 24px" x-bind:href="result['Resource URL']">
                             <strong x-text="result['Resource title']"></strong>
+                            <a x-if="result['Internal/External'] === 'External'" class="new-window" x-bind:href="result['Resource URL']"></a>
                        </a>
-                        
+                       <strong x-text="result['Internal/External']"></strong>
+
                     </div>
                     <div style="font-size:16px" x-html="result['Resource Description']"></div>
                 </div>
