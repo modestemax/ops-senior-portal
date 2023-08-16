@@ -227,3 +227,22 @@
       right: 5rem;
     }
   }
+
+  .result-item {
+    display: inline-flex;
+    align-items: center;
+}
+
+  .new-window {
+    width: 24px; 
+    height: 24px;
+    background-image: url("../../../assets/vendor/ontario-design-system/icons/png/ontario-icon-new-window.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size:contain;
+    padding-left: 3rem;
+  }
+  
+
