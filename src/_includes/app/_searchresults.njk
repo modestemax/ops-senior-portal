@@ -5,11 +5,8 @@
 
     <div x-show="results.length > 0" class="results-panel">
         <div class="total-results"> 
-            <template x-if="result.length === 1">
-                <h2 x-text="results.length + ' Total Result for ' +'"' searchTerm + '"'"></h2>
-            </template>
-            <template x-if="result.length > 1">
-                <h2 x-text="results.length + ' Total Results for ' +'"' searchTerm + '"'"></h2>
+            <template x-if="results.length > 0">
+                <h2 x-text="results.length + ' ' + (results.length === 1 ? 'Result' : 'Total Results') + ' for &quot;' + searchTerm  + '&quot;' "></h2>
             </template>
         </div>
         <div>
