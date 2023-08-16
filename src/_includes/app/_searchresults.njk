@@ -8,24 +8,26 @@
             <template x-if="results.length > 0">
                 <h2 x-text="results.length + ' ' + (results.length === 1 ? 'Result' : 'Total Results') + ' for &quot;' + searchTerm  + '&quot;' "></h2>
             </template>
-            <template x-for="category in Object.keys(categoryCheckboxes)">
-                <p x-text="filteredResultsForCategory(category)"></p>
-            </template>
-        </div>
-        <div>
-            <br>
-            <template x-for="result in results">
+            <template x-if="categorySearch" x-for="category in categories">
                 <div>
-                    <div class="result-item">
-                        <a style="text-decoration:none; font-size: 24px" x-bind:href="result['Resource URL']">
-                            <strong x-text="result['Resource title']"></strong>
-                        </a>
-                        <template x-if="result['Internal/External'] === 'External'">
-                            <a class="new-window" x-bind:href="result['Resource URL']"></a>
-                        </template>
-                    </div>
-                    <div style="font-size:16px" x-html="result['Resource Description']"></div>
+                    <p x-text="filteredResultsForCategory(category)"></p>
+                    <template x-for="result in results.filter(x => x['Category'] === category)">
+                        <div>
+                            <div class="result-item">
+                                <a style="text-decoration:none; font-size: 24px" x-bind:href="result['Resource URL']">
+                                    <strong x-text="result['Resource title']"></strong>
+                                </a>
+                                <template x-if="result['Internal/External'] === 'External'">
+                                    <a class="new-window" x-bind:href="result['Resource URL']"></a>
+                                </template>
+                            </div>
+                            <div style="font-size:16px" x-html="result['Resource Description']"></div>
+                        </div>
+                    </template>
                 </div>
+            </template>
+            <template x-if="!categorySearch">
+                <div>Your logic here.</div>
             </template>
         </div>
     </div>
