@@ -229,22 +229,20 @@
   }
 
   .result-item {
-    display: flex;
+    display: inline-flex;
     align-items: center;
 }
 
   .new-window {
-    display: inline-block;
-    width: 24px; /* Set the width and height according to your image dimensions */
+    width: 24px; 
     height: 24px;
-    background-color: #0066CC;
     background-image: url("../../../assets/vendor/ontario-design-system/icons/png/ontario-icon-new-window.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-repeat: no-repeat;
     background-color: transparent;
     background-size:contain;
-    padding:125px;
+    padding-left: 3rem;
   }
   
 
