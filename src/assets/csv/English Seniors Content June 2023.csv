@@ -288,10 +288,10 @@ Patient Ombudsman  ,Get help with a complaint involving a health sector organi
 support services"
 Vaccines and immunization,"Learn how and when to get vaccinated, a flu shot or immunized to protect yourself and others against preventable diseases and serious illness. 
 
-   - [Flu shots](https://www.ontario.ca/page/flu-facts)
-   - [Vaccines for adults](https://www.ontario.ca/page/vaccines-adults#section-1)
-   - [COVID-19 vaccines](https://www.ontario.ca/page/covid-19-vaccines)
-   - [Ontario's Routine Immunization Schedule](https://www.health.gov.on.ca/en/public/programs/immunization/static/immunization_tool.html)",https://www.ontario.ca/page/vaccines,Internal,Health and Well-being,Vaccinations
+  - [Flu shots](https://www.ontario.ca/page/flu-facts)
+  - [Vaccines for adults](https://www.ontario.ca/page/vaccines-adults#section-1)
+  - [COVID-19 vaccines](https://www.ontario.ca/page/covid-19-vaccines)
+  - [Ontario's Routine Immunization Schedule](https://www.health.gov.on.ca/en/public/programs/immunization/static/immunization_tool.html)",https://www.ontario.ca/page/vaccines,Internal,Health and Well-being,Vaccinations
 Safe and Found Program,Protect yourself or a loved one who has Alzheimer’s and other dementias by registering them with this identification  program. ,https://www.medicalert.ca/safe-and-found,External,Health and Well-being,Alzheimer’s disease and dementia 
 Finding Your Way,Learn how to recognize the risk of going missing and how to be prepared for incidents when someone has gone missing. ,https://www.findingyourwayontario.ca/,External,Health and Well-being,Alzheimer’s disease and dementia 
 Exercise and falls prevention programs,"Join free classes to help maintain balance, strength and prevent falls.  
@@ -359,10 +359,10 @@ for Seniors","Use our map to find programs that promote wellness, social connect
 Clubs and groups
 
 Find social activities and hobbies in your community through organizations such as: 
-    - [YMCA](https://www.ymca.ca/locations?type=ymca,camps&amenities)
-    - [Club Rotary](https://my.rotary.org/en/club-search)
-    - [Lions Club](https://www.lionsclubs.org/en/start-our-approach/club-locator)
-    - [Royal Canadian Legion](https://legion.ca/contact-us/find-a-branch)",https://www.ontario.ca/page/find-seniors-active-living-centre-program-near-you,Internal,Recreation,Community activities
+  - [YMCA](https://www.ymca.ca/locations?type=ymca,camps&amenities)
+  - [Club Rotary](https://my.rotary.org/en/club-search)
+  - [Lions Club](https://www.lionsclubs.org/en/start-our-approach/club-locator)
+  - [Royal Canadian Legion](https://legion.ca/contact-us/find-a-branch)",https://www.ontario.ca/page/find-seniors-active-living-centre-program-near-you,Internal,Recreation,Community activities
 "Ontario Association of Seniors' 
 Centres","Use its map locator to find physical, recreational and social programs at a centre near you.",https://www.oacao.org/,External,Recreation,Community activities
 Seniors' Centre Without Walls,"Find free group activities accessible by phone that are for seniors (at least 50 years old) or with a disability that prevents 
@@ -392,23 +392,23 @@ Public Libraries,"Find meetings, webinars, and informal discussions on a variety
 211 Ontario,"Look for cultural, recreational and social programs near you.",https://211ontario.ca/recherche/,External,Recreation,Community activities
 Exercise and Fitness Tips,"Physical activity plays an important role in your health, well-being and quality of life. Get tips and tools to improve and maintain your health: 
 
-       - [Practical tips for seniors (65 years and older)](https://www.canada.ca/en/public-health/services/publications/healthy-living/physical-activity-tips-older-adults-65-years-older.html)
-       - [Canadian 24-hour movement guidelines](https://www.participaction.com/the-science/benefits-and-guidelines/adults-65-plus/)
-       - [Physical Activity Toolkit: For Older Adults (site en anglais seulement)](https://prismic-io.s3.amazonaws.com/participaction/84f1e964-a43c-419e-994b-57a63c3bf822_pa-seniors-toolkit-design-v03-eng-pa.pdf)
-       -  [Aging: Move Now, for a Healthy Future](https://www.participaction.com/the-science/explore-benefits/aging/)
-       -  [McMaster Optimal Aging Portal: Information on Healthy Aging](https://www.mcmasteroptimalaging.org/)
-       - [Canada's Food Guide: Healthy Eating for Seniors](https://food-guide.canada.ca/en/tips-for-healthy-eating/seniors/)
-       - [Physical Activity Promotion and Falls Prevention Initiative](https://www.ontario.ca/page/exercise-and-falls-prevention-programs)
-       - [Brain-friendly tips to reduce your risk of dementia](https://alzheimer.ca/en/about-dementia/how-can-i-reduce-risk-dementia/brain-healthy-tips-reduce-your-risk-dementia)
-       - [All about sleep: everything you need to better understand sleep and its importance to your health](https://sleeponitcanada.ca/all-about-sleep/)
-       - [A social adventure is good!](https://www.activeagingcanada.ca/blog/)
-       - [Separated, but not alone: the importance of social ties in old age](https://kmb.camh.ca/eenet/resources/connection-matters-in-later-life)
-       - [A friendly voice](https://afriendlyvoice.ca/) allows seniors to chat with a friendly and well-being person, without waiting or judgment
+  - [Practical tips for seniors (65 years and older)](https://www.canada.ca/en/public-health/services/publications/healthy-living/physical-activity-tips-older-adults-65-years-older.html)
+  - [Canadian 24-hour movement guidelines](https://www.participaction.com/the-science/benefits-and-guidelines/adults-65-plus/)
+  - [Physical Activity Toolkit: For Older Adults (site en anglais seulement)](https://prismic-io.s3.amazonaws.com/participaction/84f1e964-a43c-419e-994b-57a63c3bf822_pa-seniors-toolkit-design-v03-eng-pa.pdf)
+  - [Aging: Move Now, for a Healthy Future](https://www.participaction.com/the-science/explore-benefits/aging/)
+  - [McMaster Optimal Aging Portal: Information on Healthy Aging](https://www.mcmasteroptimalaging.org/)
+  - [Canada's Food Guide: Healthy Eating for Seniors](https://food-guide.canada.ca/en/tips-for-healthy-eating/seniors/)
+  - [Physical Activity Promotion and Falls Prevention Initiative](https://www.ontario.ca/page/exercise-and-falls-prevention-programs)
+  - [Brain-friendly tips to reduce your risk of dementia](https://alzheimer.ca/en/about-dementia/how-can-i-reduce-risk-dementia/brain-healthy-tips-reduce-your-risk-dementia)
+  - [All about sleep: everything you need to better understand sleep and its importance to your health](https://sleeponitcanada.ca/all-about-sleep/)
+  - [A social adventure is good!](https://www.activeagingcanada.ca/blog/)
+  - [Separated, but not alone: the importance of social ties in old age](https://kmb.camh.ca/eenet/resources/connection-matters-in-later-life)
+  - [A friendly voice](https://afriendlyvoice.ca/) allows seniors to chat with a friendly and well-being person, without waiting or judgment
 
 Find exercise and activity programs near you: 
 
-       - [211Ontario](https://211ontario.ca/search/)
-       - Active Living Centre Programs for Seniors  ",,,Recreation,Leading an active lifestyle
+  - [211Ontario](https://211ontario.ca/search/)
+  - Active Living Centre Programs for Seniors",,External,Recreation,Leading an active lifestyle
 "Ontario Seniors Games
 Association","If you are at least 55 years old, this association will allow you to find a sport or activity in which you can participate in 
 local competitions in a friendly atmosphere, with the opportunity to evolve to play provincially and nationally.",https://osga55plus.ca/,External,Recreation,Leading an active lifestyle
@@ -422,8 +422,8 @@ Older travellers,Find useful information and tips to help you prepare for travel
 "Services covered by OHIP 
 abroad","Find out what services OHIP covers when you leave Canada temporarily. 
 
-    -  [Out-of-province or out-of-country treatment claim form](https://forms.mgcs.gov.on.ca/en/dataset/014-0951-84)
-    -  [How to get reimbursed for supported prescription drugs](https://www.ontario.ca/page/get-coverage-prescription-drugs)",https://www.ontario.ca/page/ohip-coverage-while-outside-canada,Internal,Recreation,Travelling in Canada and Abroad
+  - [Out-of-province or out-of-country treatment claim form](https://forms.mgcs.gov.on.ca/en/dataset/014-0951-84)
+  - [How to get reimbursed for supported prescription drugs](https://www.ontario.ca/page/get-coverage-prescription-drugs)",https://www.ontario.ca/page/ohip-coverage-while-outside-canada,Internal,Recreation,Travelling in Canada and Abroad
 "Living or travelling abroad after
 retirement","Find out how the time you spend outside of Canada can affect your taxes, benefits and health care.",https://www.canada.ca/en/financial-consumer-agency/services/retirement-planning/travel-abroad-retire.html,External,Recreation,Travelling in Canada and Abroad
 Volunteering in Ontario,Find information on how to get involved in volunteer activities.,https://www.ontario.ca/page/volunteering-ontario,Internal,Recreation,Volunteering
@@ -468,20 +468,15 @@ Office of the Public Guardian and Trustee,"Learn how the Office of the Public Gu
 Future Care,"Make choices while you are competent about how you wish to be cared for in the future (if you become incapable):  
 
   - read [what every older Canadian should know about planning for possible loss of independence](https://www.canada.ca/en/employment-social-development/corporate/seniors/forum/independence-loss-planning.html)  
-
   - find helpful tools, at [Advance Care Planning Ontario,](https://www.advancecareplanningontario.ca/)  and learn about the process of advance care planning 
-
   - contact a [local Alzheimer’s Society chapter](https://alzheimer.ca/en/help-support/find-your-areas-alzheimer-society) to see if they offer advance care planning seminars in your community 
-
   - print and fill-out [your substitute decision-maker wallet card](https://files.ontario.ca/advancedcare.walletcard.pdf) with important information in the event of an emergency ",,,Safety and Security,Advance care planning
 Organ and tissue donation,Register your consent for organ and tissue donation to help those waiting for a lifesaving organ transplant. ,https://beadonor.ca/,External,Safety and Security,Advance care planning
 Consumer Protection Ontario,"Before, during or after you make a purchase, learn your rights and find the information you need to know to protect yourself, including: 
 
-   - [identifying a scam or fraud](https://www.ontario.ca/page/identify-scam-or-fraud)
-
-   - [door-to-door sales and home service contracts](https://www.ontario.ca/page/door-door-sales-and-home-service-contracts)
-
-   - [planning funerals and arrangement](https://www.ontario.ca/page/consumer-protection-when-planning-funeral-burial-cremation-or-scattering)",https://www.ontario.ca/page/consumer-protection-ontario,Internal,Safety and Security,"Scams, fraud and consumer issues "
+  - [identifying a scam or fraud](https://www.ontario.ca/page/identify-scam-or-fraud)
+  - [door-to-door sales and home service contracts](https://www.ontario.ca/page/door-door-sales-and-home-service-contracts)
+  - [planning funerals and arrangement](https://www.ontario.ca/page/consumer-protection-when-planning-funeral-burial-cremation-or-scattering)",https://www.ontario.ca/page/consumer-protection-ontario,Internal,Safety and Security,"Scams, fraud and consumer issues "
 Canadian Anti-Fraud Centre,Find information on the impact of past and current scams affecting Canadians and report on fraud and cybercrimes. ,https://antifraudcentre-centreantifraude.ca/,External,Safety and Security,"Scams, fraud and consumer issues "
 Ontario Securities Commission,Protect yourself from fraud. Search for an individual or company to find out if they are registered before you invest. ,https://www.osc.ca/en/investors/check-before-you-invest,External,Safety and Security,"Scams, fraud and consumer issues "
 GetSmarterAboutMoney.ca  ,Get unbiased and independent financial tools to help you make better financial decisions. ,https://www.getsmarteraboutmoney.ca/,External,Safety and Security,"scams, fraud and consumer issues "
