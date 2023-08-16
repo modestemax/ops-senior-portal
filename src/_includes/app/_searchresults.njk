@@ -4,7 +4,9 @@
     </div>
 
     <div x-show="results.length > 0" class="results-panel">
-        <h3>Search Results:</h3>
+        <div class="total-results"> 
+           <h2 x-text="results.length + ' Total Results for' + searchTerm"></h2>
+        </div>
         <div>
             <br>
             <template x-for="result in results">
