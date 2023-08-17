@@ -24,7 +24,9 @@
             searchTerm: '',
             results: [],
             placeholder: '{{ "searchbox.placeholder" | localeString }}',
+            categorySearch: false,
             categoryCheckboxes: {},
+            categories: [],
             doSearch() {
                 let data = {{ app.progamsServicesFromCSV.seniorsContent | dump | safe }};
                 let options = {
@@ -36,17 +38,21 @@
                 let categories = Object.entries(this.categoryCheckboxes)
                         .map(([k,v]) => v ? k : undefined)
                         .filter(v => v);
+                this.categories = categories;
 
                 let results = fuse
                         .search(this.searchTerm)
                         .map(res => res.item);
 
                 if (categories.length) {
+                    this.categorySearch = true;
                     if (!this.searchTerm ) {
                         // User has selected a category, but not entered a search term. 
                         results = data;
                     }
                     results = results.filter(result => categories.includes(result['Category']));
+                } else {
+                    this.categorySearch = false;
                 }
 
                 this.results = results;
@@ -55,6 +61,12 @@
                 this.searchTerm = '';
                 this.results = [];
             },
+            filteredResultsForCategory(category) {
+                const count = this.results.reduce((acc, result) => {
+                    return result['Category'] === category ? acc + 1 : acc;
+                }, 0);
+                return `${count} results for ${category}`;
+            }
         }));
     });
 </script>
