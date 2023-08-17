@@ -1,6 +1,8 @@
 <div class="ontario-column ontario-small-12">
-    <div x-show="results.length === 0">
-        <p>{{ 'seniors.programsAndServicesComponent.noResults' | localeString | safe }}</p>
+    <div x-show="results.length === 0 ">
+        <template x-if="searchTerm !== ''">
+             <h2>{{ 'seniors.programsAndServicesComponent.noResults' | localeString | safe }}</h2>
+        </template>
     </div>
     <div class="total-results">
         <template x-if="searchTerm === ''">
