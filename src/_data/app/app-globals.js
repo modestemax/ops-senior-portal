@@ -17,7 +17,7 @@ module.exports = function () {
 
   var useApplicationHeader = false;
 
-  var footerType = 'default';
+  var footerType = 'expanded';
 
   // Relative to siteRoot
   var assetsPath = `/${conf.get('assetsDestination')}`;
