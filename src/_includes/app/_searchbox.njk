@@ -1,10 +1,10 @@
 <div class="ontario-row maincontent__container">
     <div class="ontario-column ontario-small-12">
         <form name="searchForm" id="search-example-2-form" onsubmit="return false" class="ontario-search__container" novalidate>
-            <label class="ontario-label ontario-search__label" for="search-example-2">Find Programs and Services</label>
+            <label class="ontario-label ontario-search__label" for="search-example-2">Find programs and services</label>
             <p style="font-size:16px" id="search-example-2-hint" class="ontario-hint">Search for programs and services from the government and government-funded partners.</p>
             <div class="ontario-search-input__container">
-                <input class="ontario-input" id="search-text" type="text" x-model:value="searchTerm" x-bind:placeholder="placeholder" x-on:keyup.enter="doSearch()" />
+                <input class="ontario-input" id="search-text" type="text" x-model:value="searchTerm" x-on:keyup.enter="doSearch()" />
                 <input class="ontario-search__reset" id="ontario-search-reset" type="reset" value="" aria-label="Clear field" x-on:click="clearSearchFilters()" x-show="searchTerm.length > 0"/>
                 <button class="ontario-search__submit" id="ontario-search-submit" type="submit" x-on:click="doSearch()">
                     <span class="ontario-show-for-sr">Submit</span>
@@ -65,7 +65,13 @@
                 const count = this.results.reduce((acc, result) => {
                     return result['Category'] === category ? acc + 1 : acc;
                 }, 0);
-                return `${count} results for ${category}`;
+
+                if (count === 1){ 
+                    return `${count} result for ${category}`;
+                } else {
+                    return `${count} results for ${category}`;
+                }
+                
             }
         }));
     });
