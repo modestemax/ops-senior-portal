@@ -8,13 +8,13 @@
         <template x-if="searchTerm === ''">
             <template x-if="categorySearch">
                 <template x-if="results.length > 0">
-                    <h2 x-text="results.length + ' ' + (results.length === 1 ? 'Result' : 'Total Results') "></h2>
+                    <h2 x-text="results.length + ' ' + (results.length === 1 ? 'result' : 'total results') "></h2>
                 </template>
             </template>
         </template>
         <template x-if="!(searchTerm === '')">
             <template x-if="results.length > 0">
-                <h2 x-text="results.length + ' ' + (results.length === 1 ? 'Result' : 'Total Results') + ' for &quot;' + searchTerm  + '&quot;' "></h2>
+                <h2 x-text="results.length + ' ' + (results.length === 1 ? 'result' : 'total results') + ' for &quot;' + searchTerm  + '&quot;' "></h2>
             </template>
         </template>
         <br>
