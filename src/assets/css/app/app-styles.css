@@ -99,10 +99,14 @@
         opacity:1;
     }
 }
+/* Thick red border */
+hr.bold {
+  border: 2px solid rgb(0, 0, 0);
+}
 
 .ontario-search__container {
-    /* max-width: 34rem; */
-    width:738px;
+    width: 34rem;
+    /* width:738px; */
   }
   
   .ontario-search-input__container {

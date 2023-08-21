@@ -1,8 +1,6 @@
 <div class="ontario-row maincontent__container">
     <div class="ontario-column ontario-small-12">
         <form name="searchForm" id="search-example-2-form" onsubmit="return false" class="ontario-search__container" novalidate>
-            <h1 style="white-space: nowrap; font-size:29px;">Information for seniors: find programs and services</h1>
-            <p class="lead" style="white-space: nowrap;">Use the search tool to find programs and services from the government and government-funded partners.</p>
             <h5>Find programs and services</h5>
             <p style="font-size:15px; padding-bottom:5px;" id="search-example-2-hint" class="ontario-hint">Enter a topic like "power of attorney" or "driver's licence."</p>
             <div class="ontario-search-input__container">
@@ -68,9 +66,9 @@
                 }, 0);
 
                 if (count === 1){ 
-                    return `${count} result for ${category}`;
+                    return `${count} result from ${category}`;
                 } else {
-                    return `${count} results for ${category}`;
+                    return `${count} results from ${category}`;
                 }
                 
             }

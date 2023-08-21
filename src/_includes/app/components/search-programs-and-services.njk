@@ -10,21 +10,27 @@ components with their own independent data -->
 <!-- This meant the search data from the search box wasn't being shared with the search results component, and vice-versa -->
 <!-- The fix below puts everything in a single scope so they share data  -->
 
-
 <div x-data="search">
 
     {# This is the searchbox Adeyemi made #}
     <div class="ontario-row maincontent__container ontario-padding-top-48-!">
         <div class="ontario-column ontario-small-12">
+            <div class="header-text">
+                <h1 style="white-space: nowrap;">Information for seniors: find programs and services</h1>
+                <p class="lead" style="white-space: nowrap; font-size:22px">Use the search tool to find programs and services from the government and government-funded partners.</p>
+            </div>
+            <div class="ontario-padding-bottom-20-! ontario-padding-top-20-!">
+                <hr class="bold">
+            </div>
             <div class="ontario-small-12 ontario-medium-5 ontario-large-4">
-            {% include "app/_searchbox.njk" %}
+                {% include "app/_searchbox.njk" %}
             </div>
         </div>
         <div class="ontario-column ontario-padding-top-24-!">
             <hr>
         </div>
     </div>
-    
+
     {# This is the searchbox adeyemi made #}
 
     <div class="ontario-row maincontent__container">
@@ -36,7 +42,8 @@ components with their own independent data -->
                 {# CSV Content #}
                 <!-- csv output for search input-->
                 <div id="csv-content" x-init="doSearch()">
-                    {% include "app/_searchresults.njk" %} <!-- Include the search results here -->
+                    {% include "app/_searchresults.njk" %}
+                    <!-- Include the search results here -->
                 </div>
                 <!-- / csv output for search input-->
             </div>
