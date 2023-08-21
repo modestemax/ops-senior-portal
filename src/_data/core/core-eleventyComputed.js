@@ -1,5 +1,7 @@
+const { googleTagManagerID: appGlobalsGtmId } = require('../app/app-globals')();
+
 module.exports = {
-  enDateFormatPublished: function () {
+  enDateFormatPublished() {
     return Intl.DateTimeFormat('en-CA', {
       year: 'numeric',
       month: 'long',
@@ -8,7 +10,7 @@ module.exports = {
     }).format;
   },
 
-  enDateFormatUpdated: function () {
+  enDateFormatUpdated() {
     return Intl.DateTimeFormat('en-CA', {
       year: 'numeric',
       month: 'long',
@@ -17,7 +19,7 @@ module.exports = {
     }).format;
   },
 
-  frDateFormatPublished: function () {
+  frDateFormatPublished() {
     return Intl.DateTimeFormat('fr-CA', {
       year: 'numeric',
       month: 'long',
@@ -26,12 +28,18 @@ module.exports = {
     }).format;
   },
 
-  frDateFormatUpdated: function () {
+  frDateFormatUpdated() {
     return Intl.DateTimeFormat('fr-CA', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
       timeZone: 'America/Toronto',
     }).format;
+  },
+
+  googleTagManagerID() {
+    const envGtmId = process.env.GOOGLE_TAGMANAGER_ID;
+    const gtmId = envGtmId === undefined ? appGlobalsGtmId : envGtmId;
+    return gtmId;
   },
 };
