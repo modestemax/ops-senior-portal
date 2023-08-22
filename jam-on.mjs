@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { v4 as uuidv4 } from 'uuid';
 import { Command } from 'commander';
 import { simpleGit as git } from 'simple-git';
@@ -5,32 +6,34 @@ import inquirer from 'inquirer';
 import fs from 'fs-extra';
 import nunjucks from 'nunjucks';
 import validate from 'validate-npm-package-name';
+import path from 'node:path';
+import { createRequire } from 'node:module';
+
+// Because assetions are still experimental in Node.js,
+// we need to construct a require function within this ES module file
+var require = createRequire(import.meta.url);
+const { version: toolkitPackageJSONVersion } = require('./package.json');
 
 const program = new Command();
 
 nunjucks.configure('.jam-on/core/templates');
 
-const outputStarterFile = function (path, content, successMessage) {
-  fs.outputFile(path, content, (err) => {
-    if (err) {
-      console.error(err);
-    } else {
-      console.log(successMessage);
-    }
-  });
-};
+function generateToolkitFile(pathToFile, content, message) {
+  fs.outputFileSync(pathToFile, content);
+  console.log(message);
+}
 
-const newAction = function (options) {
+function newAction(options) {
   if (options.keepGit) {
     console.log('This will remove the example pages and components');
   } else {
     console.log(
-      'This will remove any local Git information, and the example pages and components'
+      'This will remove any local Git information, and the example pages and components',
     );
   }
 
-  var hasGit;
-  var gitIsClean;
+  let hasGit;
+  let gitIsClean;
 
   try {
     fs.statSync('.git');
@@ -41,7 +44,7 @@ const newAction = function (options) {
   }
 
   if (hasGit) {
-    git().status({}, function (error, status) {
+    git().status({}, (error, status) => {
       if (error) {
         console.log('Error in git().status() command: ', error);
         process.exit();
@@ -66,12 +69,12 @@ const newAction = function (options) {
 
       if (gitIsClean && !options.keepGit) {
         console.log(
-          'Local Git repo is clean or does not exist, removing any Git information'
+          'Local Git repo is clean or does not exist, removing any Git information',
         );
         fs.removeSync('.git');
       } else if (!options.keepGit) {
         console.log(
-          'Your local Git repo has modifications; please ensure the local git repo is clean and unmodified before running this command'
+          'Your local Git repo has modifications; please ensure the local git repo is clean and unmodified before running this command',
         );
         console.log('Farewell!');
         process.exit();
@@ -88,7 +91,7 @@ const newAction = function (options) {
         'src/index.njk',
       ];
 
-      exampleFilesList.forEach((filePath, index) => {
+      exampleFilesList.forEach((filePath) => {
         fs.removeSync(filePath);
       });
 
@@ -110,13 +113,12 @@ const newAction = function (options) {
             message:
               'What is the NPM package.json name for this project (use lowercase, hyphens and underscores only)?',
             default: 'new-jam-on-project',
-            validate: function (userInput) {
+            validate(userInput) {
               const validName = validate(userInput).validForNewPackages;
               if (validName) {
                 return true;
-              } else {
-                return 'Invalid package name';
               }
+              return 'Invalid package name';
             },
           },
           {
@@ -126,22 +128,23 @@ const newAction = function (options) {
             default: 'New Ontario.ca Jamstack Toolkit project',
           },
         ])
-        .then((answers) => {
+        .then((responses) => {
           console.log('Creating starter files...');
 
           const newConf = {
-            assetsDestination: `${answers.enRoot}/assets`,
-            englishRoot: answers.enRoot,
-            frenchRoot: answers.frRoot,
-            projectName: answers.projectName,
-            projectDescription: answers.projectDescription,
+            assetsDestination: `${responses.enRoot}/assets`,
+            englishRoot: responses.enRoot,
+            frenchRoot: responses.frRoot,
+            projectName: responses.projectName,
+            projectDescription: responses.projectDescription,
             createDate: new Date().toISOString(),
+            toolkitPackageJSONVersion,
           };
 
-          outputStarterFile(
+          generateToolkitFile(
             '.jam-on/app/conf.json',
             JSON.stringify(newConf),
-            'Wrote new config file to .jam-on/app/conf.json'
+            'Wrote new config file to .jam-on/app/conf.json',
           );
 
           const enFileContent = nunjucks.render('en.njk', newConf);
@@ -150,49 +153,63 @@ const newAction = function (options) {
 
           const redirectFileContent = nunjucks.render('redirect.njk', newConf);
 
-          outputStarterFile(
+          generateToolkitFile(
             `src/${newConf.englishRoot}.njk`,
             enFileContent,
-            `Wrote English-side starter file at src/${newConf.englishRoot}.njk`
+            `Wrote English-side starter file at src/${newConf.englishRoot}.njk`,
           );
 
-          outputStarterFile(
+          generateToolkitFile(
             `src/${newConf.frenchRoot}.njk`,
             frFileContent,
-            `Wrote French-side starter file at src/${newConf.frenchRoot}.njk`
+            `Wrote French-side starter file at src/${newConf.frenchRoot}.njk`,
           );
 
-          outputStarterFile(
+          generateToolkitFile(
             'src/index.njk',
             redirectFileContent,
-            `Wrote root-level redirect file at src/index.njk`
+            'Wrote root-level redirect file at src/index.njk',
           );
 
           const testFileContent = nunjucks.render('test.njk', newConf);
 
-          outputStarterFile(
+          generateToolkitFile(
             'test/test.js',
             testFileContent,
-            `Wrote starter test file at test/test.js`
+            'Wrote starter test file at test/test.js',
           );
 
           const packageFileContent = nunjucks.render('package.njk', newConf);
 
-          outputStarterFile(
+          generateToolkitFile(
             'package.json',
             packageFileContent,
-            `Wrote updated NPM package.json file at package.json`
+            'Wrote updated NPM package.json file at package.json',
+          );
+
+          fs.renameSync('README.md', 'README.jamstack.md');
+          console.log('Renamed default README file');
+
+          const readmeFileContent = nunjucks.render('README.njk', newConf);
+
+          generateToolkitFile(
+            'README.md',
+            readmeFileContent,
+            'Wrote new README file at README.md',
           );
         });
     })
     .catch((error) => {
       console.log(error);
     });
-};
+}
 
-const updateAction = function (tagOrBranch, options) {
+function updateAction(tagOrBranch, options) {
+  let ignoreFile;
+  let ignoreFileContent;
+
   console.log(
-    `This will replace the 'core' and 'vendor' directories/files of the current project to the versions in Jamstack Toolkit version ${tagOrBranch}`
+    `This will replace the 'core' and 'vendor' directories/files of the current project to the versions in Jamstack Toolkit version ${tagOrBranch}`,
   );
   inquirer
     .prompt({
@@ -206,19 +223,35 @@ const updateAction = function (tagOrBranch, options) {
         console.log('Farewell!');
         process.exit();
       }
-      const tmpDirName = uuidv4();
+
+      const tmpDir = 'tmp';
+
+      const tmpCheckoutDir = `${tmpDir}${path.sep}${uuidv4()}`;
+      ignoreFile = `${tmpDir}${path.sep}.gitignore`;
+      ignoreFileContent = '*';
+      fs.outputFileSync(ignoreFile, ignoreFileContent);
+
       console.log(`Updating to branch/tag: ${tagOrBranch}`);
 
-      const coreFileList = [
-        [`./${tmpDirName}/src/_data/core`, './src/_data/core'],
-        [`./${tmpDirName}/src/_includes/core`, './src/_includes/core'],
-        [`./${tmpDirName}/src/assets/css/core`, './src/assets/css/core'],
-        [`./${tmpDirName}/src/assets/js/core`, './src/assets/js/core'],
-        [`./${tmpDirName}/src/assets/vendor`, './src/assets/vendor'],
-        [`./${tmpDirName}/.core-eleventy.js`, './.core-eleventy.js'],
-        [`./${tmpDirName}/.jam-on/core`, './.jam-on/core'],
-        [`./${tmpDirName}/jam-on.mjs`, './jam-on.mjs'],
+      const jamOnPath = '/jam-on.mjs';
+
+      const coreFilePaths = [
+        '/src/_data/core',
+        '/src/_includes/core',
+        '/src/assets/img/core',
+        '/src/assets/css/core',
+        '/src/assets/js/core',
+        '/src/assets/json/core',
+        '/src/assets/vendor',
+        '/.core-eleventy.js',
+        '/.jam-on/core',
+        jamOnPath,
       ];
+
+      const coreFileReplacements = coreFilePaths.map((filePath) => [
+        `./${tmpCheckoutDir}${filePath}`,
+        `.${filePath}`,
+      ]);
 
       const repoUrls = {
         odsGitLab:
@@ -230,44 +263,109 @@ const updateAction = function (tagOrBranch, options) {
       const defaultRepoUrl = repoUrls.odsGitHub;
       const repoUrl = options.repo ? options.repo : defaultRepoUrl;
 
+      function cleanUpTmp() {
+        fs.removeSync(tmpDir);
+        console.log(`Removed temporary checkout directory ${tmpDir}`);
+        fs.removeSync(tmpCheckoutDir);
+        console.log(`Removed temporary checkout directory ${tmpCheckoutDir}`);
+      }
+
       git().clone(
         repoUrl,
-        tmpDirName,
+        tmpCheckoutDir,
         { '--depth': 1, '--branch': `${tagOrBranch}` },
-        function (error) {
+        (error) => {
           if (error) {
             console.log('Error cloning specified repo');
             console.log(error);
             process.exit();
           }
           console.log(
-            `Checked out tag/branch ${tagOrBranch} to temporary directory ${tmpDirName}`
+            `Checked out tag/branch ${tagOrBranch} to temporary directory ${tmpCheckoutDir}`,
           );
-          coreFileList.forEach((filePathStruct, idx) => {
-            console.log(
-              `Replacing ${filePathStruct[1]} with ${filePathStruct[0]}`
-            );
-            fs.copySync(filePathStruct[0], filePathStruct[1]);
-          });
-          fs.removeSync(tmpDirName);
-          console.log(`Removed temporary directory ${tmpDirName}`);
-        }
+
+          // File diffing here
+          console.log(
+            `checking that jam-on.mjs is up to date for tag/branch ${tagOrBranch}`,
+          );
+          git().diff(
+            [
+              '--no-index',
+              '--numstat',
+              `./${jamOnPath}`,
+              `${tmpCheckoutDir}${jamOnPath}`,
+            ],
+            (err, diff) => {
+              if (err) {
+                console.log(err);
+                console.log('Error running diff on jam-on.mjs file');
+                cleanUpTmp();
+                process.exit();
+              }
+              if (diff !== '') {
+                console.log('The jam-on.mjs CLI needs to be updated...');
+                fs.copySync(`${tmpCheckoutDir}${jamOnPath}`, `./${jamOnPath}`);
+                console.log(
+                  'jam-on.mjs has been updated - please run the update command again',
+                );
+                cleanUpTmp();
+                process.exit();
+              }
+
+              console.log(
+                'jam-on.mjs is up to date, proceeding with update...',
+              );
+              ignoreFile = `${tmpCheckoutDir}${path.sep}.gitignore`;
+              ignoreFileContent = '*';
+
+              fs.outputFileSync(ignoreFile, ignoreFileContent);
+              try {
+                coreFileReplacements.forEach((filePathStruct) => {
+                  console.log(
+                    `Replacing ${filePathStruct[1]} with ${filePathStruct[0]}`,
+                  );
+                  fs.copySync(filePathStruct[0], filePathStruct[1]);
+                });
+                fs.removeSync(tmpDir);
+                console.log(`Removed temporary checkout directory ${tmpDir}`);
+                fs.removeSync(tmpCheckoutDir);
+                console.log(
+                  `Removed temporary checkout directory ${tmpCheckoutDir}`,
+                );
+
+                generateToolkitFile(
+                  '.jam-on/app/versionMetadata.json',
+                  JSON.stringify({
+                    tagOrBranch,
+                    updatedOn: new Date().toISOString(),
+                  }),
+                  'Created version metadata file at .jam-on/app/versionMetadata.json',
+                );
+              } catch (except) {
+                console.log(
+                  'Exception when copying update files from checked out repo',
+                );
+                cleanUpTmp();
+              }
+            },
+          );
+        },
       );
     })
     .catch((error) => {
       console.log(error);
     });
-};
+}
 
 program
   .name('jam-on')
   .description('Developer CLI for Ontario.ca Jamstack Toolkit')
-  .version('0.2.0');
+  .version('0.4.0');
 
 program
   .command('new')
   .description(
-    'put a newly cloned toolkit project into a ready state for development'
+    'put a newly cloned toolkit project into a ready state for development',
   )
   .option('--keepGit', 'Do not delete the local .git folder (optional)')
   .action((options) => newAction(options));
@@ -278,7 +376,7 @@ program
   .argument('<tagOrBranch>', 'tag or branch to update to (required)')
   .option(
     '-r, --repo <repo>',
-    'repo URL to use, defaults to ODS GitLab (optional)'
+    'repo URL to use, defaults to ODS GitHub (optional)',
   )
   .action((tagOrBranch, options) => updateAction(tagOrBranch, options));
 

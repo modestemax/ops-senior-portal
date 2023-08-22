@@ -1,9 +1,12 @@
+/* global GlobalContent:readonly */
+/* global eleventyGlobals:readonly */
+
 const ontarioGlobalMenuItemsContentKeys = {
   en: '/system/menu/main/linkset',
   fr: '/system/menu/main-fr/linkset',
 };
 
-const renderGlobalMenuItems = function (responseJson, contentKey) {
+function renderGlobalMenuItems(responseJson) {
   const container = document.getElementById('globalContent-ontarioGlobalMenu');
   container.innerHTML = '';
   const menuItems = responseJson.linkset[0].item;
@@ -11,19 +14,24 @@ const renderGlobalMenuItems = function (responseJson, contentKey) {
     const linkUrl = menuItem.href;
     const linkText = menuItem.title;
     const navMenuItemTemplate = `
-            <li class="ontario-header-navigation__menu-item">
-                <a href="${linkUrl}">${linkText}</a>
-            </li>
-        `;
+      <li class="ontario-header-navigation__menu-item">
+        <a href="${linkUrl}">${linkText}</a>
+      </li>`;
     container.innerHTML += navMenuItemTemplate;
   });
-};
+}
 
-document.addEventListener('DOMContentLoaded', (event) => {
+function buildContentRequestFromCMS(contentKey) {
+  const globalContentUrl = `https://www.ontario.ca${contentKey}`;
+  const globalContentRequest = new Request(globalContentUrl);
+  return globalContentRequest;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
   const globalNavItems = new GlobalContent(
     ontarioGlobalMenuItemsContentKeys[eleventyGlobals.pageLang],
     buildContentRequestFromCMS,
-    renderGlobalMenuItems
+    renderGlobalMenuItems,
   );
   globalNavItems.activate();
 });

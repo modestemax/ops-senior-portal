@@ -1,17 +1,17 @@
-module.exports = function () {
-  var env = process.env.ELEVENTY_ENV || 'dev';
+module.exports = () => {
+  const env = process.env.ELEVENTY_ENV || 'dev';
 
-  // Relative to assetsRoot (see app-globals.js)
-  var designSystemPath = '/vendor/ontario-design-system';
+  // Relative to assetsRoot (see app-templateGlobals.js)
+  const designSystemPath = '/vendor/ontario-design-system';
 
-  var allowedFooterTypes = {
+  const allowedFooterTypes = {
     default: 'default',
     expanded: 'expanded',
   };
 
   return {
-    allowedFooterTypes: allowedFooterTypes,
-    designSystemPath: designSystemPath,
-    env: env,
+    allowedFooterTypes,
+    designSystemPath,
+    env,
   };
 };
