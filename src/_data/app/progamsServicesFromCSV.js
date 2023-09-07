@@ -22,7 +22,23 @@ module.exports = async function(language = 'en') {
       },
       encoding: "utf-8",
   }).data;
+  // keys: ['Resource title', 'Resource Description', 'Resource URL', 'Internal/External', 'Category', 'Sub Category']
+  // Check for null values in title, description, and category
+  function CustomException(message) {
 
+    const error = new Error(message);
+    error.code = "INVALID_RECORDS_CODE";
+    return error;
+
+  }
+  const invalidItems = seniorsContent.filter(item => !item["Resource title"] || !item["Resource Description"] || !item["Category"] || !item["Resource URL"] || !item["Internal/External"]|| !item["Sub Category"]);
+
+  if (invalidItems.length > 0) {
+    console.error("Error: Some items have null values in Resource Title, Resource Description,  Resource URL, Internal/External, Category or Sub Category:");
+    console.error(invalidItems);
+    // throw new CustomException('Some items have invalid records.');
+   //^Line 39 - This is the throw exception, it will shut down the whole program if uncommented
+  }
   // Extract categories and subcategories
   let categories = seniorsContent.map(seniorsContent => seniorsContent["Category"]);
   //let subCategories = seniorsContent.map(seniorsContent => seniorsContent["Sub Category"]);
