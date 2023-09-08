@@ -1,12 +1,12 @@
 <div class="ontario-row maincontent__container">
     <div class="ontario-column ontario-small-12">
-        <form name="searchForm" id="search-example-2-form" onsubmit="return false" class="ontario-search__container" novalidate>
+        <form name="searchForm" id="search-example-2-form" class="ontario-search__container" novalidate>
             <h5>Find programs and services</h5>
             <p style="font-size:15px; padding-bottom:5px;" id="search-example-2-hint" class="ontario-hint">Enter a topic like "power of attorney" or "driver's licence."</p>
             <div class="ontario-search-input__container">
-                <input class="ontario-input" id="search-text" type="text" x-model:value="searchTerm" x-on:keyup.enter="doSearch()" />
+                <input type="text" name="q" id="search-text" class="ontario-input" x-model:value="searchTerm" x-on:keyup.enter="updateURLParams()" />
                 <input class="ontario-search__reset" id="ontario-search-reset" type="reset" value="" aria-label="Clear field" x-on:click="clearSearchFilters()" x-show="searchTerm.length > 0"/>
-                <button class="ontario-search__submit" id="ontario-search-submit" type="submit" x-on:click="doSearch()">
+                <button class="ontario-search__submit" id="ontario-search-submit" type="submit" x-on:click="updateURLParams()">
                     <span class="ontario-show-for-sr">Submit</span>
                     <svg class="ontario-icon" focusable="false" sol:category="primary" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
                         <use xlink:href="#ontario-icon-search"></use>
@@ -19,6 +19,28 @@
 
 
 <script>
+    // Function to encode search parameters into the URL
+    function encodeSearchParams(searchTerm, categories) {
+        const params = new URLSearchParams();
+        if (searchTerm) {
+            params.append('q', searchTerm);
+        }
+        if (categories.length > 0) {
+            params.append('categories', categories.join(','));
+        }
+        return params.toString();
+    }
+
+    // Function to decode search parameters from the URL
+    function decodeSearchParams() {
+        const params = new URLSearchParams(window.location.search);
+        const searchTerm = params.get('q') || '';
+        const categories = params.getAll('categories');
+        return { searchTerm, categories };
+    }
+
+
+
     document.addEventListener('alpine:init', () => {
         Alpine.data('search', () => ({
             searchTerm: '',
@@ -60,6 +82,14 @@
                 this.searchTerm = '';
                 this.results = [];
             },
+
+            updateURLParams() {
+                const params = encodeSearchParams(this.searchTerm, this.categories);
+                history.pushState({}, '', window.location.pathname + '?' + params);
+                this.doSearch();
+            },
+
+            
             filteredResultsForCategory(category) {
                 const count = this.results.reduce((acc, result) => {
                     return result['Category'] === category ? acc + 1 : acc;
@@ -73,6 +103,7 @@
                 
             }
         }));
+
+        
     });
 </script>
-
