@@ -47,6 +47,37 @@
     }
 
   },
+  "breadcrumbs": {
+    "labels": [
+      {
+        "en": "Home",
+        "fr": "Accueil"
+      },
+      {
+        "en": "Health and wellness",
+        "fr": "Santé et bien-être"
+      },
+      {
+        "en": "Drug coverage",
+        "fr": "Couverture des médicaments"
+      }
+    ],
+    "links": [
+      {
+        "en": "https://www.ontario.ca/page/government-ontario",
+        "fr": "https://www.ontario.ca/fr/page/gouvernement-de-lontario"
+      },
+      {
+        "en": "https://www.ontario.ca/page/health-care-ontario",
+        "fr": "https://www.ontario.ca/fr/page/les-soins-de-sante-en-ontario"
+      },
+      {
+        "en": "https://www.ontario.ca/page/get-coverage-prescription-drugs",
+        "fr": "https://www.ontario.ca/fr/page/obtenez-une-prise-en-charge-pour-vos-medicaments-dordonnance"
+      }
+    ]
+  },
+
 
   "searchbox": {
 
