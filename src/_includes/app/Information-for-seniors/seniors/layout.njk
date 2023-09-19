@@ -1,11 +1,24 @@
+{# formerly 'globals', set here for use by templates #}
+{% set templateGlobals =
+{
+    assetsRoot: app["app-globals"].assetsPath,
+    designSystemRoot: app["app-globals"].assetsPath + core["core-globals"].designSystemPath,
+    useApplicationHeader: app["app-globals"].useApplicationHeader,
+    footerType: core["core-globals"].allowedFooterTypes[app["app-globals"].footerType],
+    env: core["core-globals"].env
+}
+%}
 <!DOCTYPE html>
 <!-- DEVELOP -->
 <html lang="{{ lang or 'en' }}">
     <head>
+    {% include "core/organisms/_head.njk" %}
+<!--
     <meta charset="utf-8" />
     <title>{{ title }}</title>
 
     <link href="{{ globals.assetsRoot }}/css/style.css" rel="stylesheet" />
+ -->
     <style>
         .all
         {%- for tag in app.progamsServicesFromCSV.tags -%}
@@ -14,13 +27,19 @@
         {%- endif -%}
         {%- endfor %} { display: block; }
     </style>
+<!--
     {% include "core/_favicons.njk" %}
     {% include "app/_head_custom.njk" %}
+ -->
     </head>
     <body>
+    {# Tag Manager should be first element in body #}
+    {% include "core/atoms/_google_tag_manager_noscript.njk" %}
+    {% include "core/atoms/_skip_to_main.njk" %}
+    {% include "core/atoms/_ontario_icon_svgs.njk" %}
+    {% include "core/templates/_header.njk" %}
+    {% include "core/molecules/_ontarioca_breadcrumbs.njk" %}
 
-    {% include "core/_icon_definitions.njk" %}
-    {% include "core/_header.njk" %}
 
     {# {% include "app/_hero.njk" %} #}
     {% include "app/components/search-programs-and-services.njk" %}
@@ -28,9 +47,11 @@
 
     <div class="maincontent__container">{{ content | safe }}</div>
     
-    {% include "core/_footer.njk" %}
 
     <script src="{{ globals.assetsRoot }}/js/app/programsServicesFilters.js"></script>
     <script defer src="{{ globals.assetsRoot }}/js/app/ontario-expand-collapse.js"></script>
+
+    {% include "core/templates/_footer.njk" %}
+    {% include "core/atoms/_back_to_top_button.njk" %}
     </body>
 </html>

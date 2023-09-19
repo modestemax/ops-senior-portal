@@ -170,7 +170,16 @@
             "fr": "Conditions d'utilisation"
           }
         },
-        
+        "contactUs": {
+          "url": {
+            "en": "https://www.ontario.ca/feedback/contact-us",
+            "fr": "https://www.ontario.ca/fr/commentaires/pour-nous-joindre"
+          },
+          "text": {
+            "en": "Contact Us",
+            "fr": "Contactez-nous"
+          }
+        },
         "copyright": {
           "url": {
             "en": "https://www.ontario.ca/page/copyright-information",
@@ -181,6 +190,10 @@
             "fr": "Imprimeur du Roi pour l’Ontario"
           }
         }
+      },
+      "backToTop": {
+        "en": "Top",
+        "fr": "Haut"
       }
     }
   },    "expandedFooter": {
