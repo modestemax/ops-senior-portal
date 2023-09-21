@@ -1,13 +1,13 @@
 <div class="ontario-row maincontent__container">
     <div class="ontario-column ontario-small-12">
-        <form name="searchForm" id="search-example-2-form" class="ontario-search__container" novalidate>
+        <form name="searchForm" id="search-example-2-form" class="ontario-search__container" novalidate @submit.prevent="submit()">
             <h5>Find programs and services</h5>
             <p style="font-size:15px; padding-bottom:5px;" id="search-example-2-hint" class="ontario-hint">Enter a topic like "power of attorney" or "driver's licence."</p>
             <div id="error-message" style="color: red;" x-show="showErrorMessage">Search cannot be empty</div>
             <div class="ontario-search-input__container">
-                <input type="text" name="q" id="search-text" class="ontario-input" x-model:value="searchTerm" x-on:keyup.enter="updateURLParams()" />
+                <input type="text" name="q" id="search-text" class="ontario-input" x-model:value="searchTerm"/>
                 <input class="ontario-search__reset" id="ontario-search-reset" type="reset" value="" aria-label="Clear field" x-on:click="clearSearchFilters()" x-show="searchTerm.length > 0"/>
-                <button class="ontario-search__submit" id="ontario-search-submit" type="submit" x-on:click="updateURLParams()">
+                <button class="ontario-search__submit" id="ontario-search-submit" type="submit">
                     <span class="ontario-show-for-sr">Submit</span>
                     <svg class="ontario-icon" focusable="false" sol:category="primary" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
                         <use xlink:href="#ontario-icon-search"></use>
@@ -19,87 +19,82 @@
 </div>
 
 <script>
-    // Function to encode search parameters into the URL
-    function encodeSearchParams(searchTerm, categories) {
-        const params = new URLSearchParams();
-        if (searchTerm) {
-            params.append('q', searchTerm);
-        }
-        if (categories.length > 0) {
-            params.append('categories', categories.join(','));
-        }
-        return params.toString();
-    }
-
-    // Function to decode search parameters from the URL
-    function decodeSearchParams() {
-        const params = new URLSearchParams(window.location.search);
-        const searchTerm = params.get('q') || '';
-        const categories = params.getAll('categories');
-        return { searchTerm, categories };
-    }
-
-    // Create a searchPersistence module
-    const searchPersistence = {
-        encodeToUrl(searchTerm, categories) {
-            const params = new URLSearchParams();
-
-            if (searchTerm) {
-                params.append('q', searchTerm);
-            }
-
-            if (categories.length > 0) {
-                params.append('categories', categories.join(','));
-            }
-
-            const newUrl = `${window.location.pathname}?${params.toString()}`;
-
-            history.pushState({}, '', newUrl);
-        },
-        decodeFromUrl() {
-            const params = new URLSearchParams(window.location.search);
-            const searchTerm = params.get('q') || '';
-            const categories = params.getAll('categories');
-            return { searchTerm, categories };
-        },
-    };
-
     document.addEventListener('alpine:init', () => {
-        const savedState = loadSearchState();
-        
         Alpine.data('search', () => ({
-            searchTerm: savedState.searchTerm,
+            searchTerm: "",
+            lastSearchTerm: "",
             results: [],
             categorySearch: false,
             categoryCheckboxes: {},
-            categories: savedState.selectedCategories,
+            categories: [],
             showErrorMessage: false,
-            doSearch() {
-                // check if the search term is empty
-                if (this.searchTerm.trim() === '') {
-                    this.showErrorMessage = true;
-                    return;
-                } else {
-                    this.showErrorMessage = false;
-                }
 
-                // console log to check for errors
-                console.log('Search Term:', this.searchTerm);
-                console.log('Selected Categories:', this.categories);
+            init() {
+                // This runs first at page load, when alpine.js initializes the data store.
 
-                // Main search logic
+                // Initialize Fuse.
                 let data = {{ app.progamsServicesFromCSV.seniorsContent | dump | safe }};
                 let options = {
                     keys: ['Resource title', 'Resource Description', 'Resource URL', 'Internal/External', 'Category', 'Sub Category'],
                     includeScore: true
                 };
-                let fuse = new Fuse(data, options);
+                this.fuse = new Fuse(data, options);
 
+                // Load search state, if we have any.
+                this.loadSearchState();
+
+                // Also, listen for navigation events.  If the user hits forwards or back, rebuild our state.
+                addEventListener("popstate", (event) => {
+                    this.loadSearchState();
+                });
+            },
+
+            saveSearchState() {
+                const params = new URLSearchParams();
+                if (this.searchTerm) {
+                    params.append('q', this.searchTerm);
+                }
+                this.categories.forEach(category => {
+                    params.append('category', category);
+                })
+
+                history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
+            },
+
+            loadSearchState() {
+                const params = new URLSearchParams(window.location.search);
+                this.searchTerm = params.get('q') || '';
+
+                this.categories = params.getAll('category');
+                this.updateCheckboxes();
+
+                // We have our state.  Update the page accordingly.
+                this.doSearch();
+            },
+
+            updateCategories() {
                 this.categories = Object.entries(this.categoryCheckboxes)
                     .map(([k,v]) => v ? k : undefined)
                     .filter(v => v);
+            },
+ 
+            updateCheckboxes() {
+                // Set checked boxes.
+                for(const category of this.categories) {
+                    this.categoryCheckboxes[category] = true;
+                };
+                // Go through all other checkboxes, and clear any unset categories.
+                for(const category of Object.keys(this.categoryCheckboxes)) {
+                    if(!this.categories.includes(category)) {
+                        this.categoryCheckboxes[category] = false;
+                    }
+                };
+            },
 
-                let results = fuse
+            doSearch() {
+                // Execute the actual search.
+                // This updates this.results, which will trigger alpine to update the rest of the page.
+                let results = this.fuse
                     .search(this.searchTerm)
                     .map(res => res.item);
 
@@ -113,32 +108,34 @@
                 } else {
                     this.categorySearch = false;
                 }
-
+ 
+                this.lastSearchTerm = this.searchTerm;
                 this.results = results;
+            },
 
-                // Convert the Proxy object to a regular array
-                this.results = Array.from(this.results);
+            submit() {
+                // Update our mapped list of categories.
+                this.updateCategories();
 
-                // log results
-                console.log('Search Results:', this.results);
+                // Execute the actual search.
+                this.doSearch();
+
+                // check if the search term is empty
+                /*
+                if (this.searchTerm.trim() === '') {
+                    this.showErrorMessage = true;
+                } else {
+                    this.showErrorMessage = false;
+                }
+                 */
 
                 // Save the current state to local storage
-                saveSearchState(this.searchTerm, this.categories);
+                this.saveSearchState(this.searchTerm, this.categories);
             },
+
             clearSearchFilters() {
                 this.searchTerm = '';
-                this.results = [];
                 this.showErrorMessage = false;
-            },
-
-            updateURLParams() {
-                // Encode the search to the URL
-                searchPersistence.encodeToUrl(this.searchTerm, this.categories);
-
-                const params = encodeSearchParams(this.searchTerm, this.categories);
-                console.log('Encoded URL Params:', params);
-                history.pushState({}, '', window.location.pathname + '?' + params);
-                this.doSearch();
             },
 
             filteredResultsForCategory(category) {
@@ -154,22 +151,4 @@
             }
         }));
     });
-
-    // Function to save search state to local storage
-    function saveSearchState(searchTerm, selectedCategories) {
-        const state = {
-            searchTerm,
-            selectedCategories
-        };
-        localStorage.setItem('searchState', JSON.stringify(state));
-    }
-
-    // Function to load search state from local storage
-    function loadSearchState() {
-        const storedState = localStorage.getItem('searchState');
-        if (storedState) {
-            return JSON.parse(storedState);
-        }
-        return { searchTerm: '', selectedCategories: [] };
-    }
 </script>

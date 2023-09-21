@@ -1,20 +1,20 @@
 <div class="ontario-column ontario-small-12">
     <div x-show="results.length === 0 ">
-        <template x-if="searchTerm !== ''">
+        <template x-if="lastSearchTerm !== ''">
              <h2>{{ 'seniors.programsAndServicesComponent.noResults' | localeString | safe }}</h2>
         </template>
     </div>
     <div class="total-results">
-        <template x-if="searchTerm === ''">
+        <template x-if="lastSearchTerm === ''">
             <template x-if="categorySearch">
                 <template x-if="results.length > 0">
                     <h2 x-text="results.length + ' ' + (results.length === 1 ? 'result' : 'total results') "></h2>
                 </template>
             </template>
         </template>
-        <template x-if="!(searchTerm === '')">
+        <template x-if="!(lastSearchTerm === '')">
             <template x-if="results.length > 0">
-                <h2 x-text="results.length + ' ' + (results.length === 1 ? 'result' : 'total results') + ' for &quot;' + searchTerm  + '&quot;' "></h2>
+                <h2 x-text="results.length + ' ' + (results.length === 1 ? 'result' : 'total results') + ' for &quot;' + lastSearchTerm  + '&quot;' "></h2>
             </template>
         </template>
         <br>
