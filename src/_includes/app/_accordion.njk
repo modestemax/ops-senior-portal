@@ -35,12 +35,12 @@
                 <div id="filter-progams-and-services" class="ontario-form-group">
                     <fieldset class="ontario-fieldset">
                         <div class="ontario-checkboxes">
-                            {% for item in filterItems %}
+                            {% for item in filterCategories %}
                                 <div class="ontario-checkboxes__item">
-                                    <input class="ontario-checkboxes__input filter-item" id="{{ item.id }}"
-                                            x-model="categoryCheckboxes['{{item.label}}']"
-                                            name="options" type="checkbox" value="{{ item.value }}">
-                                    <label class="ontario-checkboxes__label" for="{{ item.id }}">{{ item.label }}</label>
+                                    <input class="ontario-checkboxes__input filter-item" id="category-{{ loop.index }}"
+                                            x-model="categoryCheckboxes['{{item}}']"
+                                            name="options" type="checkbox">
+                                    <label class="ontario-checkboxes__label" for="category-{{ loop.index }}">{{ item }}</label>
                                 </div>
                             {% endfor %}
                         </div>
