@@ -21,9 +21,7 @@
         <template x-if="categorySearch">
             <div>
                 <template x-for="category in categories">
-                    <div>
-                        <h3 x-text="filteredResultsForCategory(category)"></h3>
-                        <br>
+                    <div>       
                         <template x-for="result in results.filter(x => x['Category'] === category)">
                             <div>
                                 <div class="result-item">
@@ -37,7 +35,6 @@
                                 <div style="font-size:16px" x-html="result['Resource Description']"></div>
                             </div>
                         </template>
-                        <hr>
                     </div>
                 </template>
             </div>
