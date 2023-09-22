@@ -108,7 +108,11 @@ hr.bold {
     width: 34rem;
     /* width:738px; */
   }
-  
+  @media (max-width: 580px) {
+    .ontario-search__container {
+        width: 100%;
+    }
+} 
   .ontario-search-input__container {
     height: 48px;
     position: relative;
