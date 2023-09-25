@@ -1,5 +1,21 @@
 /* application-specific CSS should go in this file ( medium: 73.063em ) */
 /** hero */
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: inline;
+  }
+
+}
+
+
 .ontario-seniors-hero {
     display:block;
 }
