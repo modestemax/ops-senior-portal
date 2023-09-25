@@ -22,7 +22,7 @@
             <div>
                 <template x-for="category in categories">
                     <div>       
-                        <template x-for="result in results.filter(x => x['Category'] === category)">
+                        <template x-for="result in results">
                             <div>
                                 <div class="result-item">
                                     <a style="text-decoration:none; font-size: 24px" x-bind:href="result['Resource URL']">
