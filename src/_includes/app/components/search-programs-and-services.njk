@@ -12,7 +12,6 @@ components with their own independent data -->
 
 <div x-data="search">
 
-    {# This is the searchbox Adeyemi made #}
     <div class="ontario-row maincontent__container ontario-padding-top-48-!">
         <div class="ontario-column ontario-small-12">
             <div class="header-text">
@@ -31,8 +30,6 @@ components with their own independent data -->
         </div>
     </div>
 
-    {# This is the searchbox adeyemi made #}
-
     <div class="ontario-row maincontent__container">
 
         {# Text Descriptions: Top Resources, Search for... #}
@@ -48,27 +45,7 @@ components with their own independent data -->
                 <!-- / csv output for search input-->
             </div>
         </div>
-       
-        {# <div class="ontario-column ontario-medium-5 ontario-large-4">
-            <div id="filter-progams-and-services" class="ontario-form-group">
-                <fieldset class="ontario-fieldset">
-                    <legend class="ontario-fieldset__legend">{{ 'seniors.programsAndServicesComponent.filter' | localeString | safe }}</legend>
-                    <div class="ontario-checkboxes">
-                        <!-- filters -->
-                        {% for tag in app.progamsServicesFromCSV.tags %}
-                        {% if tag != '' %}
-                        <div class="ontario-checkboxes__item">
-                            <input class="ontario-checkboxes__input" id="{{ tag }}" name="options" type="checkbox" value="{{ tag }}">
-                            <label class="ontario-checkboxes__label" for="{{ tag }}">{{ tag | safe }}</label>
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                        <!-- / filters -->
-                    </div>
-                </fieldset>
-            </div>
-        </div> #}
-
+    
         {% include "app/_accordion.njk" %}
 
     </div>
