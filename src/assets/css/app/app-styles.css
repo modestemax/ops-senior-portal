@@ -100,15 +100,18 @@
     }
 }
 /* Thick red border */
-hr.bold {
-  border: 2px solid rgb(0, 0, 0);
-}
-
-.ontario-search__container {
+  hr.bold {
+    border: 2px solid rgb(0, 0, 0);
+  }
+ .ontario-search__container {
     width: 34rem;
     /* width:738px; */
   }
-  
+  @media (max-width: 580px) {
+    .ontario-search__container {
+        width: 100%;
+    }
+  } 
   .ontario-search-input__container {
     height: 48px;
     position: relative;
