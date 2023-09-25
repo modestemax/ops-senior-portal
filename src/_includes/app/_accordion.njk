@@ -55,7 +55,9 @@
 // Manually expand the accordion.  *sigh*
 // This needs to be smarter so it only fires on desktop sized browsers.
 window.addEventListener("load", function () {
+    if (window.innerWidth >= 768) { //Checks the width of the page. Desktop tends to be 768 above
         console.log("Firing.");
-	document.querySelector(".ontario-accordion__button--expand-all").click();
+        document.querySelector(".ontario-accordion__button--expand-all").click();
+    }
 });
 </script>
