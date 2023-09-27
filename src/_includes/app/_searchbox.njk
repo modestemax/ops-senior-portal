@@ -24,7 +24,6 @@
             searchTerm: "",
             lastSearchTerm: "",
             results: [],
-            categorySearch: false,
             categoryCheckboxes: {},
             categories: [],
             showErrorMessage: false,
@@ -137,18 +136,6 @@
                 this.searchTerm = '';
                 this.showErrorMessage = false;
             },
-
-            filteredResultsForCategory(category) {
-                const count = this.results.reduce((acc, result) => {
-                    return result['Category'] === category ? acc + 1 : acc;
-                }, 0);
-
-                if (count === 1){ 
-                    return `${count} result from ${category}`;
-                } else {
-                    return `${count} results from ${category}`;
-                }
-            }
         }));
     });
 </script>
