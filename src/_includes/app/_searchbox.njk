@@ -98,16 +98,12 @@
                     .map(res => res.item);
 
                 if (this.categories.length) {
-                    this.categorySearch = true;
                     if (!this.searchTerm) {
                         // User has selected a category, but not entered a search term. 
                         results = data;
                     }
                     results = results.filter(result => this.categories.includes(result['Category']));
-                } else {
-                    this.categorySearch = false;
-                }
- 
+                } 
                 this.lastSearchTerm = this.searchTerm;
                 this.results = results;
             },
