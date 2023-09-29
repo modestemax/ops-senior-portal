@@ -30,11 +30,9 @@ components with their own independent data -->
         </div>
     </div>
 
-    <div class="ontario-row maincontent__container">
-
+    <div class="ontario-row maincontent__container accordion-and-search">
         {# Text Descriptions: Top Resources, Search for... #}
-
-        <div class="ontario-medium-7 ontario-large-8">
+        <div class="ontario-medium-7 ontario-large-8 search-output">
             <div id="search-progams-and-services" name="search-progams-and-services" class="show-default-content hide-csv-content">
                 {# CSV Content #}
                 <!-- csv output for search input-->
@@ -45,8 +43,7 @@ components with their own independent data -->
                 <!-- / csv output for search input-->
             </div>
         </div>
-    
-        {% include "app/_accordion.njk" %}
-
+         {% include "app/_accordion.njk" %}
     </div>
+
 </div>
