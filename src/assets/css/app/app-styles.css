@@ -1,16 +1,18 @@
 /* application-specific CSS should go in this file ( medium: 73.063em ) */
 /** hero */
 
-.mobile-only {
-  display: none;
+.accordion-and-search {
+  display: flex;
+  flex-direction: row;
 }
 
+
 @media (max-width: 767px) {
-  .desktop-only {
-    display: none;
+  .accordion-and-search {
+    flex-direction: column;
   }
-  .mobile-only {
-    display: inline;
+  .search-output {
+    order: 2;
   }
 
 }
