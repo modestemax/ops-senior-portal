@@ -52,11 +52,15 @@
 </div>
 
 <script defer>
-// Manually expand the accordion.  *sigh*
-// This needs to be smarter so it only fires on desktop sized browsers.
-window.addEventListener("load", function () {
-    if (window.innerWidth >= 640) { //Checks the width of the page. Desktop tends to be 768 above
-        document.querySelector(".ontario-accordion__button--expand-all").click();
+const mediaQueryList = window.matchMedia("(orientation: portrait)");
+function handleOrientationChange(evt) {
+  if (evt.matches) {
+    if (window.innerWidth >= 640) {
+      document.querySelector(".ontario-accordion__button--expand-all").click();
     }
-});
+  } else {
+  }
+}
+mediaQueryList.addEventListener("change", handleOrientationChange);
+handleOrientationChange(mediaQueryList);
 </script>
