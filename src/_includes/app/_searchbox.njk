@@ -34,8 +34,11 @@
                 // Initialize Fuse.
                 let data = {{ app.progamsServicesFromCSV.seniorsContent | dump | safe }};
                 let options = {
-                    keys: ['Resource title',
-                    'Resource Description'],
+                    keys: [
+                        {name: 'Resource title', weight: 2},
+                        {name: 'Resource Description', weight: 1},
+
+                    ],
                     includeScore: true
                 };
                 this.fuse = new Fuse(data, options);
