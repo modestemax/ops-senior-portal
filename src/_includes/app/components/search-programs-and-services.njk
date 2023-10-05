@@ -16,8 +16,15 @@ components with their own independent data -->
         <div class="ontario-column ontario-small-12">
             <div class="header-text">
                 <h1> Information for seniors: find programs and services</h1>
-                <p class="lead">Use the search tool to find programs and services from the government and government-funded partners.</p>
+                <p class="lead">
+                    Use the search tool to find programs and services from the government and government-funded partners.<br>
+                    {% if ontarioca_breadcrumbs | length > 0 %}
+                       Learn more about
+                       <a href="{{ ontarioca_breadcrumbs | last | last | safe }}">{{ ontarioca_breadcrumbs | last | first }}</a>.
+                    {% endif %}
+                </p>
             </div>
+
             <div class="ontario-padding-bottom-20-! ontario-padding-top-20-!">
                 <hr class="bold">
             </div>
@@ -45,5 +52,4 @@ components with their own independent data -->
         </div>
          {% include "app/_accordion.njk" %}
     </div>
-
 </div>
