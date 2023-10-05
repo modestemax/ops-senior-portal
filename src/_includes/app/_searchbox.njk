@@ -28,22 +28,10 @@
             categories: [],
             showErrorMessage: false,
             minMatchCharLength: 2, // Default value for minMatchCharLength
+            fuse: null,
 
             init() {
                 // This runs first at page load, when Alpine.js initializes the data store.
-
-                // Initialize Fuse.
-                let data = {{ app.progamsServicesFromCSV.seniorsContent | dump | safe }};
-                let options = {
-                    keys: [
-                        {name: 'Resource title', weight: 2},
-                        {name: 'Resource Description', weight: 1},
-                    ],
-                    includeScore: true,
-                    minMatchCharLength: this.minMatchCharLength,
-                    threshold: 0.4
-                };
-                this.fuse = new Fuse(data, options);
 
                 // Load search state, if we have any.
                 this.loadSearchState();
@@ -107,6 +95,19 @@
             },
 
             doSearch() {
+                // Initialize Fuse with the current search parameters.
+                let data = {{ app.progamsServicesFromCSV.seniorsContent | dump | safe }};
+                let options = {
+                    keys: [
+                        {name: 'Resource title', weight: 2},
+                        {name: 'Resource Description', weight: 1},
+                    ],
+                    includeScore: true,
+                    minMatchCharLength: this.minMatchCharLength,
+                    threshold: 0.4
+                };
+                this.fuse = new Fuse(data, options);
+
                 this.updateMinMatchCharLength();
 
                 // Execute the actual search.
