@@ -96,6 +96,7 @@
 
             doSearch() {
                 // Initialize Fuse with the current search parameters.
+                this.updateMinMatchCharLength();
                 let data = {{ app.progamsServicesFromCSV.seniorsContent | dump | safe }};
                 let options = {
                     keys: [
@@ -108,8 +109,6 @@
                     ignoreLocation: true
                 };
                 this.fuse = new Fuse(data, options);
-
-                this.updateMinMatchCharLength();
 
                 // Execute the actual search.
                 // This updates this.results, which will trigger Alpine to update the rest of the page.
