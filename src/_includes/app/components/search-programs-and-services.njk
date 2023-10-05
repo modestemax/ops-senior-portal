@@ -18,8 +18,10 @@ components with their own independent data -->
                 <h1> Information for seniors: find programs and services</h1>
                 <p class="lead">
                     Use the search tool to find programs and services from the government and government-funded partners.<br>
-                    Learn more about
-                    <a id="breadcrumb-link">{{ ontarioca_breadcrumbs[ontarioca_breadcrumbs.length - 1][0] }}</a>.
+                    {% if ontarioca_breadcrumbs | length > 0 %}
+                       Learn more about
+                       <a href="{{ ontarioca_breadcrumbs | last | last | safe }}">{{ ontarioca_breadcrumbs | last | first }}</a>.
+                    {% endif %}
                 </p>
             </div>
 
