@@ -52,13 +52,10 @@
 </div>
 
 <script defer>
-const mediaQueryList = window.matchMedia("(orientation: portrait)");
+const mediaQueryList = window.matchMedia("(only screen and (min-width: 640px))");
 function handleOrientationChange(evt) {
   if (evt.matches) {
-    if (window.innerWidth >= 640) {
-      document.querySelector(".ontario-accordion__button--expand-all").click();
-    }
-  } else {
+    document.querySelector(".ontario-accordion__button--expand-all").click();
   }
 }
 mediaQueryList.addEventListener("change", handleOrientationChange);
