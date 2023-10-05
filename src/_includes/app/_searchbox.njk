@@ -104,7 +104,8 @@
                     ],
                     includeScore: true,
                     minMatchCharLength: this.minMatchCharLength,
-                    threshold: 0.4
+                    threshold: 0.4,
+                    ignoreLocation: true
                 };
                 this.fuse = new Fuse(data, options);
 
