@@ -27,7 +27,7 @@
             categoryCheckboxes: {},
             categories: [],
             showErrorMessage: false,
-            minMatchCharLength: 2, // Default value for minMatchCharLength
+            minMatchCharLength: 1, // Default value for minMatchCharLength
             fuse: null,
 
             init() {
@@ -87,9 +87,12 @@
             updateMinMatchCharLength() {
                 if (this.searchTerm.length > 8) {
                     this.minMatchCharLength = 5;
+                } else if (this.searchTerm.length < 3) {
+                    this.minMatchCharLength = 1;
                 } else if (this.searchTerm.length < 4) {
                     this.minMatchCharLength = 3;
-                } else {
+                }
+                 else {
                     this.minMatchCharLength = 4;
                 }
             },
