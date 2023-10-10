@@ -29,7 +29,6 @@
             showErrorMessage: false,
             minMatchCharLength: 2, // Default value for minMatchCharLength
             fuse: null,
-
             init() {
                 // This runs first at page load, when Alpine.js initializes the data store.
 
@@ -83,6 +82,16 @@
                     }
                 }
             },
+            applyFilters() {
+            // Update our mapped list of categories.
+            this.updateCategories();
+
+            // Execute the actual search with filters applied.
+            this.doSearch();
+
+            // Save the current state to local storage
+            this.saveSearchState(this.searchTerm, this.categories);
+        },
 
             updateMinMatchCharLength() {
                 if (this.searchTerm.length > 8) {
@@ -130,7 +139,11 @@
             submit() {
                 // Update our mapped list of categories.
                 this.updateCategories();
-
+                // Check if any filters are applied
+                if (this.categories.length > 0) {
+                // Filters are applied, but don't perform the search
+                return;
+                }
                 // Execute the actual search.
                 this.doSearch();
 
