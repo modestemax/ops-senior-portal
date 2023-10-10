@@ -269,5 +269,9 @@
     background-size:contain;
     padding-left: 3rem;
   }
+
+.two-column-list {
+    columns: 2;
+}
   
 

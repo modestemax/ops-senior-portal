@@ -40,7 +40,12 @@ components with their own independent data -->
     <div class="ontario-row maincontent__container accordion-and-search">
         {# Text Descriptions: Top Resources, Search for... #}
         <div class="ontario-medium-7 ontario-large-8 search-output">
-            <div id="search-progams-and-services" name="search-progams-and-services" class="show-default-content hide-csv-content">
+            <div id="search-programs-and-services" name="search-programs-and-services" class="show-default-content hide-csv-content">
+
+                <div id="default-content" x-show="showDefaultContent">
+                    <h3>Enter a keyword or phrase to start your search</h3>
+                </div>
+
                 {# CSV Content #}
                 <!-- csv output for search input-->
                 <div id="csv-content" x-init="doSearch()">

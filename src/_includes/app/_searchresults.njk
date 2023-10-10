@@ -1,8 +1,30 @@
 <div class="ontario-column ontario-small-12">
-    <div x-show="results.length === 0 ">
+    <div x-show="results.length === 0 " x-data="{ noResultFound: false }">
         <template x-if="lastSearchTerm !== ''">
-             <h2>{{ 'seniors.programsAndServicesComponent.noResults' | localeString | safe }}</h2>
+            <script>
+                this.noResultFound = true;
+            </script>
         </template>
+    </div>
+    <div class="no-results" x-show="noResultFound">
+        <h3>No results found for <span x-text="lastSearchTerm"></span></h3>
+        <ul>    
+            <template x-for="item in ['try searching more than 2 characters (only when 1-2 characters entered)', 'check the spelling of your keyword/ alt check for spelling errors', 'try alternate words or selections']">
+                <li>
+                    <span x-html="item.replace(/alt /g, '<strong>alt </strong>')"></span>
+                </li>
+            </template>
+        </ul>
+        <h3>Find programs and services by category</h3>
+        <ul class="two-column-list">
+            <template x-for="category in filterCategories">
+                <li>
+                    <a href="#">
+                        <span x-text="category"></span>
+                    </a>
+                </li>
+            </template>
+        </ul>
     </div>
     <div class="total-results">
         <template x-if="lastSearchTerm === ''">
@@ -34,3 +56,18 @@
         </div>
     </div>
 </div>
+<script>
+    Alpine.data('myApp', () => ({
+        filterCategories: [
+            "Home and housing",
+            "Health and well-being",
+            "Caregiving",
+            "Recreation",
+            "Safety and security",
+            "Finances",
+            "Employment and learning",
+            "Driving and transportation"
+        ],
+        noResultFound = false;
+    }));
+</script>

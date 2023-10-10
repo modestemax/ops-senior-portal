@@ -125,6 +125,12 @@
                 }
                 this.lastSearchTerm = this.searchTerm;
                 this.results = results;
+
+                if (this.results.length >= 0) {
+                    this.showDefaultContent = false;
+                } else {
+                    this.showDefaultContent = true;
+                }
             },
 
             submit() {
