@@ -29,6 +29,7 @@
             showErrorMessage: false,
             minMatchCharLength: 1, // Default value for minMatchCharLength
             fuse: null,
+            showClearAll: false,
             init() {
                 // This runs first at page load, when Alpine.js initializes the data store.
 
@@ -91,7 +92,21 @@
 
             // Save the current state to local storage
             this.saveSearchState(this.searchTerm, this.categories);
-        },
+            
+            const anyCheckboxChecked = Object.values(this.categoryCheckboxes).some(checked => checked);
+            this.showClearAll = anyCheckboxChecked;
+
+            },
+
+
+            clearAll() {
+            for (const category in this.categoryCheckboxes) {
+               this.categoryCheckboxes[category] = false;
+            }
+            this.updateCategories();
+            this.doSearch();
+            this.showClearAll = false;
+            },
 
             updateMinMatchCharLength() {
                 if (this.searchTerm.length > 8) {
