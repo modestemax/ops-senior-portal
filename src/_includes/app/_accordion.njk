@@ -31,17 +31,18 @@
                                     <input class="ontario-checkboxes__input filter-item" id="category-{{ loop.index }}"
                                             x-model="categoryCheckboxes['{{item}}']"
                                             name="options" type="checkbox">
-                                    <label class="ontario-checkboxes__label" for="category-{{ loop.index }}">{{ item }}</label>
+                                    <label class="ontario-checkboxes__label" for="category-{{ loop.index }}">{{ item }}</label>  
                                 </div>
                             {% endfor %}
+                            <br>
                         </div>
                     </fieldset>
+                <!-- Add the "Apply Filters" button below the category checkboxes -->
+                 <button class="ontario-button ontario-button--primary" style = "font-size:21px; max-width: 20%;" x-on:click ="applyFilters">Apply filter</button>
                 </div>
             </section>
         </div>
     </div>
-    <br>
-    <br>
 </div>
 
 <script defer>
