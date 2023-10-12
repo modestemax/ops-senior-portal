@@ -151,6 +151,18 @@
                 }
                 this.lastSearchTerm = this.searchTerm;
                 this.results = results;
+
+                if (this.results.length >= 0) {
+                    this.showDefaultContent = false;
+                } else {
+                    this.showDefaultContent = true;
+                }
+            },
+            categoryClicked(category) {
+                this.searchTerm = '';
+                this.categories.push(category);
+                this.updateCheckboxes();
+                this.doSearch();
             },
 
             submit() {
