@@ -83,30 +83,29 @@
                     }
                 }
             },
+
             applyFilters() {
-            // Update our mapped list of categories.
-            this.updateCategories();
+                // Update our mapped list of categories.
+                this.updateCategories();
 
-            // Execute the actual search with filters applied.
-            this.doSearch();
+                // Execute the actual search with filters applied.
+                this.doSearch();
 
-            // Save the current state to local storage
-            this.saveSearchState(this.searchTerm, this.categories);
+                // Save the current state to local storage
+                this.saveSearchState(this.searchTerm, this.categories);
             
-            const anyCheckboxChecked = Object.values(this.categoryCheckboxes).some(checked => checked);
-            this.showClearAll = anyCheckboxChecked;
-
+                const anyCheckboxChecked = Object.values(this.categoryCheckboxes).some(checked => checked);
+                this.showClearAll = anyCheckboxChecked;
             },
 
-
             clearAll() {
-            for (const category in this.categoryCheckboxes) {
-               this.categoryCheckboxes[category] = false;
-            }
-            this.updateCategories();
-            this.doSearch();
-            this.saveSearchState(this.searchTerm, this.categories);
-            this.showClearAll = false;
+                for (const category in this.categoryCheckboxes) {
+                    this.categoryCheckboxes[category] = false;
+                }
+                this.updateCategories();
+                this.doSearch();
+                this.saveSearchState(this.searchTerm, this.categories);
+                this.showClearAll = false;
             },
 
             updateMinMatchCharLength() {
