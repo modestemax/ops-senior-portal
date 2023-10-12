@@ -9,7 +9,8 @@ module.exports = async function(language = 'en') {
   const filePath = language === 'fr'
     ? `${__dirname}/../../assets/csv/French New Seniors Content June 2023.csv`
     //: `${__dirname}/../../assets/csv/English Seniors Content June 2023.csv`;
-    : `${__dirname}/../../assets/csv/Copy of New seniors portal secondary serach content Sept 2023 JCedits_v2_CO.csv`;
+    //: `${__dirname}/../../assets/csv/Copy of New seniors portal secondary serach content Sept 2023 JCedits_v2_CO.csv`;
+    : `${__dirname}/../../assets/csv/New seniors portal secondary search content.csv`;
   // Read and parse the CSV file
   const file = fs.readFileSync(filePath, 'utf-8');
   let seniorsContent = Papa.parse(stripBom(file), {
