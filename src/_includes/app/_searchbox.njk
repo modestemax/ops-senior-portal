@@ -134,12 +134,8 @@
             },
             categoryClicked(category) {
                 this.searchTerm = '';
-                
-                for (const cat in this.categoryCheckboxes) {
-                    this.categoryCheckboxes[cat] = false;
-                }
-                this.categoryCheckboxes[category] = true;
-                
+                this.categories.push(category);
+                this.updateCheckboxes();
                 this.doSearch();
             },
 

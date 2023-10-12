@@ -271,7 +271,8 @@
   }
 
 .two-column-list {
-    columns: 2;
+  columns: 2;
+  margin-left:22px;
 }
   
 
