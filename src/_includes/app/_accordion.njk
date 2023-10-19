@@ -23,7 +23,7 @@
             </h3>
             <section class='ontario-accordion__content' id='accordion-content-1'
                     aria-labelledby='accordion-button-id-1' aria-hidden='true' data-toggle='ontario-expander-content'>
-                <div id="filter-progams-and-services" class="ontario-form-group">
+                <div id="filter-progams-and-services" class="ontario-form-group" style="margin-bottom: 0px;">
                     <fieldset class="ontario-fieldset">
                         <div class="ontario-checkboxes">
                             {% for item in filterCategories %}
@@ -38,15 +38,16 @@
                         </div>
                     </fieldset>
                  <!-- Add the "Apply filter" and "Clear all filters" button below the category checkboxes -->
-                 <button class="ontario-button ontario-button--primary" style = "font-size:21px; max-width: 20%;" x-on:click ="applyFilters">Apply filter</button>
-                 <button class="ontario-button ontario-button--secondary" x-show="showClearAll" style = "font-size:15px; max-width: 20%;" x-on:click="clearAll">Clear all filters</button>
+                   <div class="button-container" style="display: flex; justify-content: flex-start; align-items: center;">
+                    <button class="ontario-button ontario-button--primary" style="font-size: 21px; max-width: 50%;" x-on:click="applyFilters">Apply filter</button>
+                    <button class="ontario-button ontario-button--secondary" x-show="showClearAll" style="font-size: 15px; max-width: 50%;" x-on:click="clearAll">Clear all filters</button>
+                    </div>
+                </div>
                 </div>
             </section>
         </div>
     </div>
 </div>
-
-
 
 <script defer>
 const mediaQueryList = window.matchMedia("(only screen and (min-width: 640px))");
