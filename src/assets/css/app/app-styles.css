@@ -109,14 +109,10 @@
     /* width:738px; */
     width:100%;
   }
-  @media (max-width: 580px) {
-    .ontario-search__container {
-        width: 100%;
-    }
-  } 
   .ontario-search-input__container {
     height: 48px;
     position: relative;
+    max-width: 732px;
   }
   
   .ontario-search__label {
