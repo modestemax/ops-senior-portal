@@ -255,4 +255,7 @@
   margin-left:22px;
 }
   
-
+.ontario-accordion__content {
+  margin-left: 0px;
+  padding-bottom: 32px;
+}
