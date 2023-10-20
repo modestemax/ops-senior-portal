@@ -1,23 +1,6 @@
 /* application-specific CSS should go in this file ( medium: 73.063em ) */
 /** hero */
 
-.accordion-and-search {
-  display: flex;
-  flex-direction: row;
-}
-
-
-@media (max-width: 767px) {
-  .accordion-and-search {
-    flex-direction: column;
-  }
-  .search-output {
-    order: 2;
-  }
-
-}
-
-
 .ontario-seniors-hero {
     display:block;
 }
@@ -126,14 +109,10 @@
     /* width:738px; */
     width:100%;
   }
-  @media (max-width: 580px) {
-    .ontario-search__container {
-        width: 100%;
-    }
-  } 
   .ontario-search-input__container {
     height: 48px;
     position: relative;
+    max-width: 732px;
   }
   
   .ontario-search__label {
@@ -276,4 +255,7 @@
   margin-left:22px;
 }
   
-
+.ontario-accordion__content {
+  margin-left: 0px;
+  padding-bottom: 8px;
+}
