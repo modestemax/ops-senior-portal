@@ -1,4 +1,3 @@
-<div class="ontario-column ontario-medium-4">
     <div class='ontario-accordions__container ontario-margin-bottom-80'>
         <div class='ontario-accordion' id='accordion-1'>
             <h3 class='ontario-accordion-heading'`>
@@ -38,16 +37,14 @@
                         </div>
                     </fieldset>
                  <!-- Add the "Apply filter" and "Clear all filters" button below the category checkboxes -->
-                   <div class="button-container" style="display: flex; justify-content: flex-start; align-items: center;">
-                    <button class="ontario-button ontario-button--primary" style="font-size: 21px; max-width: 50%;" x-on:click="applyFilters">Apply filter</button>
-                    <button class="ontario-button ontario-button--secondary" x-show="showClearAll" style="font-size: 15px; max-width: 50%;" x-on:click="clearAll">Clear all filters</button>
+                   <div class="button-container" style="display: flex; justify-content: flex-start; flex-wrap: wrap /* align-items: center; */">
+                    <button class="ontario-button ontario-button--primary" x-on:click="applyFilters" style="flex: initial;">Apply filter</button>
+                    <button class="ontario-button ontario-button--secondary" x-show="showClearAll" x-on:click="clearAll" style="flex: initial;">Clear all filters</button>
                     </div>
-                </div>
                 </div>
             </section>
         </div>
     </div>
-</div>
 
 <script defer>
 const mediaQueryList = window.matchMedia("(only screen and (min-width: 640px))");

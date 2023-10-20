@@ -1,23 +1,6 @@
 /* application-specific CSS should go in this file ( medium: 73.063em ) */
 /** hero */
 
-.accordion-and-search {
-  display: flex;
-  flex-direction: row;
-}
-
-
-@media (max-width: 767px) {
-  .accordion-and-search {
-    flex-direction: column;
-  }
-  .search-output {
-    order: 2;
-  }
-
-}
-
-
 .ontario-seniors-hero {
     display:block;
 }

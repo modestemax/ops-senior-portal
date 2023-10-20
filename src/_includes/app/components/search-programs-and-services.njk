@@ -38,8 +38,10 @@ components with their own independent data -->
     </div>
 
     <div class="ontario-row maincontent__container accordion-and-search">
-        {# Text Descriptions: Top Resources, Search for... #}
-        <div class="ontario-medium-7 ontario-large-8 search-output">
+        <div class="ontario-column ontario-medium-4 ontario-medium-push-8">
+            {% include "app/_accordion.njk" %}
+        </div>
+        <div class="ontario-column ontario-medium-8 search-output ontario-medium-pull-4">
             <div id="search-programs-and-services" name="search-programs-and-services" class="show-default-content hide-csv-content">
 
                 <div id="default-content" x-show="showDefaultContent">
@@ -55,6 +57,5 @@ components with their own independent data -->
                 <!-- / csv output for search input-->
             </div>
         </div>
-         {% include "app/_accordion.njk" %}
     </div>
 </div>
