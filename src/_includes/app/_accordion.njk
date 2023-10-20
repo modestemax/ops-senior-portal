@@ -47,12 +47,15 @@
     </div>
 
 <script defer>
-const mediaQueryList = window.matchMedia("(only screen and (min-width: 640px))");
 function handleOrientationChange(evt) {
   if (evt.matches) {
-    document.querySelector(".ontario-accordion__button--expand-all").click();
+    var button=document.querySelector("#accordion-button-id-1");
+    button.click();
   }
 }
-mediaQueryList.addEventListener("change", handleOrientationChange);
-handleOrientationChange(mediaQueryList);
+
+addEventListener("load", function () {
+  const mediaQueryList = window.matchMedia("(min-width: 640px)");
+  handleOrientationChange(mediaQueryList);
+});
 </script>
