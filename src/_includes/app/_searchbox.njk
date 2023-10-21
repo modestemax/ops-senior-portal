@@ -171,6 +171,8 @@
                 this.categories.push(category);
                 this.updateCheckboxes();
                 this.doSearch();
+                this.saveSearchState(this.searchTerm, this.categories);
+                this.showClearAll = true;
             },
 
             submit() {
