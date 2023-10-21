@@ -94,17 +94,23 @@
                 // Save the current state to local storage
                 this.saveSearchState(this.searchTerm, this.categories);
             
-                const anyCheckboxChecked = Object.values(this.categoryCheckboxes).some(checked => checked);
-                this.showClearAll = anyCheckboxChecked;
             },
 
+            updateCategorySelection(category) {
+                // Updates the state of the checkbox when the category is clicked or unclicked.
+                this.categoryCheckboxes[category] = !this.categoryCheckboxes[category];
+
+                // The clear all button will appear when there is atleast one checkbox clicked, will disappear otherwise.
+                this.showClearAll = Object.values(this.categoryCheckboxes).some(checked => checked);
+            },
+
+
             clearAll() {
+                // Goes through all categories and sets the value to false
                 for (const category in this.categoryCheckboxes) {
                     this.categoryCheckboxes[category] = false;
                 }
-                this.updateCategories();
-                this.doSearch();
-                this.saveSearchState(this.searchTerm, this.categories);
+                //Clear all button will disappear when the button is clicked 
                 this.showClearAll = false;
             },
 
