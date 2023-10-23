@@ -2,21 +2,19 @@
     <div x-show="results.length === 0 ">
         <template x-if="lastSearchTerm !== ''">
             <div class="no-results">
-                <h3>No results found for <span x-text="lastSearchTerm"></span></h3>
-                <ul>
-                    <template x-for="item in ['try searching more than 2 characters (only when 1-2 characters entered)', 'check the spelling of your keyword/ alt check for spelling errors', 'try alternate words or selections']">
-                        <li>
-                            <span x-html="item.replace(/alt /g, '<strong>alt </strong>')"></span>
-                        </li>
-                    </template>
-                </ul>
+                <template x-if="categories.length <= 0">
+                    <h3>No results found for "<span x-text="lastSearchTerm"></span>"</h3>
+                </template>
+                <template x-if="categories.length >  0">
+                    <h3>No results found</h3>
+                </template>
+                <p>Try another keyword or adjust the filter</p>
                 <h4>Find programs and services by category</h4>
                 <ul class="two-column-list">
                     <template x-for="category in ['Home and housing','Health and well-being','Caregiving','Recreation',
                             'Safety and security','Finances','Employment and learning','Driving and transportation']">
-                        <li style="color:#0066CC; font-size: 12px">
-                            <a x-on:click="applyCategories(category)" style="text-decoration:none; font-size:16px">
-                                <span x-text="category"></span>
+                        <li style="">
+                            <a class="no-result-links" x-on:click="applyCategories(category)" x-text ="category">
                             </a>
                         </li>
                     </template>
