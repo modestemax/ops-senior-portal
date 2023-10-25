@@ -177,13 +177,11 @@
                 }
                 // check if the search term is empty
                  if (this.searchTerm.trim() === '') {
-                    // Save the current state to local storage
                     this.saveSearchState(this.searchTerm, this.categories); 
                     location.reload();
                 } else {
                    // Execute the actual search.
                   this.doSearch();
-                  // Save the current state to local storage
                   this.saveSearchState(this.searchTerm, this.categories); 
                 }
 
