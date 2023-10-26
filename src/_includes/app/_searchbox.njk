@@ -93,7 +93,7 @@
 
                 // Save the current state to local storage
                 this.saveSearchState(this.searchTerm, this.categories);
-            
+
                 const anyCheckboxChecked = Object.values(this.categoryCheckboxes).some(checked => checked);
                 this.showClearAll = anyCheckboxChecked;
             },
@@ -130,10 +130,11 @@
                         {name: 'Resource Description', weight: 1},
                         {name: 'Category', weight: 1},
                         {name: 'Sub Category', weight: 1},
+                        {name: 'Keywords', weight: 1}
                     ],
                     includeScore: true,
                     minMatchCharLength: this.minMatchCharLength,
-                    threshold: 0,
+                    threshold: 0.0,
                     ignoreLocation: true
                 };
                 this.fuse = new Fuse(data, options);
@@ -177,12 +178,12 @@
                 }
                 // check if the search term is empty
                  if (this.searchTerm.trim() === '') {
-                    this.saveSearchState(this.searchTerm, this.categories); 
+                    this.saveSearchState(this.searchTerm, this.categories);
                     location.reload();
                 } else {
                    // Execute the actual search.
                   this.doSearch();
-                  this.saveSearchState(this.searchTerm, this.categories); 
+                  this.saveSearchState(this.searchTerm, this.categories);
                 }
 
             },
