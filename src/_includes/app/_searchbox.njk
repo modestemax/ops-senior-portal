@@ -170,7 +170,19 @@
                     results = results.filter(result => this.categories.includes(result['Category']));
                 }
                 this.lastSearchTerm = this.searchTerm;
-                this.results = results;
+
+                let searchResultsIds = results.map(resource => resource.id);
+                console.log(searchResultsIds);
+
+                let filteredResults = data.filter(resource => {
+                    return searchResultsIds.includes(resource.id);
+                })
+
+                console.log(filteredResults);
+
+                let displayedResults = filteredResults;
+
+                this.results = displayedResults;
 
                 if (this.results.length >= 0) {
                     this.showDefaultContent = false;
