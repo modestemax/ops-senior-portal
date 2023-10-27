@@ -55,20 +55,23 @@ module.exports = async function(language = 'en') {
 
   let uniqueTags = [...new Set(tags)].sort();
 
-  const seniorsContentSearchable = seniorsContent.map(function (resource) {
+  // Deep clone due to pass-by-reference fun in JS
+  const clonedSeniorsContent = JSON.parse(JSON.stringify(seniorsContent));
+
+  const seniorsContentSearchable = clonedSeniorsContent.map(function (resource) {
     const fieldsToNormalize = ["Resource title", "Resource Description"]
     fieldsToNormalize.forEach(field => {
       const fieldValue = resource[field];
       const fieldValueTokens = fieldValue.split(" ");
 
       var stemmedValue = fieldValueTokens.reduce((accumulator, currentValue) => {
-        console.log(accumulator);
+        // console.log(accumulator);
         return accumulator + " " + englishStemmer.stem(currentValue);
       })
 
       resource[field] = stemmedValue;
     });
-    console.log(resource);
+    // console.log(resource);
     return resource;
   })
 
