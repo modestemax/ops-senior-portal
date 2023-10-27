@@ -128,17 +128,22 @@
                 // Stemmed version of the resource data
                 let stemmedData = {{ app.progamsServicesFromCSV.seniorsContentSearchable | dump | safe }};
 
-                // Stemmed version of the search term
                 let englishStemmer = new EnglishStemmer;
-                let tokenizedSearchTerm = this.searchTerm.split(" ");
-                let stemmedSearchTerm = "";
+                const stem = function(value) {
+                    const tokenizedValue = value.split(" ");
+                    let stemmedValue = "";
 
-                tokenizedSearchTerm.forEach((token, idx) => {
-                    let ending = idx < tokenizedSearchTerm.length-1 ? " " : ""
-                    stemmedSearchTerm = stemmedSearchTerm + englishStemmer.stem(token) + ending;
-                })
+                    tokenizedValue.forEach((token, idx) => {
+                    let ending = idx < tokenizedValue.length-1 ? " " : ""
+                    stemmedValue = stemmedValue + englishStemmer.stem(token) + ending;
+                    })
 
-                console.log("stemmedSearchTerm", stemmedSearchTerm);
+                    return stemmedValue;
+                }
+
+                let stemmedSearchTerm = stem(this.searchTerm);
+
+                console.log(stemmedSearchTerm);
 
                 let options = {
                     keys: [
@@ -172,13 +177,10 @@
                 this.lastSearchTerm = this.searchTerm;
 
                 let searchResultsIds = results.map(resource => resource.id);
-                console.log(searchResultsIds);
 
                 let filteredResults = data.filter(resource => {
                     return searchResultsIds.includes(resource.id);
                 })
-
-                console.log(filteredResults);
 
                 let displayedResults = filteredResults;
 

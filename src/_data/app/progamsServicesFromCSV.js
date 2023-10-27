@@ -68,16 +68,22 @@ module.exports = async function(language = 'en') {
   const seniorsContentSearchable = clonedSeniorsContent.map(function (resource) {
     const fieldsToNormalize = ["Resource title", "Resource Description", "Keywords"]
     fieldsToNormalize.forEach(field => {
+
+      const stem = function(value) {
+        const tokenizedValue = value.split(" ");
+        let stemmedValue = "";
+
+        tokenizedValue.forEach((token, idx) => {
+          let ending = idx < tokenizedValue.length-1 ? " " : ""
+          stemmedValue = stemmedValue + englishStemmer.stem(token) + ending;
+        })
+
+        return stemmedValue;
+      }
+
       const fieldValue = resource[field];
-      const fieldValueTokens = fieldValue.split(" ");
-      let stemmedValue = "";
 
-      fieldValueTokens.forEach((token, idx) => {
-        let ending = idx < fieldValueTokens.length-1 ? " " : ""
-        stemmedValue = stemmedValue + englishStemmer.stem(token) + ending;
-      })
-
-      resource[field] = stemmedValue;
+      resource[field] = stem(fieldValue);
     });
     console.log(resource);
     return resource;
