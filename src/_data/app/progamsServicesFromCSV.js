@@ -1,6 +1,9 @@
 const fs = require('fs');
 const Papa = require("papaparse");
 const md = require('markdown-it')();
+const snowball = require('snowball-stem');
+
+const englishStemmer = new snowball.EnglishStemmer();
 
 stripBom = (x) => (x.charCodeAt(0) === 0xfeff) ?  x.slice(1) : x;
 
@@ -52,8 +55,26 @@ module.exports = async function(language = 'en') {
 
   let uniqueTags = [...new Set(tags)].sort();
 
+  const seniorsContentSearchable = seniorsContent.map(function (resource) {
+    const fieldsToNormalize = ["Resource title", "Resource Description"]
+    fieldsToNormalize.forEach(field => {
+      const fieldValue = resource[field];
+      const fieldValueTokens = fieldValue.split(" ");
+
+      var stemmedValue = fieldValueTokens.reduce((accumulator, currentValue) => {
+        console.log(accumulator);
+        return accumulator + " " + englishStemmer.stem(currentValue);
+      })
+
+      resource[field] = stemmedValue;
+    });
+    console.log(resource);
+    return resource;
+  })
+
   return {
     seniorsContent: seniorsContent,
+    seniorsContentSearchable: seniorsContentSearchable,
     tags: uniqueTags
   };
 };
