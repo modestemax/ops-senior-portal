@@ -81,6 +81,12 @@ module.exports = async function(language = 'en') {
         return stemmedValue;
       }
 
+      // Adapted from https://stackoverflow.com/questions/4328500/how-can-i-strip-all-punctuation-from-a-string-in-javascript-using-regex#comment113461246_4328722
+      const removePunctuation = function (value) {
+        var punctuationless = value.replace(/[^\p{L}\s]/gu,"");
+        return punctuationless;
+      }
+
       const fieldValue = resource[field];
 
       resource[field] = stem(fieldValue);
