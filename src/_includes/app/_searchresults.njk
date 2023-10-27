@@ -1,14 +1,13 @@
 <div class="ontario-column ontario-small-12">
-    <div x-show="results.length === 0 ">
-        <template x-if="lastSearchTerm !== ''">
+    <div x-show="results.length === 0 && lastSearchTerm">
             <div class="no-results">
-                <template x-if="categories.length <= 0">
+                <template x-if="!categories.length" >
                     <h3>No results found for "<span x-text="lastSearchTerm"></span>"</h3>
                 </template>
-                <template x-if="categories.length >  0">
+                <template x-if="categories.length">
                     <h3>No results found</h3>
                 </template>
-                <p>Try another keyword or adjust the filter</p>
+                <p>Try another keyword or adjust the filter.</p>
                 <h4>Find programs and services by category</h4>
                 <ul class="two-column-list">
                     <template x-for="category in ['Home and housing','Health and well-being','Caregiving','Recreation',
@@ -20,7 +19,6 @@
                     </template>
                 </ul>
             </div>
-        </template>
     </div>
     <div class="total-results">
         <template x-if="lastSearchTerm === ''">
