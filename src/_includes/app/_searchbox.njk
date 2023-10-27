@@ -124,6 +124,22 @@
                 // Initialize Fuse with the current search parameters.
                 this.updateMinMatchCharLength();
                 let data = {{ app.progamsServicesFromCSV.seniorsContent | dump | safe }};
+
+                // Stemmed version of the resource data
+                let stemmedData = {{ app.progamsServicesFromCSV.seniorsContentSearchable | dump | safe }};
+
+                // Stemmed version of the search term
+                let englishStemmer = new EnglishStemmer;
+                let tokenizedSearchTerm = this.searchTerm.split(" ");
+                let stemmedSearchTerm = "";
+
+                tokenizedSearchTerm.forEach((token, idx) => {
+                    let ending = idx < tokenizedSearchTerm.length-1 ? " " : ""
+                    stemmedSearchTerm = stemmedSearchTerm + englishStemmer.stem(token) + ending;
+                })
+
+                console.log("stemmedSearchTerm", stemmedSearchTerm);
+
                 let options = {
                     keys: [
                         {name: 'Resource title', weight: 2},
@@ -137,12 +153,13 @@
                     threshold: 0.0,
                     ignoreLocation: true
                 };
-                this.fuse = new Fuse(data, options);
+
+                this.fuse = new Fuse(stemmedData, options);
 
                 // Execute the actual search.
                 // This updates this.results, which will trigger Alpine to update the rest of the page.
                 let results = this.fuse
-                    .search(this.searchTerm)
+                    .search(stemmedSearchTerm)
                     .map(res => res.item);
 
                 if (this.categories.length) {

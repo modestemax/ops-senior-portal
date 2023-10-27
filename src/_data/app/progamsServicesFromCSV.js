@@ -33,6 +33,13 @@ module.exports = async function(language = 'en') {
     return error;
 
   }
+
+  // Add a fixed ID based on index position
+  seniorsContent = seniorsContent.map((resource, idx) => {
+    resource["id"] = idx;
+    return resource;
+  })
+
   const invalidItems = seniorsContent.filter(item => !item["Resource title"] || !item["Resource Description"] || !item["Category"] || !item["Resource URL"] || !item["Internal/External"]|| !item["Sub Category"]);
 
   if (invalidItems.length > 0) {
@@ -59,19 +66,20 @@ module.exports = async function(language = 'en') {
   const clonedSeniorsContent = JSON.parse(JSON.stringify(seniorsContent));
 
   const seniorsContentSearchable = clonedSeniorsContent.map(function (resource) {
-    const fieldsToNormalize = ["Resource title", "Resource Description"]
+    const fieldsToNormalize = ["Resource title", "Resource Description", "Keywords"]
     fieldsToNormalize.forEach(field => {
       const fieldValue = resource[field];
       const fieldValueTokens = fieldValue.split(" ");
+      let stemmedValue = "";
 
-      var stemmedValue = fieldValueTokens.reduce((accumulator, currentValue) => {
-        // console.log(accumulator);
-        return accumulator + " " + englishStemmer.stem(currentValue);
+      fieldValueTokens.forEach((token, idx) => {
+        let ending = idx < fieldValueTokens.length-1 ? " " : ""
+        stemmedValue = stemmedValue + englishStemmer.stem(token) + ending;
       })
 
       resource[field] = stemmedValue;
     });
-    // console.log(resource);
+    console.log(resource);
     return resource;
   })
 
