@@ -89,7 +89,7 @@ module.exports = async function(language = 'en') {
 
       const fieldValue = resource[field];
 
-      resource[field] = stem(fieldValue);
+      resource[field] = removePunctuation(stem(fieldValue));
     });
     console.log(resource);
     return resource;
