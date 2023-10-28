@@ -10,8 +10,7 @@ components with their own independent data -->
 <!-- This meant the search data from the search box wasn't being shared with the search results component, and vice-versa -->
 <!-- The fix below puts everything in a single scope so they share data  -->
 
-<div x-data="search">
-
+<div x-data="search" x-effect="updateCategorySelection()">
     <div class="ontario-row maincontent__container ontario-padding-top-48-!">
         <div class="ontario-column ontario-small-12">
             <div class="header-text">

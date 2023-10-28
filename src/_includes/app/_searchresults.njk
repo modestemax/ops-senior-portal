@@ -15,7 +15,7 @@
                     <template x-for="category in ['Home and housing','Health and well-being','Caregiving','Recreation',
                             'Safety and security','Finances','Employment and learning','Driving and transportation']">
                         <li style="color:#0066CC; font-size: 12px">
-                            <a x-on:click="categoryClicked(category)" style="text-decoration:none; font-size:16px">
+                            <a x-on:click="applyCategories(category)" style="text-decoration:none; font-size:16px">
                                 <span x-text="category"></span>
                             </a>
                         </li>
