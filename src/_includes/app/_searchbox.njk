@@ -19,7 +19,6 @@
 </div>
 
 <script>
-
    const stem = function(value) {
         let englishStemmer = new EnglishStemmer;
         const tokenizedValue = value.split(" ");
@@ -39,14 +38,35 @@
         return punctuationless;
     }
 
-    const normalizeForSearch = function (value) {
+    const normalizeText = function (value) {
         return removePunctuation(stem(value));
+    }
+
+    const createStemmedData = function(data, fieldsToNormalize) {
+
+        // Deep clone due to pass-by-reference fun in JS
+        const clonedData = JSON.parse(JSON.stringify(data));
+
+        const stemmedData = clonedData.map(function (resource) {
+            fieldsToNormalize.forEach(field => {
+
+            const fieldValue = resource[field];
+
+            resource[field] = normalizeText(fieldValue);
+            });
+
+            return resource;
+        })
+
+        return stemmedData;
     }
 
     document.addEventListener('alpine:init', () => {
         Alpine.data('search', () => ({
             searchTerm: "",
             lastSearchTerm: "",
+            data: [],
+            stemmedData: [],
             results: [],
             categoryCheckboxes: {},
             categories: [],
@@ -56,6 +76,9 @@
             showClearAll: false,
             init() {
                 // This runs first at page load, when Alpine.js initializes the data store.
+                this.data = {{ app.progamsServicesFromCSV.seniorsContent | dump | safe }};
+
+                this.stemmedData = createStemmedData(this.data, ["Resource title", "Resource Description", "Keywords"]);
 
                 // Load search state, if we have any.
                 this.loadSearchState();
@@ -146,12 +169,11 @@
 
             doSearch() {
 
-                let data = {{ app.progamsServicesFromCSV.seniorsContent | dump | safe }};
+                let data = this.data;
 
-                // Stemmed version of the resource data
-                let stemmedData = {{ app.progamsServicesFromCSV.seniorsContentSearchable | dump | safe }};
+                let stemmedData = this.stemmedData;
 
-                let normalizedSearchTerm = normalizeForSearch(this.searchTerm);
+                let normalizedSearchTerm = normalizeText(this.searchTerm);
 
                 // Initialize Fuse with the current search parameters.
                 let minMatchCharLength = this.getMinMatchCharLength(normalizedSearchTerm);

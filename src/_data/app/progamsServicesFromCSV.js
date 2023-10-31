@@ -62,42 +62,8 @@ module.exports = async function(language = 'en') {
 
   let uniqueTags = [...new Set(tags)].sort();
 
-  // Deep clone due to pass-by-reference fun in JS
-  const clonedSeniorsContent = JSON.parse(JSON.stringify(seniorsContent));
-
-  const seniorsContentSearchable = clonedSeniorsContent.map(function (resource) {
-    const fieldsToNormalize = ["Resource title", "Resource Description", "Keywords"]
-    fieldsToNormalize.forEach(field => {
-
-      const stem = function(value) {
-        const tokenizedValue = value.split(" ");
-        let stemmedValue = "";
-
-        tokenizedValue.forEach((token, idx) => {
-          let ending = idx < tokenizedValue.length-1 ? " " : ""
-          stemmedValue = stemmedValue + englishStemmer.stem(token) + ending;
-        })
-
-        return stemmedValue;
-      }
-
-      // Adapted from https://stackoverflow.com/questions/4328500/how-can-i-strip-all-punctuation-from-a-string-in-javascript-using-regex#comment113461246_4328722
-      const removePunctuation = function (value) {
-        var punctuationless = value.replace(/[^\p{L}\s]/gu,"");
-        return punctuationless;
-      }
-
-      const fieldValue = resource[field];
-
-      resource[field] = removePunctuation(stem(fieldValue));
-    });
-    console.log(resource);
-    return resource;
-  })
-
   return {
     seniorsContent: seniorsContent,
-    seniorsContentSearchable: seniorsContentSearchable,
     tags: uniqueTags
   };
 };
