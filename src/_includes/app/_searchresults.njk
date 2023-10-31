@@ -12,8 +12,8 @@
                 <ul class="two-column-list">
                     <template x-for="category in ['Home and housing','Health and well-being','Caregiving','Recreation',
                             'Safety and security','Finances','Employment and learning','Driving and transportation']">
-                        <li style="">
-                            <a class="no-result-links" x-on:click="applyCategories(category)" x-text ="category">
+                        <li>
+                            <a class="no-result-links" x-on:click="categoryClicked(category)" x-text="category">
                             </a>
                         </li>
                     </template>
