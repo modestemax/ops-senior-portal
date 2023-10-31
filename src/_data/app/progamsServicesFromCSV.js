@@ -1,6 +1,9 @@
 const fs = require('fs');
 const Papa = require("papaparse");
 const md = require('markdown-it')();
+const snowball = require('snowball-stem');
+
+const englishStemmer = new snowball.EnglishStemmer();
 
 stripBom = (x) => (x.charCodeAt(0) === 0xfeff) ?  x.slice(1) : x;
 
@@ -30,6 +33,13 @@ module.exports = async function(language = 'en') {
     return error;
 
   }
+
+  // Add a fixed ID based on index position
+  seniorsContent = seniorsContent.map((resource, idx) => {
+    resource["id"] = idx;
+    return resource;
+  })
+
   const invalidItems = seniorsContent.filter(item => !item["Resource title"] || !item["Resource Description"] || !item["Category"] || !item["Resource URL"] || !item["Internal/External"]|| !item["Sub Category"]);
 
   if (invalidItems.length > 0) {
