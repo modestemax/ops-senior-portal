@@ -259,11 +259,10 @@
   margin-left: 0px;
   padding-bottom: 8px;
 }
-<<<<<<< HEAD
 
-@media (max-width: 767px) {
+@media (max-width: 1169px) {
   .total-results {
-      margin-top: 80px; 
+      margin-top: 40px; 
   }
 }
 
