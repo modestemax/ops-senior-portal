@@ -7,13 +7,13 @@
                         <!-- Use an appropriate icon for "close" state -->
                         <svg class="ontario-icon" alt="" aria-hidden="true" focusable="false" sol:category="primary">
                             <use href="#ontario-icon-chevron-up"></use>
-                        </svg>
+                        </svg> 
                     </span>
                     <span class='ontario-accordion__button-icon--open'>
                         <!-- Use an appropriate icon for "open" state -->
                         <svg class="ontario-icon" alt="" aria-hidden="true" focusable="false" sol:category="primary">
                             <use href="#ontario-icon-chevron-down"></use>
-                        </svg>
+                        </svg> 
                     </span>
                     <div class="categories-column" style="font-size:19px;">
                         Category filter
@@ -33,13 +33,13 @@
                                     <label class="ontario-checkboxes__label" for="category-{{ loop.index }}">{{ item }}</label>  
                                 </div>
                             {% endfor %}
-                            <br>
+                            <br> 
                         </div>
-                    </fieldset>
+                    </fieldset> 
                  <!-- Add the "Apply filter" and "Clear all filters" button below the category checkboxes -->
                    <div class="button-container" style="display: flow-root">
-                    <button class="ontario-button ontario-button--primary" x-on:click="applyFilters" style="float: left; width: fit-content; margin-right: 24px;">Apply filter</button>
-                    <button class="ontario-button ontario-button--secondary" x-show="showClearAll" x-on:click="clearAll" style="float: left; width: fit-content;" >Clear all filters</button>
+                    <button class="ontario-button ontario-button--primary" x-on:click="applyFilters()" style="float: left; width: fit-content; margin-right: 24px;">Apply filter</button>
+                    <button class="ontario-button ontario-button--secondary" x-show="showClearAll" x-on:click="clearCategories()" style="float: left; width: fit-content;" >Clear all filters</button>
                     </div>
                 </div>
             </section>

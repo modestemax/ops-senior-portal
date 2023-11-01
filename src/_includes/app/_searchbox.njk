@@ -12,7 +12,7 @@
                     <svg class="ontario-icon" focusable="false" sol:category="primary" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
                         <use xlink:href="#ontario-icon-search"></use>
                     </svg>
-                </button>
+                </button> 
             </div>
         </form>
     </div>
@@ -138,20 +138,22 @@
                 // Execute the actual search with filters applied.
                 this.doSearch();
 
-                // Save the current state to local storage
                 this.saveSearchState(this.searchTerm, this.categories);
-
-                const anyCheckboxChecked = Object.values(this.categoryCheckboxes).some(checked => checked);
-                this.showClearAll = anyCheckboxChecked;
+            
             },
 
-            clearAll() {
+            updateCategorySelection() {
+                // The clear all button will appear when there is atleast one checkbox clicked, will disappear otherwise.
+                this.showClearAll = Object.values(this.categoryCheckboxes).some(checked => checked);
+            }, 
+
+
+            clearCategories() {
+                // Goes through all categories and sets the value to false
                 for (const category in this.categoryCheckboxes) {
                     this.categoryCheckboxes[category] = false;
                 }
-                this.updateCategories();
-                this.doSearch();
-                this.saveSearchState(this.searchTerm, this.categories);
+                //Clear all button will disappear when the button is clicked 
                 this.showClearAll = false;
             },
 
@@ -225,11 +227,13 @@
                     this.showDefaultContent = true;
                 }
             },
-            categoryClicked(category) {
+            applyCategories(category) {
                 this.searchTerm = '';
                 this.categories.push(category);
                 this.updateCheckboxes();
                 this.doSearch();
+                this.saveSearchState(this.searchTerm, this.categories);
+                this.showClearAll = true;
             },
 
             submit() {
