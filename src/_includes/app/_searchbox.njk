@@ -170,7 +170,6 @@
             },
 
             doSearch() {
-
                 let data = this.data;
 
                 let stemmedData = this.stemmedData;
@@ -258,11 +257,7 @@
             submit() {
                 // Update our mapped list of categories.
                 this.updateCategories();
-                // Check if any filters are applied
-                if (this.categories.length > 0) {
-                // Filters are applied, but don't perform the search
-                return;
-                }
+
                 // check if the search term is empty
                  if (this.searchTerm.trim() === '') {
                     this.saveSearchState(this.searchTerm, this.categories);

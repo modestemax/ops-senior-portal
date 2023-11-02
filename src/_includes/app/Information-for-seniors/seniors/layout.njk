@@ -43,12 +43,11 @@
 
     {# {% include "app/_hero.njk" %} #}
     {% include "app/components/search-programs-and-services.njk" %}
-    
+
 
     <div class="maincontent__container">{{ content | safe }}</div>
-    
 
-    <script src="{{ globals.assetsRoot }}/js/app/programsServicesFilters.js"></script>
+
     <script defer src="{{ globals.assetsRoot }}/js/app/ontario-expand-collapse.js"></script>
 
     {% include "core/templates/_footer.njk" %}
