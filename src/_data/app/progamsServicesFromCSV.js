@@ -1,9 +1,6 @@
 const fs = require('fs');
 const Papa = require("papaparse");
 const md = require('markdown-it')();
-const snowball = require('snowball-stem');
-
-const englishStemmer = new snowball.EnglishStemmer();
 
 stripBom = (x) => (x.charCodeAt(0) === 0xfeff) ?  x.slice(1) : x;
 
