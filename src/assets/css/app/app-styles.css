@@ -261,6 +261,12 @@
 }
 
 @media (max-width: 1169px) {
+  .no-results {
+      margin-top: 40px; 
+  }
+}
+
+@media (max-width: 1169px) {
   .total-results {
       margin-top: 40px; 
   }
