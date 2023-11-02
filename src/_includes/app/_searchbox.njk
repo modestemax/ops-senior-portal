@@ -170,7 +170,6 @@
             },
 
             doSearch() {
-                console.log("doSearch");
                 let data = this.data;
 
                 let stemmedData = this.stemmedData;
@@ -261,7 +260,9 @@
                 // Check if any filters are applied
                 if (this.categories.length > 0) {
                 // Filters are applied, but don't perform the search
-                return;
+                // QUESTION: this is the reason the search button doesn't work if a category
+                // is checked off - is this deliberate behaviour? (Alan)
+                // return;
                 }
                 // check if the search term is empty
                  if (this.searchTerm.trim() === '') {
