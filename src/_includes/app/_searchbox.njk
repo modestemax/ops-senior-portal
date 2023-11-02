@@ -12,7 +12,7 @@
                     <svg class="ontario-icon" focusable="false" sol:category="primary" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
                         <use xlink:href="#ontario-icon-search"></use>
                     </svg>
-                </button> 
+                </button>
             </div>
         </form>
     </div>
@@ -139,13 +139,13 @@
                 this.doSearch();
 
                 this.saveSearchState(this.searchTerm, this.categories);
-            
+
             },
 
             updateCategorySelection() {
                 // The clear all button will appear when there is atleast one checkbox clicked, will disappear otherwise.
                 this.showClearAll = Object.values(this.categoryCheckboxes).some(checked => checked);
-            }, 
+            },
 
 
             clearCategories() {
@@ -153,7 +153,7 @@
                 for (const category in this.categoryCheckboxes) {
                     this.categoryCheckboxes[category] = false;
                 }
-                //Clear all button will disappear when the button is clicked 
+                //Clear all button will disappear when the button is clicked
                 this.showClearAll = false;
             },
 
@@ -197,7 +197,7 @@
                 this.fuse = new Fuse(stemmedData, options);
 
                 // Execute the actual search.
-                // This updates this.results, which will trigger Alpine to update the rest of the page.
+
                 let results = this.fuse
                     .search(normalizedSearchTerm)
                     .map(res => res.item);
@@ -209,16 +209,35 @@
                     }
                     results = results.filter(result => this.categories.includes(result['Category']));
                 }
-                this.lastSearchTerm = this.searchTerm;
 
-                let searchResultsIds = results.map(resource => resource.id);
+                const deduplicate = function(results) {
+                    let uniqueKeys = new Set(results.map(result => result["Resource title"] + result["Resource Description"]));
+                    let keysFound = Array.from(uniqueKeys).reduce((acc,curr)=> (acc[curr]=false,acc),{});
+                    return results.filter(result => {
+                        let key = result["Resource title"] + result["Resource Description"];
+                        if(keysFound[key]) {
+                           return false;
+                        }
+                        else {
+                            keysFound[key] = true;
+                            return true;
+                        }
+                    })
+                }
+
+                let dedupedResults = deduplicate(results);
+
+                let searchResultsIds = dedupedResults.map(resource => resource.id);
 
                 let filteredResults = data.filter(resource => {
                     return searchResultsIds.includes(resource.id);
                 })
 
+                this.lastSearchTerm = this.searchTerm;
+
                 let displayedResults = filteredResults;
 
+                // This updates this.results, which will trigger Alpine to update the rest of the page.
                 this.results = displayedResults;
 
                 if (this.results.length >= 0) {
