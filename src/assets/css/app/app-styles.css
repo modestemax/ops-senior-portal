@@ -259,9 +259,18 @@
   margin-left: 0px;
   padding-bottom: 8px;
 }
+<<<<<<< HEAD
 
 @media (max-width: 767px) {
   .total-results {
       margin-top: 80px; 
   }
+}
+
+.no-result-links {
+  text-decoration:none;
+}
+
+.no-result-links:hover {
+  cursor: pointer;
 }
