@@ -65,6 +65,7 @@
         Alpine.data('search', () => ({
             searchTerm: "",
             lastSearchTerm: "",
+            searchedAtLeastOnce: false,
             data: [],
             stemmedData: [],
             results: [],
@@ -103,6 +104,12 @@
 
             loadSearchState() {
                 const params = new URLSearchParams(window.location.search);
+                if(params.has('q') && !params.get('q')) {
+                    // We have an empty query parameter, but it has actually been set.
+                    // This isn't likely to happen from inside the app, so the user
+                    // must have done an empty search from the landing page.
+                    this.searchedAtLeastOnce = true;
+                }
                 this.searchTerm = params.get('q') || '';
 
                 this.categories = params.getAll('category');
@@ -132,19 +139,18 @@
             },
 
             applyFilters() {
-                // Update our mapped list of categories.
-                this.updateCategories();
-
                 // Execute the actual search with filters applied.
                 this.doSearch();
 
                 this.saveSearchState(this.searchTerm, this.categories);
-
+                this.searchedAtLeastOnce = true;
             },
 
             updateCategorySelection() {
                 // The clear all button will appear when there is atleast one checkbox clicked, will disappear otherwise.
                 this.showClearAll = Object.values(this.categoryCheckboxes).some(checked => checked);
+
+                this.updateCategories();
             },
 
 
@@ -153,8 +159,11 @@
                 for (const category in this.categoryCheckboxes) {
                     this.categoryCheckboxes[category] = false;
                 }
-                //Clear all button will disappear when the button is clicked
+
+                // Clear all button will disappear when the button is clicked
                 this.showClearAll = false;
+
+                this.updateCategories();
             },
 
             getMinMatchCharLength(searchTerm) {
@@ -245,6 +254,7 @@
                     this.showDefaultContent = true;
                 }
             },
+
             applyCategories(category) {
                 this.searchTerm = '';
                 this.categories.push(category);
@@ -255,19 +265,20 @@
             },
 
             submit() {
-                // Update our mapped list of categories.
-                this.updateCategories();
+                this.searchTerm = this.searchTerm.trim();
 
-                // check if the search term is empty
-                 if (this.searchTerm.trim() === '') {
+                // If we're executing an empty search, reload.
+                if (this.searchTerm === '' && !this.categories.length) {
+                    this.searchedAtLeastOnce = false;
                     this.saveSearchState(this.searchTerm, this.categories);
                     location.reload();
                 } else {
-                   // Execute the actual search.
-                  this.doSearch();
-                  this.saveSearchState(this.searchTerm, this.categories);
+                    // Execute the actual search.
+                    this.doSearch();
+                    this.saveSearchState(this.searchTerm, this.categories);
                 }
 
+                this.searchedAtLeastOnce = true;
             },
 
             clearSearchFilters() {
