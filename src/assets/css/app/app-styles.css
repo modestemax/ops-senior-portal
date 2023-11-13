@@ -265,6 +265,9 @@
       margin-top: 40px; 
   }
 }
+.no-results {
+  word-wrap: break-word;
+}
 
 @media (max-width: 1169px) {
   .total-results {
