@@ -39,9 +39,6 @@
                         <a style="text-decoration:none; font-size: 24px" x-bind:href="result['Resource URL']">
                             <strong x-text="result['Resource title']"></strong>
                         </a>
-                        <template x-if="result['Internal/External'] === 'External'">
-                            <a class="new-window" x-bind:href="result['Resource URL']"></a>
-                        </template>
                         <hr>
                     </div>
                     <div style="font-size:16px" x-html="result['Resource Description']"></div>
