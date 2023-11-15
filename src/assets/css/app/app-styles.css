@@ -259,6 +259,11 @@
   margin-left: 0px;
   padding-bottom: 8px;
 }
+@media (max-width: 1169px) {
+  .empty-search {
+      margin-top: 40px; 
+  }
+}
 
 @media (max-width: 1169px) {
   .no-results {
