@@ -275,3 +275,21 @@
 .no-result-links:hover {
   cursor: pointer;
 }
+
+.external-link a {
+  font-size: 16px;
+  color: #666666; /* Adjust the color code if necessary */
+  overflow-wrap: break-word;
+}
+
+.truncate {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90ch; /* Adjust the max-width as needed */
+
+@media (max-width: 768px) {
+  max-width: 45ch; /* Adjusted max-width for screens 768px or less */
+}
+}
