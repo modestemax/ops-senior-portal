@@ -88,6 +88,10 @@
                 addEventListener("popstate", (event) => {
                     this.loadSearchState();
                 });
+
+                window.addEventListener('resize', () => {
+                    this.windowWidth = window.innerWidth;
+                });
             },
 
             saveSearchState() {
@@ -285,6 +289,14 @@
                 this.searchTerm = '';
                 this.showErrorMessage = false;
             },
+
+            {# Issue is that maxLength needs to be dynamic for desktop and mobile viewBox
+            IMPORTANT TO DO. Currently, not dynamic.#}
+            truncateText(text) {
+                let maxLength = window.innerWidth > 768 ? 90 : 45;
+                return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+            },
+
         }));
     });
 </script>
