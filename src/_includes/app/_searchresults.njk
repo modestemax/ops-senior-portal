@@ -37,13 +37,11 @@
                     <div class="result-item">
                         <a style="text-decoration:none; font-size: 24px" x-bind:href="result['Resource URL']">
                             <strong x-text="result['Resource title']"></strong>
-                            {# The Header Title. Header 4 because of 24px. #}
                         </a>
                     </div>
                     <template x-if="result['Internal/External'] === 'External'">
                         <div class="external-link">
-                            {# truncateText you pass the text you want to truncate. It can be found in _searchbox #}
-                            <a x-bind:href="result['Resource URL']" x-text="truncateText(result['Resource URL'])"></a>
+                             <a x-bind:href="result['Resource URL']" class="truncate" x-text="result['Resource URL']"></a>
                         </div>
                     </template>
                     <div style="font-size:16px" x-html="result['Resource Description']"></div>
