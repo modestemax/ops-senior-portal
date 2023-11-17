@@ -293,3 +293,13 @@
   max-width: 49ch; 
 }
 }
+
+@media screen and (max-width: 466px) {
+  .two-column-list {
+      columns: 1; 
+  }
+}
+
+.two-column-list {               
+column-gap: 92px;  
+} 
