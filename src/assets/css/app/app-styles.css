@@ -287,9 +287,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 90ch; /* Adjust the max-width as needed */
+  max-width: 90ch; 
 
 @media (max-width: 768px) {
-  max-width: 45ch; /* Adjusted max-width for screens 768px or less */
+  max-width: 49ch; 
 }
 }
