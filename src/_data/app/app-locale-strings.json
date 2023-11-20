@@ -1,121 +1,22 @@
 {
-
-  "seniors": {
-
-    "programsAndServicesComponent": {
-
-      "title": {
-
-        "en": "Search for programs and services",
-
-        "fr": "Search for programs and services FR"
-
-      },
-
-      "content": {
-
-        "en": "<p>Search for information on tax credits, health care, caregiving, housing, transportation, safety and more. Use the filters to narrow down your search.</p><p>Select one or more topics to find a list of resources from the Government of Ontario, Government of Canada and other organizations.</p>",
-
-        "fr": "<p>Search for information on tax credits, health care, caregiving, housing, transportation, safety and more. Use the filters to narrow down your search.</p><p>Select one or more topics to find a list of resources from the Government of Ontario, Government of Canada and other organizations. FR</p>"
-
-      },
-
-      "filter": {
-
-        "en": "Looking for something specific? Pick&nbsp;a&nbsp;topic to see all of our relevant resources.",
-
-        "fr": "Looking for something specific? Pick a topic to see all of our relevant resources FR"
-
-      },
-
-      "topResources": {
-
-        "en": "Top resources",
-
-        "fr": "Top resources FR"
-
-      },
-
-      "noResults": {
-
-        "en": "Sorry, no results",
-
-        "fr": "Sorry, no results FR"
-
-      }
-
-    }
-
-  },
-  "breadcrumbs": {
-    "labels": [
-      {
-        "en": "Home",
-        "fr": "Accueil"
-      },
-      {
-        "en": "Health and wellness",
-        "fr": "Santé et bien-être"
-      },
-      {
-        "en": "Drug coverage",
-        "fr": "Couverture des médicaments"
-      }
-    ],
-    "links": [
-      {
-        "en": "https://www.ontario.ca/page/government-ontario",
-        "fr": "https://www.ontario.ca/fr/page/gouvernement-de-lontario"
-      },
-      {
-        "en": "https://www.ontario.ca/page/health-care-ontario",
-        "fr": "https://www.ontario.ca/fr/page/les-soins-de-sante-en-ontario"
-      },
-      {
-        "en": "https://www.ontario.ca/page/get-coverage-prescription-drugs",
-        "fr": "https://www.ontario.ca/fr/page/obtenez-une-prise-en-charge-pour-vos-medicaments-dordonnance"
-      }
-    ]
-  },
-
-
   "searchbox": {
-
     "title": {
-
-      "en": "Search",
-
-      "fr": "Recherche"
-
+      "en": "Find programs and services",
+      "fr": "Find programs and services, but aux francais."
     },
-
     "search": {
-
       "en": "Search",
-
       "fr": "Recherche"
-
     },
-
     "clearAll": {
-
       "en": "Clear All",
-
       "fr": "Tout Effacer"
-
     },
-
     "placeholder": {
-
       "en": "Enter your search term",
-
       "fr": "Entrez votre terme de recherche"
-
     }
-
   },
-
-
   "footer": {
     "standard": {
       "links": {
