@@ -254,15 +254,6 @@
                 }
             },
 
-            applyCategories(category) {
-                this.searchTerm = '';
-                this.categories.push(category);
-                this.updateCheckboxes();
-                this.doSearch();
-                this.saveSearchState(this.searchTerm, this.categories);
-                this.showClearAll = true;
-            },
-
             submit() {
                 this.searchTerm = this.searchTerm.trim();
 
