@@ -1,4 +1,10 @@
 {
+  "categoriesFilter" : {
+    "title" : {
+      "en" : "Category Filter",
+      "fr": "FRENCH TO DO"
+    }
+  },
   "searchbox": {
     "title": {
       "en": "Find programs and services",
