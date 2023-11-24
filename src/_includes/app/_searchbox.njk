@@ -4,7 +4,7 @@
             <h5>{{ "searchbox.title" | localeString }}</h5>
             <p style="font-size:15px; padding-bottom:5px;" id="search-example-2-hint" class="ontario-hint">Enter a topic like "power of attorney" or "driver's licence."</p>
             <div class="ontario-search-input__container">
-                <input type="text" name="q" id="search-text" class="ontario-input" x-model:value="searchTerm"/>
+                <input type="text" name="search" id="q" class="msaa_search_box ontario-input" x-model:value="searchTerm"/>
                 <input class="ontario-search__reset" id="ontario-search-reset" type="reset" value="" aria-label="Clear field" x-on:click="clearSearchFilters()" x-show="searchTerm.length > 0"/>
                 <button class="ontario-search__submit" id="ontario-search-submit" type="submit">
                     <span class="ontario-show-for-sr">Submit</span>
