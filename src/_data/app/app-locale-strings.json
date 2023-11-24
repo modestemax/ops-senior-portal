@@ -5,6 +5,17 @@
       "fr": "FRENCH TO DO"
     }
   },
+  "accordionButtons" : {
+    "applyFilter" :{
+      "en" : "Apply filter",
+      "fr": "FRENCH TO DO"
+    },
+    "clearAll": { 
+      "en": "Clear All", 
+      "fr": "FRENCH TO DO"
+    }
+    
+  },
   "searchbox": {
     "title": {
       "en": "Find programs and services",
