@@ -6,12 +6,12 @@
     }
   },
   "accordionButtons" : {
-    "applyFilter" :{
+    "applyFilters" :{
       "en" : "Apply filter",
       "fr": "FRENCH TO DO"
     },
-    "clearAll": { 
-      "en": "Clear All", 
+    "clearAllFilters": { 
+      "en": "Clear all filters", 
       "fr": "FRENCH TO DO"
     }
     
