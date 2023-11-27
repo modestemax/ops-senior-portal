@@ -289,9 +289,9 @@
   text-overflow: ellipsis;
   max-width: 90ch; 
 
-@media (max-width: 768px) {
-  max-width: 49ch; 
-}
+  @media (max-width: 768px) {
+    max-width: 49ch;
+  }
 }
 
 @media screen and (max-width: 466px) {
@@ -303,3 +303,7 @@
 .two-column-list {               
 column-gap: 92px;  
 } 
+
+.msaa_search_box {
+  padding-right:8.1rem
+}

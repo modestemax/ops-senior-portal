@@ -13,7 +13,7 @@
                 <template x-for="category in ['Home and housing','Health and well-being','Caregiving','Recreation',
                         'Safety and security','Finances','Employment and learning','Driving and transportation']">
                     <li>
-                        <a class="no-result-links" x-on:click="applyCategories(category)" x-text="category"></a>
+                        <a :href="'/ministry-seniors-accessibility/?category=' + encodeURIComponent(category).replace(/%20/g, '+')" class="no-result-links"  x-text="category"></a>
                     </li>
                 </template>
             </ul>
@@ -41,7 +41,7 @@
                     </div>
                     <template x-if="result['Internal/External'] === 'External'">
                         <div class="external-link">
-                             <a x-bind:href="result['Resource URL']" class="truncate" x-text="result['Resource URL']"></a>
+                            <a x-bind:href="result['Resource URL']" class="truncate" x-text="result['Resource URL']"></a>
                         </div>
                     </template>
                     <div style="font-size:16px" x-html="result['Resource Description']"></div>
