@@ -1,4 +1,18 @@
 {
+  "categoriesFilter" : {
+    "title" : {
+      "en" : "Category Filter",
+      "fr": "Category Filter (FR)"
+    },
+    "applyFilters" :{
+      "en" : "Apply filter",
+      "fr": "Apply filter (FR)"
+    },
+    "clearAllFilters": { 
+      "en": "Clear all filters", 
+      "fr": "Clear all filters (FR)"
+    }
+  },
   "searchbox": {
     "title": {
       "en": "Find programs and services",
