@@ -2,17 +2,17 @@
   "categoriesFilter" : {
     "title" : {
       "en" : "Category Filter",
-      "fr": "FRENCH TO DO"
+      "fr": "Category Filter (FR)"
     }
   },
   "accordionButtons" : {
     "applyFilters" :{
       "en" : "Apply filter",
-      "fr": "FRENCH TO DO"
+      "fr": "Apply filter (FR)"
     },
     "clearAllFilters": { 
       "en": "Clear all filters", 
-      "fr": "FRENCH TO DO"
+      "fr": "Clear all filters (FR)"
     }
     
   },
