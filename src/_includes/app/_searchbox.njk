@@ -150,6 +150,7 @@
                 this.showClearAll = Object.values(this.categoryCheckboxes).some(checked => checked);
 
                 this.updateCategories();
+                
             },
 
             clearCategories() {
@@ -162,6 +163,7 @@
                 this.showClearAll = false;
 
                 this.updateCategories();
+                this.doSearch();
             },
 
             getMinMatchCharLength(searchTerm) {
