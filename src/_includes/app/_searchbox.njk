@@ -2,7 +2,7 @@
     <div class="ontario-column">
         <form name="searchForm" id="search-example-2-form" class="ontario-search__container" novalidate @submit.prevent="submit()">
             <h5>{{"searchBox.findProgramsandServices" | localeString}}</h5>
-            <p style="font-size:15px; padding-bottom:5px;" id="search-example-2-hint" class="ontario-hint">{{"searchBox.findProgramsandServices" | localeString}}</p>
+            <p style="font-size:15px; padding-bottom:5px;" id="search-example-2-hint" class="ontario-hint">{{"searchBox.enterATopic" | localeString}}</p>
             <div class="ontario-search-input__container">
                 <input type="text" name="search" id="q" class="msaa_search_box ontario-input" x-model:value="searchTerm"/>
                 <input class="ontario-search__reset" id="ontario-search-reset" type="reset" value="" aria-label="Clear field" x-on:click="clearSearchFilters()" x-show="searchTerm.length > 0"/>
