@@ -17,6 +17,20 @@
       "fr": "Entrez votre terme de recherche"
     }
   },
+  "searchBox" : {
+    "findProgramsandServices": {
+      "en":"Find programs and services",
+      "fr":"FRENCH TO DO"
+    },
+    "enterATopic":{
+      "en":"Enter a topic like \"power of attorney\" or \"driver's licence.\"",
+      "fr":"FRENCH TO DO"
+    },
+    "submit":{
+      "en":"Submit",
+      "fr":"FRENCH TO DO"
+    }
+  },
   "footer": {
     "standard": {
       "links": {
