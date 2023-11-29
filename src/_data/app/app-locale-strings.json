@@ -3,9 +3,7 @@
     "title" : {
       "en" : "Category Filter",
       "fr": "Category Filter (FR)"
-    }
-  },
-  "accordionButtons" : {
+    },
     "applyFilters" :{
       "en" : "Apply filter",
       "fr": "Apply filter (FR)"
@@ -14,7 +12,6 @@
       "en": "Clear all filters", 
       "fr": "Clear all filters (FR)"
     }
-    
   },
   "searchbox": {
     "title": {
