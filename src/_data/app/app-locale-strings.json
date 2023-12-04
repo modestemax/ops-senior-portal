@@ -17,22 +17,22 @@
 
     "emptyResult" : {
       "en":"Enter a keyword or phrase to start your search",
-      "fr":"FRENCH TO DO"
+      "fr":"Enter a keyword or phrase to start your search (FR)"
     },
 
     "noResult1" : {
       "en": "No results found for ",
-      "fr": "FRENCH TO DO"
+      "fr": "No results found for (FR)"
     },
 
     "noResult2" : {
       "en": "Try another keyword or adjust the filter.",
-      "fr": "FRENCH TO DO"
+      "fr": "Try another keyword or adjust the filter. (FR)"
     },
     
     "noResult3" : {
       "en":"Find programs and services by category",
-      "fr":"FRENCH TO DO"
+      "fr":"Find programs and services by category (FR)"
     },
     
     "title": {
@@ -52,7 +52,7 @@
       "fr": "Entrez votre terme de recherche"
     }
   },
-  
+
   "searchBox" : {
     "findProgramsandServices": {
       "en":"Find programs and services",
