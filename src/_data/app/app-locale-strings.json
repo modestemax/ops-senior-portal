@@ -81,6 +81,10 @@
       "en":"Learn more about",
       "fr":"Learn more about (FR)"
     },
+    "hyperlinkText":{
+      "en":"information for seniors",
+      "fr":"information for seniors (FR)"
+    },
     "enterKeyword":{
       "en":"Enter a keyword or phrase to start your search",
       "fr":"Enter a keyword or phrase to start your search (FR)"
