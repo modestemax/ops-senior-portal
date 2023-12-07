@@ -13,7 +13,28 @@
       "fr": "Clear all filters (FR)"
     }
   },
-  "searchbox": {
+  "searchResults": {
+
+    "emptyResult" : {
+      "en":"Enter a keyword or phrase to start your search",
+      "fr":"Enter a keyword or phrase to start your search (FR)"
+    },
+
+    "noResult1" : {
+      "en": "No results found for ",
+      "fr": "No results found for (FR)"
+    },
+
+    "noResult2" : {
+      "en": "Try another keyword or adjust the filter.",
+      "fr": "Try another keyword or adjust the filter. (FR)"
+    },
+    
+    "noResult3" : {
+      "en":"Find programs and services by category",
+      "fr":"Find programs and services by category (FR)"
+    },
+    
     "title": {
       "en": "Find programs and services",
       "fr": "Find programs and services, but aux francais."
@@ -31,20 +52,47 @@
       "fr": "Entrez votre terme de recherche"
     }
   },
+
   "searchBox" : {
     "findProgramsandServices": {
       "en":"Find programs and services",
-      "fr":"FRENCH TO DO"
+      "fr":"Find programs and services (FR)"
     },
     "enterATopic":{
       "en":"Enter a topic like \"power of attorney\" or \"driver's licence.\"",
-      "fr":"FRENCH TO DO"
+      "fr":"Enter a topic like \"power of attorney\" or \"driver's licence.\" (FR)"
     },
     "submit":{
       "en":"Submit",
-      "fr":"FRENCH TO DO"
+      "fr":"Submit (FR)"
     }
   },
+
+  "programsAndServices": {
+    "informationForSeniors":{
+      "en":"Information for seniors: find programs and services",
+      "fr":"Information for seniors: find programs and services (FR)"
+    },
+    "searchTool":{
+      "en":"Use the search tool to find programs and services from the government and government-funded partners.",
+      "fr":"Use the search tool to find programs and services from the government and government-funded partners. (FR)"
+    },
+    "learnMore":{
+      "en":"Learn more about",
+      "fr":"Learn more about (FR)"
+    },
+    "hyperlinkText":{
+      "en":"information for seniors",
+      "fr":"information for seniors (FR)"
+    },
+    "enterKeyword":{
+      "en":"Enter a keyword or phrase to start your search",
+      "fr":"Enter a keyword or phrase to start your search (FR)"
+    }
+  },
+
+  
+
   "footer": {
     "standard": {
       "links": {
