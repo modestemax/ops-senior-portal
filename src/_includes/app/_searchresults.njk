@@ -19,15 +19,22 @@
         </div>
     </template>
     <div class="total-results">
-        <template x-if="lastSearchTerm === ''">
-            <template x-if="results.length > 0">
-                <h2 x-text="results.length + ' ' + (results.length === 1 ? 'result' : 'total results') "></h2>
-            </template>
+        <template x-if="lastSearchTerm === '' && results.length > 0">
+            <h2><span x-text="results.length + ' '"></span>{{"searchResults.totalResultsNoSearchterm" | localeString}}</h2>
         </template>
-        <template x-if="!(lastSearchTerm === '')">
-            <template x-if="results.length > 0">
-                <h2 x-text="results.length + ' ' + (results.length === 1 ? 'result' : 'total results') + ' for &quot;' + lastSearchTerm  + '&quot;' "></h2>
-            </template>
+        <template x-if="lastSearchTerm !== '' && results.length === 1">
+            <h2>
+            <span x-text="results.length + ' '"></span>
+            {{ "searchResults.totalResult" | localeString }}  
+            &quot;<span x-text="lastSearchTerm"></span>&quot;
+            </h2>
+        </template>
+        <template x-if="lastSearchTerm !== '' && results.length > 1">
+            <h2>
+            <span x-text="results.length + ' '"></span>
+            {{ "searchResults.totalResults" | localeString }}  
+            &quot;<span x-text="lastSearchTerm"></span>&quot;
+            </h2>
         </template>
         <br>
         <div>
