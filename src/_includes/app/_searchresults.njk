@@ -46,8 +46,8 @@
             <template x-for="result in results">
                 <div style =" margin-bottom:48px;">
                     <div class="result-item">
-                        <a style="text-decoration:none; font-size: 24px" x-bind:href="result['Resource URL']">
-                            <strong x-text="result['Resource title']"></strong>
+                        <a style="text-decoration:none;" x-bind:href="result['Resource URL']">
+                            <h4><strong x-text="result['Resource title']"></strong></h4>
                         </a>
                     </div>
                     <template x-if="result['Internal/External'] === 'External'">
