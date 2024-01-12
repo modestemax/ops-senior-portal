@@ -27,7 +27,7 @@
                         <div class="ontario-checkboxes">
                             {% for item in filterCategories %}
                                 <div class="ontario-checkboxes__item">
-                                    <input class="ontario-checkboxes__input filter-item" id="category-{{ loop.index }}"
+                                    <input class="ontario-checkboxes__input" id="category-{{ loop.index }}"
                                             x-model="categoryCheckboxes['{{item}}']"
                                             name="options" type="checkbox">
                                     <label class="ontario-checkboxes__label" for="category-{{ loop.index }}">{{ item }}</label>  
