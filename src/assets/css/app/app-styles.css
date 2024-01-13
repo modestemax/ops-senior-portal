@@ -241,6 +241,12 @@
 .two-column-list {
   columns: 2;
   margin-left:22px;
+  column-gap: 92px;  
+}
+@media screen and (min-width: 768px) {
+  .no-results {
+    max-width: 705px; 
+  }
 }
   
 .ontario-accordion__content {
@@ -296,13 +302,9 @@
 
 @media screen and (max-width: 466px) {
   .two-column-list {
-      columns: 1; 
-  }
+    columns: 1; 
 }
-
-.two-column-list {               
-column-gap: 92px;  
-} 
+}
 
 .msaa_search_box {
   padding-right:8.1rem
