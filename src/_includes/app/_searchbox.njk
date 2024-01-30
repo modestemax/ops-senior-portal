@@ -33,12 +33,12 @@
 
     // Adapted from https://stackoverflow.com/questions/4328500/how-can-i-strip-all-punctuation-from-a-string-in-javascript-using-regex#comment113461246_4328722
     const removePunctuation = function (value) {
-        var punctuationless = value.replace(/[^\p{L}\p{N}\s]/gu, '');
+        var punctuationless = value.replace(/[^\p{L}\p{N}\\s]/gu, '');
         return punctuationless;
     }
 
     const normalizeText = function (value) {
-        return removePunctuation(stem(value));
+        return stem(removePunctuation(value));
     }
 
     const createStemmedData = function(data, fieldsToNormalize) {
