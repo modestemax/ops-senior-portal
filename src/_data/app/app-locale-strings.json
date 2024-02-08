@@ -2,55 +2,55 @@
   "categoriesFilter" : {
     "title" : {
       "en" : "Category Filter",
-      "fr": "Category Filter (FR)"
+      "fr": "Filtre de catégorie"
     },
     "applyFilters" :{
       "en" : "Apply filter",
-      "fr": "Apply filter (FR)"
+      "fr": "Appliquer le filtre"
     },
     "clearAllFilters": { 
       "en": "Clear all filters", 
-      "fr": "Clear all filters (FR)"
+      "fr": "Appliquer le filtre"
     }
   },
   "searchResults": {
 
     "emptyResult" : {
       "en":"Enter a keyword or phrase to start your search",
-      "fr":"Enter a keyword or phrase to start your search (FR)"
+      "fr":"Saisissez un mot-clé ou une expression pour commencer votre recherche."
     },
 
     "noResult1" : {
       "en": "No results found for ",
-      "fr": "No results found for (FR)"
+      "fr": "Aucun résultat trouvé pour "
     },
 
     "noResult2" : {
       "en": "Try another keyword or adjust the filter.",
-      "fr": "Try another keyword or adjust the filter. (FR)"
+      "fr": "Essayer à l'aide d'un autre mot-clé ou modifier le filtre."
     },
     
     "noResult3" : {
       "en":"Find programs and services by category",
-      "fr":"Find programs and services by category (FR)"
+      "fr":"Trouver des programmes et des services par catégorie."
     },
     "totalResult" : {
       "en":"result for",
-      "fr":"result for (FR)"
+      "fr":"résultat pour"
     },
     "totalResults" : {
       "en":"total results for",
-      "fr":"total results for (FR)"
+      "fr":"total des résultats pour"
     },
 
     "totalResultsNoSearchterm" : {
       "en":"total results",
-      "fr":"total results (FR)"
+      "fr":"total des résultats"
     },
    
     "title": {
       "en": "Find programs and services",
-      "fr": "Find programs and services, but aux francais."
+      "fr": "Trouver des programmes et des services"
     },
     "search": {
       "en": "Search",
@@ -69,11 +69,11 @@
   "searchBox" : {
     "findProgramsandServices": {
       "en":"Find programs and services",
-      "fr":"Find programs and services (FR)"
+      "fr":"Trouver des programmes et des services"
     },
     "enterATopic":{
       "en":"Enter a topic like \"power of attorney\" or \"driver's licence.\"",
-      "fr":"Enter a topic like \"power of attorney\" or \"driver's licence.\" (FR)"
+      "fr":"Saisissez un sujet tel que \"procuration\" ou \"permis de conduire\"."
     },
     "submit":{
       "en":"Submit",
@@ -84,23 +84,23 @@
   "programsAndServices": {
     "informationForSeniors":{
       "en":"Information for seniors: find programs and services",
-      "fr":"Information for seniors: find programs and services (FR)"
+      "fr":"Renseignements à l'intention des personnes âgées : recherche de programmes et de services"
     },
     "searchTool":{
       "en":"Use the search tool to find programs and services from the government and government-funded partners.",
-      "fr":"Use the search tool to find programs and services from the government and government-funded partners. (FR)"
+      "fr":"Pour trouver des programmes et des services du gouvernement et des partenaires qu'il finance, vous pouvez utiliser l'outil de recherche. "
     },
     "learnMore":{
       "en":"Learn more about",
-      "fr":"Learn more about (FR)"
+      "fr":"Consultez les renseignements"
     },
     "hyperlinkText":{
       "en":"information for seniors",
-      "fr":"information for seniors (FR)"
+      "fr":"à l'intention des personnes âgées."
     },
     "enterKeyword":{
       "en":"Enter a keyword or phrase to start your search",
-      "fr":"Enter a keyword or phrase to start your search (FR)"
+      "fr":"Saisissez un mot-clé ou une expression pour commencer votre recherche."
     }
   },
 
