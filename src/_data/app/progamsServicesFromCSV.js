@@ -45,6 +45,8 @@ module.exports = async function(language = 'en') {
     // throw new CustomException('Some items have invalid records.');
    //^Line 39 - This is the throw exception, it will shut down the whole program if uncommented
   }
+  
+  // Below is for English
   // Extract categories and subcategories
   let categories = seniorsContent.map(seniorsContent => seniorsContent["Category"]);
   //let subCategories = seniorsContent.map(seniorsContent => seniorsContent["Sub Category"]);
@@ -57,10 +59,24 @@ module.exports = async function(language = 'en') {
     return '';
   });
 
-  let uniqueTags = [...new Set(tags)].sort();
+  // Below is for French .TODO: Possibly create a seperate module export for French
+  let FRcategories = seniorsContent.map(seniorsContent => seniorsContent["Category FRENCH"]);
+  let FRtags = FRcategories;
+
+  FRcategories = FRcategories.map(function(__string) {
+    if (__string != undefined) {
+      return __string;
+    }
+    return '';
+  });
+
+  let uniqueTagsEN = [...new Set(tags)].sort();
+  let uniqueTagsFR = [...new Set(FRtags)].sort();
 
   return {
     seniorsContent: seniorsContent,
-    tags: uniqueTags
+    tags: uniqueTagsEN,
+    // TODO: Include French Tags
+
   };
 };
