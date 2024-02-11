@@ -48,7 +48,7 @@ module.exports = async function(language = 'en') {
   }
   
   // Handles both French and English Keywords
-  let category = ((lang === 'en') ? "Category" : "Category FRENCH");
+  let category = ((language === 'en') ? "Category" : "Category FRENCH");
   let categories = seniorsContent.map(seniorsContent => seniorsContent[category]);
   //let subCategories = seniorsContent.map(seniorsContent => seniorsContent["Sub Category"]);
   let tags = categories;
