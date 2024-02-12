@@ -5,22 +5,26 @@ const md = require('markdown-it')();
 stripBom = (x) => (x.charCodeAt(0) === 0xfeff) ?  x.slice(1) : x;
 
 module.exports = async function(language = 'en') {
-  // Determine the file path based on the language
-  const filePath = language === 'fr'
-    ? `${__dirname}/../../assets/csv/French New Seniors Content June 2023.csv`
-    : `${__dirname}/../../assets/csv/New seniors portal secondary search content.csv`;
+  // 1 file
+  const filePath =  `${__dirname}/../../assets/csv/msaa-seniors portal secondary search content-EN-FR-Feb2024-master file2.csv`;
   // Read and parse the CSV file
   const file = fs.readFileSync(filePath, 'utf-8');
   let seniorsContent = Papa.parse(stripBom(file), {
       header: true,
       transform: (value, header) => {
-          if (header == 'Resource Description') {
+          if (header == 'Resource Description' && 'Resource Description FRENCH') {
               return md.render(value);
           }
           return value.trim();
       },
       encoding: "utf-8",
   }).data;
+  
+const isFrench = (language === 'fr');
+const headersContainFrench = Object.keys(seniorsContent[0]).some(header => header.includes('FRENCH'));
+
+
+
   // keys: ['Resource title', 'Resource Description', 'Resource URL', 'Internal/External', 'Category', 'Sub Category']
   // Check for null values in title, description, and category
   function CustomException(message) {
