@@ -1,29 +1,60 @@
 const fs = require('fs');
 const Papa = require("papaparse");
 const md = require('markdown-it')();
-
 stripBom = (x) => (x.charCodeAt(0) === 0xfeff) ?  x.slice(1) : x;
 
 module.exports = async function(language = 'en') {
-  // 1 file
+  // 1 master file
   const filePath =  `${__dirname}/../../assets/csv/msaa-seniors portal secondary search content-EN-FR-Feb2024-master file2.csv`;
   // Read and parse the CSV file
   const file = fs.readFileSync(filePath, 'utf-8');
   let seniorsContent = Papa.parse(stripBom(file), {
       header: true,
       transform: (value, header) => {
-          if (header == 'Resource Description' && 'Resource Description FRENCH') {
+          if (header == 'Resource Description') {
               return md.render(value);
           }
           return value.trim();
       },
       encoding: "utf-8",
   }).data;
+ 
+//Array of english objects
+const englishCategories = ['Resource title','Resource Description', 'Resource URL','Internal/External','Category','Sub Category','Keywords'];
+//Array of french objects
+const frenchCategories = ['Resource title FRENCH','Resource Description FRENCH', 'Resource URL FRENCH','Internal/External FRENCH','Category FRENCH','Sub Category FRENCH','Keywords FRENCH'];
   
-const isFrench = (language === 'fr');
-const headersContainFrench = Object.keys(seniorsContent[0]).some(header => header.includes('FRENCH'));
+function englishContent(objects) {
+  return objects.map(resource => {
+      const englishArray = {};
+      Object.keys(resource).forEach(key => {
+        if (englishCategories.includes(key)) {
+          englishArray[key] = resource[key];
+      }
+      }); 
+      return englishArray;
+  });
+}
 
+function frenchContent(objects) {
+    return objects.map(resource => {
+        const frenchArray = {};
+        Object.keys(resource).forEach(key => {
+          if (frenchCategories.includes(key)) {
+            let englishName = key.replace(" FRENCH","");
+            frenchArray[englishName] = resource[key];
+        }
+        });
+        return frenchArray;
+        
+    });
+}
 
+englishArray = englishContent(seniorsContent);
+frenchArray = frenchContent(seniorsContent);
+console.log("English Seniors Content array ->", englishArray[0]);
+console.log("-------------------------------------------------------------------");
+console.log("French Seniors Content array ->", frenchArray[0]);
 
   // keys: ['Resource title', 'Resource Description', 'Resource URL', 'Internal/External', 'Category', 'Sub Category']
   // Check for null values in title, description, and category
@@ -42,7 +73,6 @@ const headersContainFrench = Object.keys(seniorsContent[0]).some(header => heade
   })
 
   const invalidItems = seniorsContent.filter(item => !item["Resource title"] || !item["Resource Description"] || !item["Category"] || !item["Resource URL"] || !item["Internal/External"]|| !item["Sub Category"]);
-
   if (invalidItems.length > 0) {
     console.error("Error: Some items have null values in Resource Title, Resource Description,  Resource URL, Internal/External, Category or Sub Category:");
     console.error(invalidItems);
