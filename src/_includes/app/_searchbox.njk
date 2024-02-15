@@ -80,6 +80,7 @@
             init() {
                 // This runs first at page load, when Alpine.js initializes the data store.
                 this.data = {{ app.progamsServicesFromCSV.seniorsContent | dump | safe }};
+                {# TODO: from programServicesFromCSV how to differentiate betwene french keywords and english keywords #}
 
                 this.stemmedData = createStemmedData(this.data, ["Resource title", "Resource Description", "Keywords"]);
 
@@ -192,8 +193,9 @@
                 // Initialize Fuse with the current search parameters.
                 let minMatchCharLength = this.getMinMatchCharLength(normalizedSearchTerm);
 
+                {# TODO: Is this a section we will have to change to handle French searching #}
                 let options = {
-                    keys: [
+                    keys: [ 
                         {name: 'Resource title', weight: 2},
                         {name: 'Resource Description', weight: 1},
                         {name: 'Category', weight: 1},

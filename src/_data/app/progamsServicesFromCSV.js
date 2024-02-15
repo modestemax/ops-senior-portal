@@ -4,6 +4,7 @@ const md = require('markdown-it')();
 
 stripBom = (x) => (x.charCodeAt(0) === 0xfeff) ?  x.slice(1) : x;
 
+// language = 'en' default (does nothing)
 module.exports = async function(language = 'en') {
   // Determine the file path based on the language
   const filePath = language === 'fr'
@@ -45,22 +46,27 @@ module.exports = async function(language = 'en') {
     // throw new CustomException('Some items have invalid records.');
    //^Line 39 - This is the throw exception, it will shut down the whole program if uncommented
   }
-  // Extract categories and subcategories
-  let categories = seniorsContent.map(seniorsContent => seniorsContent["Category"]);
-  //let subCategories = seniorsContent.map(seniorsContent => seniorsContent["Sub Category"]);
-  let tags = categories;
+  
+  function createCategory(lang) {
 
-  tags = tags.map(function(__string) {
-    if (__string != undefined) {
-      return __string;
-    }
-    return '';
-  });
+    let categories = seniorsContent.map(seniorsContent => seniorsContent[lang]);
+    //let subCategories = seniorsContent.map(seniorsContent => seniorsContent["Sub Category"]);
+    
+    categories = categories.map(function(__string) {
+      if (__string != undefined) {
+        return __string;
+      }
+      return '';
+    });
+    return [...new Set(categories)].sort();
+  }
 
-  let uniqueTags = [...new Set(tags)].sort();
+  let uniqueTagsEN = createCategory("Category");
+  let uniqueTagsFR = createCategory("Category FRENCH");
 
   return {
     seniorsContent: seniorsContent,
-    tags: uniqueTags
+    tags: uniqueTagsEN, uniqueTagsFR
+
   };
 };
