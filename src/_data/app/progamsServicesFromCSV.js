@@ -19,42 +19,42 @@ module.exports = async function(language = 'en') {
       encoding: "utf-8",
   }).data;
  
-//Array of english objects
-const englishCategories = ['Resource title','Resource Description', 'Resource URL','Internal/External','Category','Sub Category','Keywords'];
-//Array of french objects
-const frenchCategories = ['Resource title FRENCH','Resource Description FRENCH', 'Resource URL FRENCH','Internal/External FRENCH','Category FRENCH','Sub Category FRENCH','Keywords FRENCH'];
-  
-function englishContent(objects) {
-  return objects.map(resource => {
-      const englishArray = {};
-      Object.keys(resource).forEach(key => {
-        if (englishCategories.includes(key)) {
-          englishArray[key] = resource[key];
-      }
-      }); 
-      return englishArray;
-  });
-}
 
-function frenchContent(objects) {
-    return objects.map(resource => {
-        const frenchArray = {};
-        Object.keys(resource).forEach(key => {
-          if (frenchCategories.includes(key)) {
-            let englishName = key.replace(" FRENCH","");
-            frenchArray[englishName] = resource[key];
-        }
-        });
-        return frenchArray;
-        
-    });
+const englishProperties = {
+  'Resource title': 'Resource title',
+  'Resource Description': 'Resource Description',
+  'Resource URL': 'Resource URL',
+  'Internal/External': 'Internal/External',
+  'Category': 'Category',
+  'Sub Category': 'Sub Category',
+  'Keywords': 'Keywords'
 }
+const frenchProperties = {
+  'Resource title': 'Resource title FRENCH',
+  'Resource Description': 'Resource Description FRENCH',
+  'Resource URL': 'Resource URL FRENCH',
+  'Internal/External': 'Internal/External FRENCH',
+  'Category': 'Category FRENCH',
+  'Sub Category': 'Sub Category FRENCH',
+  'Keywords': 'Keywords FRENCH'
+};
+const mapRecord = (record, properties) =>
+  Object.fromEntries(
+    Object.keys(properties).map(
+      key => [key, record[properties[key]]]
+    )
+  );
 
-englishArray = englishContent(seniorsContent);
-frenchArray = frenchContent(seniorsContent);
-console.log("English Seniors Content array ->", englishArray[0]);
+// Filter both English and French content.
+const englishContent = (records) => records.map((record) => mapRecord(record, englishProperties))
+const frenchContent = (records) => records.map((record) => mapRecord(record, frenchProperties))
+
+
+const seniorsContentEN = englishContent(seniorsContent);
+const seniorsContentFR = frenchContent(seniorsContent);
+console.log("English Seniors Content array ->", seniorsContentEN[0]);
 console.log("-------------------------------------------------------------------");
-console.log("French Seniors Content array ->", frenchArray[0]);
+console.log("French Seniors Content array ->", seniorsContentFR[0]);
 
   // keys: ['Resource title', 'Resource Description', 'Resource URL', 'Internal/External', 'Category', 'Sub Category']
   // Check for null values in title, description, and category
