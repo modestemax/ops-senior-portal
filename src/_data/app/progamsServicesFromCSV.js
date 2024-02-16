@@ -22,6 +22,7 @@ module.exports = async function(language = 'en') {
  
 
 const englishProperties = {
+  'id': 'id',
   'Resource title': 'Resource title',
   'Resource Description': 'Resource Description',
   'Resource URL': 'Resource URL',
@@ -31,6 +32,7 @@ const englishProperties = {
   'Keywords': 'Keywords'
 }
 const frenchProperties = {
+  'id': 'id',
   'Resource title': 'Resource title FRENCH',
   'Resource Description': 'Resource Description FRENCH',
   'Resource URL': 'Resource URL FRENCH',
