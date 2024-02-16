@@ -22,6 +22,7 @@ module.exports = async function(language = 'en') {
  
 
 const englishProperties = {
+  'id': 'id',
   'Resource title': 'Resource title',
   'Resource Description': 'Resource Description',
   'Resource URL': 'Resource URL',
@@ -31,6 +32,7 @@ const englishProperties = {
   'Keywords': 'Keywords'
 }
 const frenchProperties = {
+  'id': 'id',
   'Resource title': 'Resource title FRENCH',
   'Resource Description': 'Resource Description FRENCH',
   'Resource URL': 'Resource URL FRENCH',
@@ -45,17 +47,6 @@ const mapRecord = (record, properties) =>
       key => [key, record[properties[key]]]
     )
   );
-
-// Filter both English and French content.
-const englishContent = (records) => records.map((record) => mapRecord(record, englishProperties))
-const frenchContent = (records) => records.map((record) => mapRecord(record, frenchProperties))
-
-
-const seniorsContentEN = englishContent(seniorsContent);
-const seniorsContentFR = frenchContent(seniorsContent);
-console.log("English Seniors Content array ->", seniorsContentEN[0]);
-console.log("-------------------------------------------------------------------");
-console.log("French Seniors Content array ->", seniorsContentFR[0]);
 
   // keys: ['Resource title', 'Resource Description', 'Resource URL', 'Internal/External', 'Category', 'Sub Category']
   // Check for null values in title, description, and category
@@ -98,9 +89,24 @@ console.log("French Seniors Content array ->", seniorsContentFR[0]);
   let uniqueTagsEN = createCategory("Category");
   let uniqueTagsFR = createCategory("Category FRENCH");
 
-  return {
-    seniorsContent: seniorsContent,
-    tags: uniqueTagsEN, uniqueTagsFR
+// Filter both English and French content.
+const englishContent = (records) => records.map((record) => mapRecord(record, englishProperties))
+const frenchContent = (records) => records.map((record) => mapRecord(record, frenchProperties))
 
+
+const seniorsContentEN = englishContent(seniorsContent);
+const seniorsContentFR = frenchContent(seniorsContent);
+
+console.log("English Seniors Content array ->", seniorsContentEN[0]);
+console.log("-------------------------------------------------------------------");
+console.log("French Seniors Content array ->", seniorsContentFR[0]);
+
+
+  return {
+    seniorsContent: {
+      'en': seniorsContentEN,
+      'fr': seniorsContentFR
+    },
+    tags: uniqueTagsEN, uniqueTagsFR
   };
 };

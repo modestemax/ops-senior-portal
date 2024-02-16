@@ -77,9 +77,13 @@
             minMatchCharLength: 1, // Default value for minMatchCharLength
             fuse: null,
             showClearAll: false,
+            language: 'en', // 'en' or 'fr'.
             init() {
                 // This runs first at page load, when Alpine.js initializes the data store.
-                this.data = {{ app.progamsServicesFromCSV.seniorsContent | dump | safe }};
+
+                this.language = {{ ( lang if lang else "en" ) | dump | safe }};
+                this.data = {{ app.progamsServicesFromCSV.seniorsContent[lang if lang else "en"] | dump | safe }};
+                console.log({ language: this.language, data: [...this.data] }) 
                 {# TODO: from programServicesFromCSV how to differentiate betwene french keywords and english keywords #}
 
                 this.stemmedData = createStemmedData(this.data, ["Resource title", "Resource Description", "Keywords"]);
