@@ -46,17 +46,6 @@ const mapRecord = (record, properties) =>
     )
   );
 
-// Filter both English and French content.
-const englishContent = (records) => records.map((record) => mapRecord(record, englishProperties))
-const frenchContent = (records) => records.map((record) => mapRecord(record, frenchProperties))
-
-
-const seniorsContentEN = englishContent(seniorsContent);
-const seniorsContentFR = frenchContent(seniorsContent);
-console.log("English Seniors Content array ->", seniorsContentEN[0]);
-console.log("-------------------------------------------------------------------");
-console.log("French Seniors Content array ->", seniorsContentFR[0]);
-
   // keys: ['Resource title', 'Resource Description', 'Resource URL', 'Internal/External', 'Category', 'Sub Category']
   // Check for null values in title, description, and category
   function CustomException(message) {
@@ -98,9 +87,24 @@ console.log("French Seniors Content array ->", seniorsContentFR[0]);
   let uniqueTagsEN = createCategory("Category");
   let uniqueTagsFR = createCategory("Category FRENCH");
 
-  return {
-    seniorsContent: seniorsContent,
-    tags: uniqueTagsEN, uniqueTagsFR
+// Filter both English and French content.
+const englishContent = (records) => records.map((record) => mapRecord(record, englishProperties))
+const frenchContent = (records) => records.map((record) => mapRecord(record, frenchProperties))
 
+
+const seniorsContentEN = englishContent(seniorsContent);
+const seniorsContentFR = frenchContent(seniorsContent);
+
+console.log("English Seniors Content array ->", seniorsContentEN[0]);
+console.log("-------------------------------------------------------------------");
+console.log("French Seniors Content array ->", seniorsContentFR[0]);
+
+
+  return {
+    seniorsContent: {
+      'en': seniorsContentEN,
+      'fr': seniorsContentFR
+    },
+    tags: uniqueTagsEN, uniqueTagsFR
   };
 };
