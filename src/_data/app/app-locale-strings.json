@@ -10,7 +10,7 @@
     },
     "clearAllFilters": { 
       "en": "Clear all filters", 
-      "fr": "Effacer tous le filtres"
+      "fr": "Appliquer le filtre"
     }
   },
   "searchResults": {
@@ -77,7 +77,7 @@
     },
     "submit":{
       "en":"Submit",
-      "fr":"Soumettre"
+      "fr":"Submit (FR)"
     }
   },
 
