@@ -73,9 +73,9 @@ console.log("French Seniors Content array ->", seniorsContentFR[0]);
     return resource;
   })
 
-  const invalidItems = seniorsContent.filter(item => !item["Resource title"] || !item["Resource Description"] || !item["Category"] || !item["Resource URL"] || !item["Internal/External"]|| !item["Sub Category"]);
-  if (invalidItems.length > 0) {
-    console.error("Error: Some items have null values in Resource Title, Resource Description,  Resource URL, Internal/External, Category or Sub Category:");
+  const invalidItems = seniorsContent.filter(item => !item["Resource title"] || !item["Resource Description"] || !item["Category"] || !item["Resource URL"] || !item["Internal/External"]|| !item["Sub Category"]|| !item["Resource title FRENCH"] || !item["Resource Description FRENCH"] || !item["Category FRENCH"] || !item["Resource URL FRENCH"] || !item["Internal/External FRENCH"]|| !item["Sub Category FRENCH"]);
+  if (invalidItems.length > 0) { 
+    console.error("Error: Some items have null values in Resource Title (French), Resource Description (French),  Resource URL (French), Internal/External (French), Category or Sub Category (French):");
     console.error(invalidItems);
     // throw new CustomException('Some items have invalid records.');
    //^Line 39 - This is the throw exception, it will shut down the whole program if uncommented
