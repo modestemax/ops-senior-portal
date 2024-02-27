@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.EnglishStemmer = void 0;
-
+import { Stemmer } from "./_stemmer.js";
 const a_0 = [
     ["arsen", -1, -1],
     ["commun", -1, -1],
@@ -138,27 +135,12 @@ const g_v = [17, 65, 16, 1];
 const g_v_WXY = [1, 17, 65, 208, 1];
 const g_valid_LI = [55, 141, 2];
 /** Stemmer for the English language */
-class EnglishStemmer extends Stemmer {
+export class EnglishStemmer extends Stemmer {
     constructor() {
         super(...arguments);
-        Object.defineProperty(this, "B_Y_found", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: false
-        });
-        Object.defineProperty(this, "I_p2", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: 0
-        });
-        Object.defineProperty(this, "I_p1", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: 0
-        });
+        this.B_Y_found = false;
+        this.I_p2 = 0;
+        this.I_p1 = 0;
     }
     r_prelude() {
         this.B_Y_found = false;
@@ -928,4 +910,3 @@ class EnglishStemmer extends Stemmer {
         return true;
     }
 }
-exports.EnglishStemmer = EnglishStemmer;
