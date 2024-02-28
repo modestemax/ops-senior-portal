@@ -1,46 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Stemmer = void 0;
 /** Used for stemming a specific language */
-class Stemmer {
-    constructor() {
-        Object.defineProperty(this, "current", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "cursor", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "limit", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "limit_backward", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "bra", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "ket", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-    }
+export class Stemmer {
     /** The stem of lowercase `word` */
     stem(word) {
         this.current = word;
@@ -284,4 +243,3 @@ class Stemmer {
         return result;
     }
 }
-exports.Stemmer = Stemmer;
