@@ -15,10 +15,10 @@
             <ul class="two-column-list">
              {%for category in filterCategories %}
                     <li>
-                        {% if lang === "fr" %}
-                        <a :href="'/ministere-des-services-aux-aines-et-de-laccessibilite/?category=' + encodeURIComponent('{{category}}').replace(/%20/g, '+')" class="no-result-links">{{category}}</a>
-                        {% else %}
+                        {% if lang === "en" %}
                         <a :href="'/ministry-seniors-accessibility/?category=' + encodeURIComponent('{{category}}').replace(/%20/g, '+')" class="no-result-links">{{category}}</a>
+                        {% elif lang === "fr" %}
+                        <a :href="'/ministere-des-services-aux-aines-et-de-laccessibilite/?category=' + encodeURIComponent('{{category}}').replace(/%20/g, '+')" class="no-result-links">{{category}}</a>
                         {% endif %}
                     </li>
                 {%endfor%}
