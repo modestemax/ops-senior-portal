@@ -13,13 +13,13 @@
             <p>{{"searchResults.noResult2" | localeString}}</p>
             <h4>{{"searchResults.noResult3" | localeString}}</h4>
             <ul class="two-column-list">
-             {%for category in filterCategories %}
+                {%for category in filterCategories %}
                     <li>
-                        {% if lang === "en" %}
+                    {% if lang === "en" %}
                         <a :href="'/ministry-seniors-accessibility/?category=' + encodeURIComponent('{{category}}').replace(/%20/g, '+')" class="no-result-links">{{category}}</a>
-                        {% elif lang === "fr" %}
+                    {% elif lang === "fr" %}
                         <a :href="'/ministere-des-services-aux-aines-et-de-laccessibilite/?category=' + encodeURIComponent('{{category}}').replace(/%20/g, '+')" class="no-result-links">{{category}}</a>
-                        {% endif %}
+                    {% endif %}
                     </li>
                 {%endfor%}
             </ul>
