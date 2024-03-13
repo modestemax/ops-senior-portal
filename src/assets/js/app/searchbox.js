@@ -18,17 +18,25 @@ const stem = function (value, language = 'en') {
     stemmedValue = stemmedValue + stemmer.stem(token) + ending;
   });
 
-  //console.log(`stem("${value}", "${language}") -> "${stemmedValue}"`)
+  //console.log(`stem("${value}", "${language}") -> "${stemmedValue}"`);
   return stemmedValue;
 };
 
 // Adapted from https://stackoverflow.com/questions/4328500/how-can-i-strip-all-punctuation-from-a-string-in-javascript-using-regex#comment113461246_4328722
 const removePunctuation = (value) => value.replace(/[^\p{L}\p{N} ]/gu, '');
 
+// Adapted from https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
+const removeDiacritics = (value) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
+
 const normalizeText = function (value, language = 'en') {
-  // While fuse does case-insensitive search,
-  // stemmers are case sensitive.
-  return stem(removePunctuation(value).toLowerCase(), language);
+  var normalized = value;
+  normalized = removeDiacritics(normalized);
+  normalized = removePunctuation(normalized);
+  normalized = normalized.toLowerCase(); // While fuse does case-insensitive search, stemmers are case sensitive.
+  normalized = stem(normalized, language);
+
+  //console.log(`normalizeText("${value}", "${language}") -> "${normalized}"`);
+  return normalized;
 };
 
 const createStemmedData = function (data, fieldsToNormalize, language = 'en') {
