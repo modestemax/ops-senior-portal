@@ -218,16 +218,6 @@ document.addEventListener('alpine:init', () => {
         .search(normalizedSearchTerm)
         .map((res) => res.item);
 
-      if (this.categories.length) {
-        if (!this.searchTerm) {
-          // User has selected a category but not entered a search term.
-          results = data;
-        }
-        results = results.filter((result) =>
-          this.categories.includes(result['Category'])
-        );
-      }
-
       const deduplicate = function (results) {
         let uniqueKeys = new Set(
           results.map(
@@ -257,6 +247,16 @@ document.addEventListener('alpine:init', () => {
       let filteredResults = data.filter((resource) => {
         return searchResultsIds.includes(resource.id);
       });
+
+      if (this.categories.length) {
+        if (!this.searchTerm) {
+          // User has selected a category but not entered a search term.
+          filteredResults = data;
+        }
+        filteredResults = filteredResults.filter((result) =>
+          this.categories.includes(result['Category'])
+        );
+      }
 
       this.lastSearchTerm = this.searchTerm;
 
