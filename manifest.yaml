@@ -33,5 +33,5 @@ integration_manifest:
   # DevOps does not do any routing based on language; it's up to the
   # developer to create language specific resources, and publish them here.
   published_paths:
-    - '/ministry-seniors-accessibility'
-    - '/ministere-des-services-aux-aines-et-de-laccessibilite'
+    - '/information-for-seniors-find-programs-and-services'
+    - '/renseignements-lintention-des-personnes-agees-recherche-de-programmes-et-de-services'
