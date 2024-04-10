@@ -16,9 +16,9 @@
                 {%for category in filterCategories %}
                     <li>
                     {% if lang === "en" %}
-                        <a :href="'/ministry-seniors-accessibility/?category=' + encodeURIComponent('{{category}}').replace(/%20/g, '+')" class="no-result-links">{{category}}</a>
+                        <a :href="'/information-for-seniors-find-programs-and-services/?category=' + encodeURIComponent('{{category}}').replace(/%20/g, '+')" class="no-result-links">{{category}}</a>
                     {% elif lang === "fr" %}
-                        <a :href="'/ministere-des-services-aux-aines-et-de-laccessibilite/?category=' + encodeURIComponent('{{category}}').replace(/%20/g, '+')" class="no-result-links">{{category}}</a>
+                        <a :href="'/renseignements-lintention-des-personnes-agees-recherche-de-programmes-et-de-services/?category=' + encodeURIComponent('{{category}}').replace(/%20/g, '+')" class="no-result-links">{{category}}</a>
                     {% endif %}
                     </li>
                 {%endfor%}
