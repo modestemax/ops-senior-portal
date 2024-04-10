@@ -28,31 +28,65 @@ const removePunctuation = (value) => value.replace(/[^\p{L}\p{N} ]/gu, '');
 // Adapted from https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
 const removeDiacritics = (value) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
 
-const normalizeText = function (value, language = 'en') {
+const removeWhitespace = (value) => value.replace(/\s+/g,'');
+
+const stemText = function (value, language = 'en') {
   var normalized = value;
   normalized = removeDiacritics(normalized);
   normalized = removePunctuation(normalized);
   normalized = normalized.toLowerCase(); // While fuse does case-insensitive search, stemmers are case sensitive.
   normalized = stem(normalized, language);
 
-  //console.log(`normalizeText("${value}", "${language}") -> "${normalized}"`);
+  // console.log(`stemText("${value}", "${language}") -> "${normalized}"`);
   return normalized;
 };
 
-const createStemmedData = function (data, fieldsToNormalize, language = 'en') {
+const concatenateText = function (value, language = 'en') {
+  var normalized = value;
+  normalized = removeDiacritics(normalized);
+  normalized = removePunctuation(normalized);
+  normalized = removeWhitespace(normalized);
+  normalized = normalized.toLowerCase();
+
+  // console.log(`concatenateText("${value}", "${language}") -> "${normalized}"`);
+  return normalized;
+};
+const normalizeData = function (data, fieldsToNormalize, language = 'en', normalize=stemText) {
   // Deep clone due to pass-by-reference fun in JS
   const clonedData = JSON.parse(JSON.stringify(data));
 
-  const stemmedData = clonedData.map(function (resource) {
+  const normalizedData = clonedData.map(function (resource) {
     fieldsToNormalize.forEach((field) => {
       const fieldValue = resource[field];
-      resource[field] = normalizeText(fieldValue, language);
+      resource[field] = normalize(fieldValue, language);
     });
 
     return resource;
   });
 
-  return stemmedData;
+  return normalizedData;
+};
+
+const deduplicate = function (results) {
+  let uniqueKeys = new Set(
+    results.map(
+      (result) =>
+        result['Resource title'] + result['Resource Description']
+    )
+  );
+  let keysFound = Array.from(uniqueKeys).reduce(
+    (acc, curr) => ((acc[curr] = false), acc),
+    {}
+  );
+  return results.filter((result) => {
+    let key = result['Resource title'] + result['Resource Description'];
+    if (keysFound[key]) {
+      return false;
+    } else {
+      keysFound[key] = true;
+      return true;
+    }
+  });
 };
 
 document.addEventListener('alpine:init', () => {
@@ -61,12 +95,10 @@ document.addEventListener('alpine:init', () => {
     lastSearchTerm: '',
     searchedAtLeastOnce: false,
     data: [],
-    stemmedData: [],
     results: [],
     categoryCheckboxes: {},
     categories: [],
     minMatchCharLength: 1, // Default value for minMatchCharLength
-    fuse: null,
     showClearAll: false,
     language: 'en', // 'en' or 'fr'.
     init() {
@@ -76,11 +108,29 @@ document.addEventListener('alpine:init', () => {
       this.language = pageLanguage;
       this.data = pageData;
 
-      this.stemmedData = createStemmedData(
-        this.data,
-        ['Resource title', 'Resource Description', 'Keywords', 'Category', 'Sub Category'],
-        this.language
-      );
+      // Fuse options.
+      let options = {
+        keys: [
+          { name: 'Resource title', weight: 2 },
+          { name: 'Resource Description', weight: 1 },
+          { name: 'Category', weight: 1 },
+          { name: 'Sub Category', weight: 1 },
+          { name: 'Keywords', weight: 1 },
+        ],
+        includeScore: true,
+        threshold: 0,
+        ignoreLocation: true,
+        isCaseSensitive: false,
+      };
+
+      // Create Stemmed Index.
+      const fields = ['Resource title', 'Resource Description', 'Keywords', 'Category', 'Sub Category'];
+      const stemmedData = normalizeData(this.data, fields, this.language, stemText);
+      this.stemmedFuse = new Fuse(stemmedData, options);
+
+      // Create Concatenated Index.
+      const concatenatedData = normalizeData(this.data, fields, this.language, concatenateText);
+      this.concatenatedFuse = new Fuse(concatenatedData, options);
 
       // Load search state, if we have any.
       this.loadSearchState();
@@ -186,84 +236,40 @@ document.addEventListener('alpine:init', () => {
     },
 
     doSearch() {
-      let data = this.data;
+      const searchFuse = (fuse, normalize, term) => {
+        const normalized = normalize(term, this.language);
+        const minMatchCharLength = this.getMinMatchCharLength(normalized);
+        const options = { minMatchCharLength };
+        return fuse
+          .search(normalized, options)
+          .map((res) => res.item);
+      }
 
-      let stemmedData = this.stemmedData;
-
-      let normalizedSearchTerm = normalizeText(this.searchTerm, this.language);
-
-      // Initialize Fuse with the current search parameters.
-      let minMatchCharLength = this.getMinMatchCharLength(normalizedSearchTerm);
-
-      let options = {
-        keys: [
-          { name: 'Resource title', weight: 2 },
-          { name: 'Resource Description', weight: 1 },
-          { name: 'Category', weight: 1 },
-          { name: 'Sub Category', weight: 1 },
-          { name: 'Keywords', weight: 1 },
-        ],
-        includeScore: true,
-        minMatchCharLength: minMatchCharLength,
-        threshold: 0,
-        ignoreLocation: true,
-        isCaseSensitive: false,
-      };
-
-      this.fuse = new Fuse(stemmedData, options);
-
-      // Execute the actual search.
-
-      let results = this.fuse
-        .search(normalizedSearchTerm)
-        .map((res) => res.item);
-
-      const deduplicate = function (results) {
-        let uniqueKeys = new Set(
-          results.map(
-            (result) =>
-              result['Resource title'] + result['Resource Description']
-          )
-        );
-        let keysFound = Array.from(uniqueKeys).reduce(
-          (acc, curr) => ((acc[curr] = false), acc),
-          {}
-        );
-        return results.filter((result) => {
-          let key = result['Resource title'] + result['Resource Description'];
-          if (keysFound[key]) {
-            return false;
-          } else {
-            keysFound[key] = true;
-            return true;
-          }
-        });
-      };
-
-      let dedupedResults = deduplicate(results);
-
-      let searchResultsIds = dedupedResults.map((resource) => resource.id);
-
-      let filteredResults = data.filter((resource) => {
-        return searchResultsIds.includes(resource.id);
+      // Search both indexes, and collate the results.
+      let results = [
+        ...searchFuse(this.concatenatedFuse, concatenateText, this.searchTerm),
+        ...searchFuse(this.stemmedFuse, stemText, this.searchTerm)
+      ]
+      const resultIds = deduplicate(results)
+          .map((resource) => resource.id);
+      results = this.data.filter((resource) => {
+        return resultIds.includes(resource.id);
       });
 
+      // Apply the category filter.
       if (this.categories.length) {
         if (!this.searchTerm) {
           // User has selected a category but not entered a search term.
-          filteredResults = data;
+          results = this.data;
         }
-        filteredResults = filteredResults.filter((result) =>
+        results = results.filter((result) =>
           this.categories.includes(result['Category'])
         );
       }
 
-      this.lastSearchTerm = this.searchTerm;
-
-      let displayedResults = filteredResults;
-
       // This updates this.results, which will trigger Alpine to update the rest of the page.
-      this.results = displayedResults;
+      this.results = results;
+      this.lastSearchTerm = this.searchTerm;
 
       if (this.results.length >= 0) {
         this.showDefaultContent = false;
