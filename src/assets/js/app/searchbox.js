@@ -37,7 +37,7 @@ const stemText = function (value, language = 'en') {
   normalized = normalized.toLowerCase(); // While fuse does case-insensitive search, stemmers are case sensitive.
   normalized = stem(normalized, language);
 
-  // console.log(`stemText("${value}", "${language}") -> "${normalized}"`);
+  //console.log(`stemText("${value}", "${language}") -> "${normalized}"`);
   return normalized;
 };
 
@@ -45,10 +45,13 @@ const concatenateText = function (value, language = 'en') {
   var normalized = value;
   normalized = removeDiacritics(normalized);
   normalized = removePunctuation(normalized);
-  normalized = removeWhitespace(normalized);
   normalized = normalized.toLowerCase();
+  normalized = removeWhitespace(normalized);
+  // Stemming the concatenated result doesn't really change the index,
+  // but it can make the search term match a wider set of results.
+  normalized = stem(normalized, language);
 
-  // console.log(`concatenateText("${value}", "${language}") -> "${normalized}"`);
+  //console.log(`concatenateText("${value}", "${language}") -> "${normalized}"`);
   return normalized;
 };
 const normalizeData = function (data, fieldsToNormalize, language = 'en', normalize=stemText) {
