@@ -188,8 +188,8 @@
     }
   },    "expandedFooter": {
     "ministryForSeniorsAndAccessibility": {
-      "en": "<a href=\"https://www.ontario.ca/page/ministry-seniors-accessibility\"> Ministry for Seniors and Accessibility</a>",
-      "fr": "<a href=\"https://www.ontario.ca/fr/page/ministere-des-services-aux-aines-et-de-laccessibilite\"> Ministère des Services aux aînés et de l’Accessibilité</a>"
+      "en": "<a class=\"ontario-footer__link\" href=\"https://www.ontario.ca/page/ministry-seniors-accessibility\"> Ministry for Seniors and Accessibility</a>",
+      "fr": "<a class=\"ontario-footer__link\" href=\"https://www.ontario.ca/fr/page/ministere-des-services-aux-aines-et-de-laccessibilite\"> Ministère des Services aux aînés et de l’Accessibilité</a>"
     },
     "ministryForSeniorsAndAccessibilityDescription": {
       "en": "Helping seniors and people with disabilities stay independent, active, and socially connected. We are also helping seniors stay safe and making Ontario more accessible for everyone and promoting the benefits of age-diverse, accessible workplaces and communities where everyone is able to participate.",

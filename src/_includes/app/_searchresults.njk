@@ -11,7 +11,7 @@
             &quot;<span x-text="lastSearchTerm"></span>&quot;
             </h2>
             <p>{{"searchResults.noResult2" | localeString}}</p>
-            <h4>{{"searchResults.noResult3" | localeString}}</h4>
+            <h3 class="ontario-h3">{{"searchResults.noResult3" | localeString}}</h3>
             <ul class="two-column-list">
                 {%for category in filterCategories %}
                     <li>
@@ -51,7 +51,7 @@
                 <div style =" margin-bottom:48px;">
                     <div class="result-item">
                         <a style="text-decoration:none;" x-bind:href="result['Resource URL']">
-                            <h4><strong x-text="result['Resource title']"></strong></h4>
+                            <h3 class="ontario-h4"><strong x-text="result['Resource title']"></strong></h3>
                         </a>
                     </div>
                     <template x-if="result['Internal/External'] === 'External'">
