@@ -253,11 +253,11 @@ document.addEventListener('alpine:init', () => {
         ...searchFuse(this.concatenatedFuse, concatenateText, this.searchTerm),
         ...searchFuse(this.stemmedFuse, stemText, this.searchTerm)
       ]
-      const resultIds = deduplicate(results)
-          .map((resource) => resource.id);
+      const resultIds = results.map((resource) => resource.id);
       results = this.data.filter((resource) => {
         return resultIds.includes(resource.id);
       });
+      results = deduplicate(results)
 
       // Apply the category filter.
       if (this.categories.length) {
