@@ -70,27 +70,15 @@ const normalizeData = function (data, fieldsToNormalize, language = 'en', normal
   return normalizedData;
 };
 
-const deduplicate = function (results) {
-  let uniqueKeys = new Set(
-    results.map(
-      (result) =>
-        result['Resource title'] + result['Resource Description']
-    )
-  );
-  let keysFound = Array.from(uniqueKeys).reduce(
-    (acc, curr) => ((acc[curr] = false), acc),
-    {}
-  );
-  return results.filter((result) => {
-    let key = result['Resource title'] + result['Resource Description'];
-    if (keysFound[key]) {
-      return false;
-    } else {
-      keysFound[key] = true;
-      return true;
-    }
-  });
-};
+const duplicates = (a, b) => {
+  const hash = (x) => x['Resource title'] + x['Resource Description'];
+  return hash(a) === hash(b);
+}
+
+const deduplicate = (results) => results.reduce(
+  (acc, cur) => acc.some(x => duplicates(x, cur)) ? acc : [...acc, cur],
+  []
+);
 
 document.addEventListener('alpine:init', () => {
   Alpine.data('search', () => ({
@@ -253,11 +241,11 @@ document.addEventListener('alpine:init', () => {
         ...searchFuse(this.concatenatedFuse, concatenateText, this.searchTerm),
         ...searchFuse(this.stemmedFuse, stemText, this.searchTerm)
       ]
-      const resultIds = deduplicate(results)
-          .map((resource) => resource.id);
+      const resultIds = results.map((resource) => resource.id);
       results = this.data.filter((resource) => {
         return resultIds.includes(resource.id);
       });
+      results = deduplicate(results)
 
       // Apply the category filter.
       if (this.categories.length) {
