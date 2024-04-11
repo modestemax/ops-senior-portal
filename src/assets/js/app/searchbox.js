@@ -67,8 +67,7 @@ const normalizeData = function (data, fieldsToNormalize, language = 'en', normal
 };
 
 const duplicates = (a, b) => {
-  const hash = (x) =>
-    (x['Resource title'] + x['Resource Description']).toLowerCase();
+  const hash = (x) => stemText(x['Resource title'] + ' ' + x['Resource Description'])
   return hash(a) === hash(b);
 }
 
