@@ -36,7 +36,7 @@ const frenchProperties = {
   'Resource title': 'Resource title FRENCH',
   'Resource Description': 'Resource Description FRENCH',
   'Resource URL': 'Resource URL FRENCH',
-  'Internal/External': 'Internal/External FRENCH',
+  'Internal/External': 'Internal/External',
   'Category': 'Category FRENCH',
   'Sub Category': 'Sub Category FRENCH',
   'Keywords': 'Keywords FRENCH'
