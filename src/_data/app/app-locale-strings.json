@@ -73,7 +73,7 @@
     },
     "enterATopic":{
       "en":"Enter a topic like \"power of attorney\" or \"driver's licence.\"",
-      "fr":"Saisissez un sujet tel que \"procuration\" ou \"permis de conduire\"."
+      "fr":"Saisissez un sujet tel que «procuration» ou «permis de conduire»."
     },
     "submit":{
       "en":"Submit",
@@ -206,6 +206,10 @@
     "contactUsButton": {
       "en": "Contact Us",
       "fr": "Communiquez avec nous"
+    },
+    "contactUsUrl": {
+      "en": "https://www.ontario.ca/feedback/contact-us?id=25516&nid=94771",
+      "fr": "https://ontario.ca/fr/commentaires/pour-nous-joindre?id=25516&nid=94771"
     }
   }
 
