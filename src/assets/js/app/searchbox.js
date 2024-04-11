@@ -10,13 +10,10 @@ const stemmers = {
 
 const stem = function (value, language = 'en') {
   const stemmer = stemmers[language] || stemmers['en'];
-  const tokenizedValue = value.split(' ');
-  let stemmedValue = '';
-
-  tokenizedValue.forEach((token, idx) => {
-    let ending = idx < tokenizedValue.length - 1 ? ' ' : '';
-    stemmedValue = stemmedValue + stemmer.stem(token) + ending;
-  });
+  const stemmedValue = value
+    .split(' ')
+    .map(token => stemmer.stem(token))
+    .join(' ');
 
   //console.log(`stem("${value}", "${language}") -> "${stemmedValue}"`);
   return stemmedValue;
@@ -58,10 +55,9 @@ const normalizeData = function (data, fieldsToNormalize, language = 'en', normal
   // Deep clone due to pass-by-reference fun in JS
   const clonedData = JSON.parse(JSON.stringify(data));
 
-  const normalizedData = clonedData.map(function (resource) {
+  const normalizedData = clonedData.map((resource) => {
     fieldsToNormalize.forEach((field) => {
-      const fieldValue = resource[field];
-      resource[field] = normalize(fieldValue, language);
+      resource[field] = normalize(resource[field], language);
     });
 
     return resource;
@@ -71,7 +67,8 @@ const normalizeData = function (data, fieldsToNormalize, language = 'en', normal
 };
 
 const duplicates = (a, b) => {
-  const hash = (x) => x['Resource title'] + x['Resource Description'];
+  const hash = (x) =>
+    (x['Resource title'] + x['Resource Description']).toLowerCase();
   return hash(a) === hash(b);
 }
 
@@ -228,12 +225,18 @@ document.addEventListener('alpine:init', () => {
 
     doSearch() {
       const searchFuse = (fuse, normalize, term) => {
+        // Match a normalized term against a specific index.
         const normalized = normalize(term, this.language);
         const minMatchCharLength = this.getMinMatchCharLength(normalized);
         const options = { minMatchCharLength };
-        return fuse
+
+        // The search returns a set of normalized records from the index.
+        // We want to extract the record id, and return the original
+        // record for display.
+        const resultIds = fuse
           .search(normalized, options)
-          .map((res) => res.item);
+          .map((res) => res.item.id);
+        return this.data.filter((x) => resultIds.includes(x.id));
       }
 
       // Search both indexes, and collate the results.
@@ -241,10 +244,6 @@ document.addEventListener('alpine:init', () => {
         ...searchFuse(this.concatenatedFuse, concatenateText, this.searchTerm),
         ...searchFuse(this.stemmedFuse, stemText, this.searchTerm)
       ]
-      const resultIds = results.map((resource) => resource.id);
-      results = this.data.filter((resource) => {
-        return resultIds.includes(resource.id);
-      });
       results = deduplicate(results)
 
       // Apply the category filter.
