@@ -73,17 +73,21 @@ const mapRecord = (record, properties) =>
    // If the line above is uncommented, it will shut down the whole program 
   }
   
+  // Function that creates category tags for the language "lang" passed to it
   function createCategory(lang) {
 
+    // Creates a map of all the category tags of that lang
     let categories = seniorsContent.map(seniorsContent => seniorsContent[lang]);
     // let subCategories = seniorsContent.map(seniorsContent => seniorsContent["Sub Category"]);
     
+    // Undefined checker
     categories = categories.map(function(__string) {
       if (__string != undefined) {
         return __string;
       }
       return '';
     });
+    // Returns a set of tags for the corresponding language passed to it
     return [...new Set(categories)].sort();
   }
 
