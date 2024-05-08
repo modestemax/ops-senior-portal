@@ -10,13 +10,17 @@ components with their own independent data -->
 <!-- This meant the search data from the search box wasn't being shared with the search results component, and vice-versa -->
 <!-- The fix below puts everything in a single scope so they share data  -->
 
+{# When data is updated, apply the updateCategorySelection function to constantly check if new categories are checked #}
 <div x-data="search" x-effect="updateCategorySelection()">
+    {# Row #1 - Header and Searchbox section #}
     <div class="ontario-row maincontent__container ontario-padding-top-48-!">
         <div class="ontario-column ontario-small-12">
             <div class="header-text">
+                {# Header 1. Uses localeString to import the text from the locaelString file #}
                 <h1> {{"programsAndServices.informationForSeniors" | localeString}} </h1>
                 <p class="lead ontario-lead-statement">
                     {{"programsAndServices.searchTool" | localeString}}<br>
+                    {# Condition if there are breadcrumbs, display them #}
                     {% if ontarioca_breadcrumbs | length > 0 %}
                        {{"programsAndServices.learnMore" | localeString}}
                         <a href="{{ ontarioca_breadcrumbs | last | last }}">{{ "programsAndServices.hyperlinkText" | localeString }}</a>.
@@ -27,23 +31,30 @@ components with their own independent data -->
             <div class="ontario-padding-bottom-20-! ontario-padding-top-20-!">
                 <hr class="bold">
             </div>
+            {# Include the searchbox at the top portion of the page #}
             <div class="ontario-column ontario-small-12 ontario-large-8" style="padding-left: 0px">
                 {% include "app/_searchbox.njk" %}
             </div>
         </div>
+        {# A header breakline to seperate the top portion and bottom portion of the page #}
         <div class="ontario-column ontario-padding-top-24-!">
             <hr>
         </div>
     </div>
 
+    {# Row #2 - Searchbox results and accordion section #}
     <div class="ontario-row maincontent__container accordion-and-search">
         <div class="ontario-column ontario-large-4 ontario-large-push-8">
+            {# Include the accordion following the grid outlinesof large-4 and large-8 #}
+            {# In short, the accoridon is displayed on the rightmost 4 columns, and the searhc results of the leftmost 8 columns #}
             {% include "app/_accordion.njk" %}
         </div>
         <div class="ontario-column search-output ontario-large-8 ontario-large-pull-4">
+            {# Section for search results where the default is to hide the csv content results #}
             <div id="search-programs-and-services" name="search-programs-and-services" class="show-default-content hide-csv-content">
                 {# CSV Content #}
                 <!-- csv output for search input-->
+                {# CSV content is only displayed when the doSearch() function is ran #}
                 <div id="csv-content" x-init="doSearch()">
                     {% include "app/_searchresults.njk" %}
                     <!-- Include the search results here -->

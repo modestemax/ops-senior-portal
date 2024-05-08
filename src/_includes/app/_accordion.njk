@@ -1,6 +1,8 @@
+    {# Accordion is directly pulled from the ODS website accordion with changs to have only one entry and left opended on default  #}
     <div class='ontario-accordions__container ontario-margin-bottom-80'>
         <div class='ontario-accordion' id='accordion-1'>
             <h3 class='ontario-accordion-heading'`>
+                {# Accordion button to expand and shrink #}
                 <button style="align-items:center;" class='ontario-accordion__button' id='accordion-button-id-1'
                         aria-controls='accordion-content-1' aria-expanded='false' data-toggle='ontario-collapse'>
                     <span class='ontario-accordion__button-icon--close'>
@@ -16,16 +18,20 @@
                         </svg> 
                     </span>
                     <div class="categories-column">
+                        {# Header 3 for the categoriesFilter title text #}
                         <h3>{{ "categoriesFilter.title" | localeString }}</h3>
                     </div>
                 </button>
             </h3>
             <section class='ontario-accordion__content' id='accordion-content-1'
                     aria-labelledby='accordion-button-id-1' aria-hidden='true' data-toggle='ontario-expander-content'>
-                <div id="filter-progams-and-services" class="ontario-form-group" style="margin-bottom: 0px;">
+                    {# <div id="filter-progams-and-services" class="ontario-form-group" style="margin-bottom: 0px;"
+                    {# Making the single entry consist of checkboxes for the categories #}
                     <fieldset class="ontario-fieldset">
                         <div class="ontario-checkboxes">
+                            {# A for loop to iterate over all the filterCategories (foudn in the information-for-seniors.. file) #}
                             {% for item in filterCategories %}
+                            {# Each "item" has a corresponding checkbox and label so each category can be identified for querying #}
                                 <div class="ontario-checkboxes__item">
                                     <input class="ontario-checkboxes__input" id="category-{{ loop.index }}"
                                             x-model="categoryCheckboxes['{{item}}']"
@@ -37,6 +43,7 @@
                         </div>
                     </fieldset> 
                  <!-- Add the "Apply filter" and "Clear all filters" button below the category checkboxes -->
+                 {# Filter buttons that call the corresponding function when clicked #}
                    <div class="button-container" style="display: flow-root">
                     <button class="ontario-button ontario-button--primary" x-on:click="applyFilters()" style="float: left; width: fit-content; margin-right: 24px;">{{ "categoriesFilter.applyFilters" | localeString }}</button>
                     <button class="ontario-button ontario-button--secondary" x-show="showClearAll" x-on:click="clearCategories()" style="float: left; width: fit-content;" >{{ "categoriesFilter.clearAllFilters" | localeString }}</button>
@@ -46,9 +53,12 @@
         </div>
     </div>
 
+{# Script section to handle the accordion being set to open on default #}
 <script defer>
 function handleOrientationChange(evt) {
+    
   if (evt.matches) {
+    //  querySelector to click the accordion button id and have the accordion opened on default 
     var button=document.querySelector("#accordion-button-id-1");
     button.click();
   }
