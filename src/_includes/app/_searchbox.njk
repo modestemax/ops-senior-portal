@@ -1,11 +1,16 @@
+{# Searchbox from the ODS website with modifications on length and width in CSS #}
 <div class="ontario-row">
     <div class="ontario-column">
         <form name="searchForm" id="search-example-2-form" class="ontario-search__container" novalidate @submit.prevent="submit()">
             <h2>{{"searchBox.findProgramsandServices" | localeString}}</h2>
+           {# p styling #}
             <p style="font-size:15px; padding-bottom:5px;" id="search-example-2-hint" class="ontario-hint">{{"searchBox.enterATopic" | localeString}}</p>
             <div class="ontario-search-input__container">
+                {# Special msaa_search_box styling. The value in the searcbox is stored in the searchTerm variable #}
                 <input type="text" name="search" id="q" aria-label="Search Field" class="msaa_search_box ontario-input" x-model:value="searchTerm"/>
+                 {# clearSearchFilters() function is called when clicked #}
                 <input class="ontario-search__reset" id="ontario-search-reset" type="reset" value="" aria-label="Clear field" x-on:click="clearSearchFilters()" x-show="searchTerm.length > 0"/>
+                {# Search submit button #}
                 <button class="ontario-search__submit" id="ontario-search-submit" type="submit">
                     <span class="ontario-show-for-sr">{{"searchBox.submit" | localeString}}</span>
                     <svg class="ontario-icon" focusable="false" sol:category="primary" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
@@ -16,6 +21,6 @@
         </form>
     </div>
 </div>
-
+{# Calls the functions from the searchbox.js file #}
 <script type="module" defer src="{{ globals.siteRoot }}{{ globals.assetsRoot }}/js/app/searchbox.js">
 </script>

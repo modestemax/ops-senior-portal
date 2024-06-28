@@ -1,64 +1,67 @@
 <div class="ontario-column">
-    <template x-if="!lastSearchTerm && !results.length">
+    <template x-if="!lastSearchTerm && !results.length"> {# No search term entered or category selected #} 
         <div class="empty-search">
-            <h3>{{"searchResults.emptyResult" | localeString}}</h3>
+            <h3>{{"searchResults.emptyResult" | localeString}}</h3> {# Instructions are displayed #} 
         </div>
     </template>
-    <template x-if="lastSearchTerm && !results.length">
+    <template x-if="lastSearchTerm && !results.length"> {# No category is selected and the search term that is entered has no results #} 
         <div class="no-results">
             <h2>
-            {{"searchResults.noResult1" | localeString}}
+            {{"searchResults.noResult1" | localeString}} {# Heading displayed for this case #} 
             &quot;<span x-text="lastSearchTerm"></span>&quot;
             </h2>
-            <p>{{"searchResults.noResult2" | localeString}}</p>
-            <h3 class="ontario-h3">{{"searchResults.noResult3" | localeString}}</h3>
+            <p>{{"searchResults.noResult2" | localeString}}</p>  {# Instructions are displayed #}
+            <h3 class="ontario-h3">{{"searchResults.noResult3" | localeString}}</h3> {# Instructions to filter by category #} 
             <ul class="two-column-list">
                 {%for category in filterCategories %}
                     <li>
-                    {% if lang === "en" %}
+                    {% if lang === "en" %} {# Checks if page is english #} 
                         <a :href="'/information-for-seniors-find-programs-and-services/?category=' + encodeURIComponent('{{category}}').replace(/%20/g, '+')" class="no-result-links">{{category}}</a>
-                    {% elif lang === "fr" %}
+                    {% elif lang === "fr" %} {# Checks if page is french #} 
                         <a :href="'/renseignements-lintention-des-personnes-agees-recherche-de-programmes-et-de-services/?category=' + encodeURIComponent('{{category}}').replace(/%20/g, '+')" class="no-result-links">{{category}}</a>
-                    {% endif %}
-                    </li>
+                    {% endif %} 
+                    </li> {# When selecting a link of any category, it will autoselect a checkbox in the accordion and display the results #}
                 {%endfor%}
             </ul>
         </div>
     </template>
-    <div class="total-results">
-        <template x-if="lastSearchTerm === '' && results.length > 0">
+    <div class="total-results">  {# Any search term or categories that have results #} 
+        <template x-if="lastSearchTerm === '' && results.length > 0"> {# No search term entered, but categories applied has results #} 
             <h2>
             <span x-text="results.length + ' '"></span>
-            {{"searchResults.totalResultsNoSearchterm" | localeString}}</h2>
+            {{"searchResults.totalResultsNoSearchterm" | localeString}}</h2> {# Heading displayed for this case #} 
         </template>
-        <template x-if="lastSearchTerm !== '' && results.length === 1">
+        <template x-if="lastSearchTerm !== '' && results.length === 1"> {# Both search term and category applied or just the search term entered has 1 result #} 
             <h2>
-            <span x-text="results.length + ' '"></span>
-            {{ "searchResults.totalResult" | localeString }}  
+            <span x-text="results.length + ' '"></span> 
+            {{ "searchResults.totalResult" | localeString }} {# Heading displayed for this case #} 
             &quot;<span x-text="lastSearchTerm"></span>&quot;
             </h2>
         </template>
-        <template x-if="lastSearchTerm !== '' && results.length > 1">
+        <template x-if="lastSearchTerm !== '' && results.length > 1">  {# Either the search term or category is applied or both applied have more than 1 result #}
             <h2>
             <span x-text="results.length + ' '"></span>
-            {{ "searchResults.totalResults" | localeString }}  
+            {{ "searchResults.totalResults" | localeString }} {# Heading displayed for this case #} 
             &quot;<span x-text="lastSearchTerm"></span>&quot;
             </h2>
         </template>
         <br>
-        <div>
-            <template x-for="result in results">
-                <div style =" margin-bottom:48px;">
-                    <div class="result-item">
+        <div> {# Results format #} 
+            <template x-for="result in results"> {# Loops over an array of results #} 
+                <div style =" margin-bottom:48px;"> {# Leaves space between each result #} 
+                    <div class="result-item"> 
+                        {# URL is bound to the resource title making the title clickable #} 
                         <a style="text-decoration:none;" x-bind:href="result['Resource URL']">
                             <h3 class="ontario-h4"><strong x-text="result['Resource title']"></strong></h3>
                         </a>
                     </div>
-                    <template x-if="result['Internal/External'] === 'External'">
+                    <template x-if="result['Internal/External'] === 'External'"> {# Checks if link is internal or external #} 
                         <div class="external-link">
+                            {# Displays the truncated external link #}
                             <a x-bind:href="result['Resource URL']" class="truncate" x-text="result['Resource URL']"></a>
                         </div>
                     </template>
+                    {# Displays the resource description making the font size 16px #}
                     <div style="font-size:16px" x-html="result['Resource Description']"></div>
                 </div>
             </template>
