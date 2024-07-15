@@ -62,6 +62,7 @@ build:staging:
     name: stage
   variables:
     ELEVENTY_ENV: 'stage' # DevOps' integration script requires 'prod' or 'stage'
+    GOOGLE_TAGMANAGER_ID: 'GTM-KV2JX68'
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       when: never
@@ -74,6 +75,7 @@ build:production:
     name: prod
   variables:
     ELEVENTY_ENV: 'prod' # DevOps' integration script requires 'prod' or 'stage'
+    GOOGLE_TAGMANAGER_ID: 'GTM-KV2JX68'
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       when: never
