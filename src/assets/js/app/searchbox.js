@@ -139,7 +139,7 @@ document.addEventListener('alpine:init', () => {
     saveSearchState() {
       const params = new URLSearchParams();
       if (this.searchTerm) {
-        params.append('q', this.searchTerm);
+        params.append('sq', this.searchTerm);
       }
       this.categories.forEach((category) => {
         params.append('category', category);
@@ -154,13 +154,13 @@ document.addEventListener('alpine:init', () => {
 
     loadSearchState() {
       const params = new URLSearchParams(window.location.search);
-      if (params.has('q') && !params.get('q')) {
+      if ((params.has('sq') && !params.get('sq')) || (params.has('q') && !params.get('q'))) {
         /* We have an empty query parameter, but it has actually been set.
         This isn't likely to happen from inside the app, so the user
         must have done an empty search from the landing page.*/
         this.searchedAtLeastOnce = true;
       }
-      this.searchTerm = params.get('q') || '';
+      this.searchTerm = params.get('sq') || params.get('q') || '';
 
       this.categories = params.getAll('category');
       this.updateCheckboxes();
