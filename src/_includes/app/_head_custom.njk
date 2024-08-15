@@ -5,3 +5,19 @@
   var pageLanguage = {{ ( lang if lang else "en" ) | dump | safe }};
   var pageData = {{ app.progamsServicesFromCSV.seniorsContent[lang if lang else "en"] | dump | safe }};
 </script>
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+</script>
+
+{# This code snippet should fire every time a search is completed: #}
+<script>
+      function pushSearchToDataLayer() {
+            let searchTerm = document.getElementById('q').value;
+            window.dataLayer.push({
+                  'event': 'product_search',
+                  'product_name': 'seniors find programs and services',
+                  'search_term': searchTerm 
+            });
+      }
+</script>
