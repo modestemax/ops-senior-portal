@@ -11,7 +11,7 @@
                  {# clearSearchFilters() function is called when clicked #}
                 <input class="ontario-search__reset" id="ontario-search-reset" type="reset" value="" aria-label="Clear field" x-on:click="clearSearchFilters()" x-show="searchTerm.length > 0"/>
                 {# Search submit button #}
-                <button class="ontario-search__submit" id="ontario-search-submit" onclick="pushSearchToDataLayer()">
+                <button class="ontario-search__submit" id="ontario-search-submit" onclick="pushSearchToDataLayer()" type="submit">
                     <span class="ontario-show-for-sr">{{"searchBox.submit" | localeString}}</span>
                     <svg class="ontario-icon" focusable="false" sol:category="primary" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
                         <use xlink:href="#ontario-icon-search"></use>
