@@ -284,6 +284,13 @@ document.addEventListener('alpine:init', () => {
         this.saveSearchState(this.searchTerm, this.categories);
         location.reload();
       } else {
+        //GTM Code
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+        'event': 'product_search',
+        'product_name': 'seniors find programs and services',
+        'search_term': this.searchTerm 
+       });
         // Execute the actual search
         this.doSearch();
         this.saveSearchState(this.searchTerm, this.categories);
