@@ -289,7 +289,7 @@ document.addEventListener('alpine:init', () => {
         window.dataLayer.push({
         'event': 'product_search',
         'product_name': 'seniors find programs and services',
-        'search_term': this.searchTerm 
+        'search_term': this.searchTerm.toLowerCase()
        });
         // Execute the actual search
         this.doSearch();
